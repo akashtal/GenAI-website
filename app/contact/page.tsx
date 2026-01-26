@@ -7,11 +7,12 @@ import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import Aurora from "@/components/Aurora"
 import { Footer } from "@/components/footer"
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Clock, Send, MessageSquare, ChevronDown } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Send, MessageSquare, ChevronDown, Loader2, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import { toast } from "sonner"
 
 const contactInfo = [
   {
@@ -73,10 +74,45 @@ export default function ContactPage() {
     message: "",
   })
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        toast.success(data.message || 'Message sent successfully!')
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          service: "",
+          budget: "",
+          message: "",
+        })
+        // Reset success state after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000)
+      } else {
+        toast.error(data.error || 'Failed to send message. Please try again.')
+      }
+    } catch {
+      toast.error('Network error. Please check your connection and try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -91,7 +127,7 @@ export default function ContactPage() {
         </div>
         <div className="relative z-10">
           <GlassmorphismNav />
-          
+
           {/* Hero Section */}
           <section className="min-h-[40vh] flex items-center justify-center px-4 py-20 relative">
             <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -104,7 +140,7 @@ export default function ContactPage() {
                 <span className="w-2 h-2 bg-white/60 rounded-full mr-2 animate-pulse"></span>
                 Get in Touch
               </motion.div>
-              
+
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -115,7 +151,7 @@ export default function ContactPage() {
                 <br />
                 <span className="text-foreground">Something Great</span>
               </motion.h1>
-              
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -171,107 +207,136 @@ export default function ContactPage() {
                   className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8"
                 >
                   <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="name" className="text-white/80">Full Name *</Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          placeholder="John Doe"
-                          className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
-                          required
-                        />
+
+                  {isSubmitted ? (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="flex flex-col items-center justify-center py-12 text-center"
+                    >
+                      <CheckCircle className="w-16 h-16 text-green-400 mb-4" />
+                      <h3 className="text-xl font-semibold text-white mb-2">Message Sent!</h3>
+                      <p className="text-white/70">Thank you for reaching out. We&apos;ll get back to you within 24 hours.</p>
+                    </motion.div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="name" className="text-white/80">Full Name *</Label>
+                          <Input
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="John Doe"
+                            className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
+                            required
+                            disabled={isSubmitting}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="email" className="text-white/80">Email Address *</Label>
+                          <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="john@example.com"
+                            className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
+                            required
+                            disabled={isSubmitting}
+                          />
+                        </div>
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email" className="text-white/80">Email Address *</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          placeholder="john@example.com"
-                          className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
-                          required
-                        />
+
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="company" className="text-white/80">Company</Label>
+                          <Input
+                            id="company"
+                            name="company"
+                            value={formData.company}
+                            onChange={handleChange}
+                            placeholder="Your Company"
+                            className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
+                            disabled={isSubmitting}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="service" className="text-white/80">Service Interested In</Label>
+                          <select
+                            id="service"
+                            name="service"
+                            value={formData.service}
+                            onChange={handleChange}
+                            className="w-full h-10 px-3 rounded-md bg-white/5 border border-white/10 text-white focus:border-white/30 focus:outline-none disabled:opacity-50"
+                            disabled={isSubmitting}
+                          >
+                            <option value="" className="bg-gray-900">Select a service</option>
+                            <option value="software" className="bg-gray-900">Software Development</option>
+                            <option value="mobile" className="bg-gray-900">Mobile App Development</option>
+                            <option value="marketing" className="bg-gray-900">Digital Marketing</option>
+                            <option value="design" className="bg-gray-900">UI/UX Design</option>
+                            <option value="cloud" className="bg-gray-900">Cloud Services</option>
+                            <option value="other" className="bg-gray-900">Other</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
-                    
-                    <div className="grid md:grid-cols-2 gap-4">
+
                       <div className="space-y-2">
-                        <Label htmlFor="company" className="text-white/80">Company</Label>
-                        <Input
-                          id="company"
-                          name="company"
-                          value={formData.company}
-                          onChange={handleChange}
-                          placeholder="Your Company"
-                          className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="service" className="text-white/80">Service Interested In</Label>
+                        <Label htmlFor="budget" className="text-white/80">Estimated Budget</Label>
                         <select
-                          id="service"
-                          name="service"
-                          value={formData.service}
+                          id="budget"
+                          name="budget"
+                          value={formData.budget}
                           onChange={handleChange}
-                          className="w-full h-10 px-3 rounded-md bg-white/5 border border-white/10 text-white focus:border-white/30 focus:outline-none"
+                          className="w-full h-10 px-3 rounded-md bg-white/5 border border-white/10 text-white focus:border-white/30 focus:outline-none disabled:opacity-50"
+                          disabled={isSubmitting}
                         >
-                          <option value="" className="bg-gray-900">Select a service</option>
-                          <option value="software" className="bg-gray-900">Software Development</option>
-                          <option value="mobile" className="bg-gray-900">Mobile App Development</option>
-                          <option value="marketing" className="bg-gray-900">Digital Marketing</option>
-                          <option value="design" className="bg-gray-900">UI/UX Design</option>
-                          <option value="cloud" className="bg-gray-900">Cloud Services</option>
-                          <option value="other" className="bg-gray-900">Other</option>
+                          <option value="" className="bg-gray-900">Select budget range</option>
+                          <option value="5k-10k" className="bg-gray-900">$5,000 - $10,000</option>
+                          <option value="10k-25k" className="bg-gray-900">$10,000 - $25,000</option>
+                          <option value="25k-50k" className="bg-gray-900">$25,000 - $50,000</option>
+                          <option value="50k-100k" className="bg-gray-900">$50,000 - $100,000</option>
+                          <option value="100k+" className="bg-gray-900">$100,000+</option>
                         </select>
                       </div>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="budget" className="text-white/80">Estimated Budget</Label>
-                      <select
-                        id="budget"
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleChange}
-                        className="w-full h-10 px-3 rounded-md bg-white/5 border border-white/10 text-white focus:border-white/30 focus:outline-none"
+
+                      <div className="space-y-2">
+                        <Label htmlFor="message" className="text-white/80">Project Details *</Label>
+                        <Textarea
+                          id="message"
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                          placeholder="Tell us about your project, goals, and timeline..."
+                          rows={5}
+                          className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 resize-none"
+                          required
+                          disabled={isSubmitting}
+                        />
+                      </div>
+
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-white text-black rounded-full py-4 text-lg font-medium hover:bg-gray-50 hover:scale-[1.02] transition-all disabled:opacity-50 disabled:hover:scale-100"
                       >
-                        <option value="" className="bg-gray-900">Select budget range</option>
-                        <option value="5k-10k" className="bg-gray-900">$5,000 - $10,000</option>
-                        <option value="10k-25k" className="bg-gray-900">$10,000 - $25,000</option>
-                        <option value="25k-50k" className="bg-gray-900">$25,000 - $50,000</option>
-                        <option value="50k-100k" className="bg-gray-900">$50,000 - $100,000</option>
-                        <option value="100k+" className="bg-gray-900">$100,000+</option>
-                      </select>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="message" className="text-white/80">Project Details *</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        placeholder="Tell us about your project, goals, and timeline..."
-                        rows={5}
-                        className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 resize-none"
-                        required
-                      />
-                    </div>
-                    
-                    <Button
-                      type="submit"
-                      className="w-full bg-white text-black rounded-full py-4 text-lg font-medium hover:bg-gray-50 hover:scale-[1.02] transition-all"
-                    >
-                      Send Message
-                      <Send className="ml-2 w-5 h-5" />
-                    </Button>
-                  </form>
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 w-5 h-5 animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            Send Message
+                            <Send className="ml-2 w-5 h-5" />
+                          </>
+                        )}
+                      </Button>
+                    </form>
+                  )}
                 </motion.div>
 
                 {/* FAQ Section */}
@@ -298,8 +363,8 @@ export default function ContactPage() {
                           className="w-full px-6 py-4 flex items-center justify-between text-left"
                         >
                           <span className="text-white font-medium">{faq.question}</span>
-                          <ChevronDown 
-                            className={`w-5 h-5 text-white/60 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} 
+                          <ChevronDown
+                            className={`w-5 h-5 text-white/60 transition-transform ${openFaq === index ? 'rotate-180' : ''}`}
                           />
                         </button>
                         {openFaq === index && (
