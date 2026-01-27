@@ -1,5 +1,14 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import RotatingText from "./RotatingText"
+import { motion } from "framer-motion"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel"
+import AutoScroll from "embla-carousel-auto-scroll"
 
 const ArrowRight = () => (
   <svg
@@ -28,42 +37,73 @@ const Play = () => (
   </svg>
 )
 
+const techStack = [
+  { src: "https://cdn.worldvectorlogo.com/logos/react-2.svg", alt: "React" },
+  { src: "https://cdn.worldvectorlogo.com/logos/next-js.svg", alt: "Next.js" },
+  { src: "https://cdn.worldvectorlogo.com/logos/vercel.svg", alt: "Vercel" },
+  { src: "https://cdn.worldvectorlogo.com/logos/typescript.svg", alt: "TypeScript" },
+  { src: "https://cdn.worldvectorlogo.com/logos/tailwindcss.svg", alt: "Tailwind CSS" },
+  { src: "https://cdn.worldvectorlogo.com/logos/stripe-4.svg", alt: "Stripe" },
+  { src: "https://cdn.worldvectorlogo.com/logos/react-native-1.svg", alt: "React Native" },
+  { src: "https://cdn.worldvectorlogo.com/logos/apple-13.svg", alt: "iOS" },
+  { src: "https://www.vectorlogo.zone/logos/android/android-icon.svg", alt: "Android" },
+  { src: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg", alt: "MongoDB" },
+  { src: "https://cdn.worldvectorlogo.com/logos/aws-2.svg", alt: "AWS" },
+  { src: "https://cdn.worldvectorlogo.com/logos/google-analytics-4.svg", alt: "Digital Marketing" },
+  { src: "https://cdn.worldvectorlogo.com/logos/html-1.svg", alt: "Web Development" },
+  { src: "https://cdn.worldvectorlogo.com/logos/github-icon-1.svg", alt: "GitHub" },
+  { src: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg", alt: "Framer Motion" },
+  { src: "https://cdn.worldvectorlogo.com/logos/sanity.svg", alt: "Sanity" },
+]
+
 export function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center px-4 py-20 relative">
       <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in-hero">
         {/* Badge */}
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-8 mt-12 animate-fade-in-badge">
-          <span className="w-2 h-2 bg-white/60 rounded-full mr-2 animate-pulse"></span>
-          Digital Solutions Agency
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-lg border border-white/10 text-slate-200 text-sm font-medium mb-8 mt-12 hover:bg-white/10 transition-colors cursor-default"
+        >
+          <span className="flex relative h-2 w-2 mr-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+          </span>
+          Best Value Digital Agency
+        </motion.div>
 
         {/* Main Heading */}
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-balance mb-6 animate-fade-in-heading">
-          <span className="text-foreground">We Build Digital</span>
-          <br />
-          <span className="inline-flex items-center justify-center flex-wrap gap-2 mt-4 sm:mt-6 md:mt-8">
-            <span className="text-foreground">Solutions</span>
-            <RotatingText
-              texts={["Apps", "Websites", "Brands", "Campaigns", "Experiences"]}
-              mainClassName="px-2 sm:px-2 md:px-3 bg-white text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg shadow-lg"
-              staggerFrom={"last"}
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "-120%" }}
-              staggerDuration={0.025}
-              splitLevelClassName="overflow-hidden pb-1 sm:pb-1 md:pb-1"
-              transition={{ type: "spring", damping: 30, stiffness: 400 }}
-              rotationInterval={2000}
-            />
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-balance mb-8 tracking-tight"
+        >
+          <span className="inline-block bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent pb-2">
+            Elite Digital Solutions
           </span>
-        </h1>
+          <br />
+          <span className="inline-flex items-center justify-center flex-wrap gap-2 mt-2">
+            <span className="text-white/90 font-light italic">at Unbeatable Rates</span>
+          </span>
+        </motion.h1>
 
         {/* Subheading */}
-        <p className="text-base sm:text-xl md:text-2xl text-white text-balance max-w-sm sm:max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4 sm:px-0 animate-fade-in-subheading font-light">
-          Gen AI Digital Solutions is a full-service digital agency specializing in software development, mobile apps, digital marketing,
-          and creative design solutions.
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="max-w-2xl mx-auto mb-10 sm:mb-12 px-4"
+        >
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed font-light mb-6 text-balance">
+            Stop overpaying traditional agencies. Get <span className="text-white font-medium">premium software</span>, <span className="text-white font-medium">marketing</span>, and <span className="text-white font-medium">app development</span> for a fraction of the cost.
+          </p>
+          <p className="text-base text-slate-400 font-light max-w-lg mx-auto leading-relaxed">
+            We build the scalable systems that power your business growth.
+          </p>
+        </motion.div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 sm:mb-16 animate-fade-in-buttons">
@@ -85,59 +125,38 @@ export function HeroSection() {
           </Button>
         </div>
 
-        {/* Trust Indicators */}
-        <div className="text-center px-4 hidden sm:block overflow-hidden animate-fade-in-trust">
-          <p className="text-sm text-white mb-6">Trusted by innovative companies worldwide</p>
-          <div className="relative overflow-hidden w-full max-w-4xl mx-auto">
-            <div className="flex items-center gap-8 opacity-60 hover:opacity-80 transition-all duration-500 animate-slide-left">
-              <div className="flex items-center gap-8 whitespace-nowrap">
-                <div className="text-base sm:text-lg font-semibold">TechCorp</div>
-                <div className="text-base sm:text-lg font-semibold">InnovateLab</div>
-                <div className="text-base sm:text-lg font-semibold">FutureScale</div>
-                <div className="text-base sm:text-lg font-semibold">AutoFlow</div>
-                <div className="text-base sm:text-lg font-semibold">eScale</div>
-                <div className="text-base sm:text-lg font-semibold">DataFlow</div>
-              </div>
-              {/* Duplicate for seamless loop */}
-              <div className="flex items-center gap-8 whitespace-nowrap">
-                <div className="text-base sm:text-lg font-semibold">TechCorp</div>
-                <div className="text-base sm:text-lg font-semibold">InnovateLab</div>
-                <div className="text-base sm:text-lg font-semibold">FutureScale</div>
-                <div className="text-base sm:text-lg font-semibold">AutoFlow</div>
-                <div className="text-base sm:text-lg font-semibold">eScale</div>
-                <div className="text-base sm:text-lg font-semibold">DataFlow</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Trust Indicators */}
-        <div className="text-center px-4 mb-8 sm:hidden overflow-hidden animate-fade-in-trust">
-          <p className="text-sm text-white mb-6">Trusted by innovative companies worldwide</p>
-          <div className="relative overflow-hidden w-full max-w-sm mx-auto">
+        {/* Tech Stack Carousel */}
+        <div className="text-center px-4 w-full max-w-6xl mx-auto overflow-hidden animate-fade-in-trust">
+          <p className="text-sm text-white mb-6">Powered by modern technologies</p>
+          <div className="relative">
             {/* Left blur fade */}
-            <div className="absolute left-0 top-0 w-8 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
             {/* Right blur fade */}
-            <div className="absolute right-0 top-0 w-8 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
-            <div className="flex items-center gap-6 opacity-60 animate-slide-left-mobile">
-              <div className="flex items-center gap-6 whitespace-nowrap">
-                <div className="text-sm font-semibold">TechCorp</div>
-                <div className="text-sm font-semibold">InnovateLab</div>
-                <div className="text-sm font-semibold">FutureScale</div>
-                <div className="text-sm font-semibold">AutoFlow</div>
-                <div className="text-sm font-semibold">eScale</div>
-                <div className="text-sm font-semibold">DataFlow</div>
-              </div>
-              {/* Duplicate for seamless loop */}
-              <div className="flex items-center gap-6 whitespace-nowrap">
-                <div className="text-sm font-semibold">TechCorp</div>
-                <div className="text-sm font-semibold">InnovateLab</div>
-                <div className="text-sm font-semibold">FutureScale</div>
-                <div className="text-sm font-semibold">AutoFlow</div>
-                <div className="text-sm font-semibold">eScale</div>
-                <div className="text-sm font-semibold">DataFlow</div>
-              </div>
-            </div>
+            <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
+
+            <Carousel
+              opts={{ loop: true, dragFree: true }}
+              plugins={[
+                AutoScroll({
+                  speed: 1,
+                  stopOnInteraction: false,
+                })
+              ]}
+            >
+              <CarouselContent className="-ml-4 sm:-ml-8 items-center">
+                {techStack.map((tech, index) => (
+                  <CarouselItem key={index} className="pl-4 sm:pl-8 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
+                    <div className="flex items-center justify-center p-2">
+                      <img
+                        src={tech.src}
+                        alt={tech.alt}
+                        className="h-8 sm:h-10 w-auto opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </div>

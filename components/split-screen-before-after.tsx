@@ -102,9 +102,8 @@ export function SplitScreenBeforeAfter() {
         <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 shadow-lg">
           <div className="grid lg:grid-cols-[40%_1fr] gap-8 lg:gap-12 items-center">
             <div
-              className={`transition-all duration-1000 ease-out ${
-                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`transition-all duration-1000 ease-out ${sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
                 <Image
@@ -117,9 +116,8 @@ export function SplitScreenBeforeAfter() {
             </div>
 
             <div
-              className={`transition-all duration-1000 ease-out delay-200 ${
-                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`transition-all duration-1000 ease-out delay-200 ${sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 mb-4">
                 <span className="text-orange-600 font-semibold text-sm uppercase tracking-wide">Clutch by Cliste</span>
@@ -187,9 +185,8 @@ export function SplitScreenBeforeAfter() {
           <div ref={whatsappSectionRef} className="mt-16 lg:mt-24 pt-16 lg:pt-24 border-t border-slate-200">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div
-                className={`transition-all duration-1000 ease-out ${
-                  whatsappInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
+                className={`transition-all duration-1000 ease-out ${whatsappInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
               >
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 mb-4">
                   <svg className="w-4 h-4 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
@@ -263,9 +260,8 @@ export function SplitScreenBeforeAfter() {
 
               {/* Phone mockups on RIGHT */}
               <div
-                className={`transition-all duration-1000 ease-out delay-200 ${
-                  whatsappInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
+                className={`transition-all duration-1000 ease-out delay-200 ${whatsappInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
               >
                 <div className="relative h-[550px] lg:h-[700px] max-w-[500px] lg:max-w-none mx-auto">
                   {/* Smaller phone - NO parallax */}
@@ -387,7 +383,7 @@ export function SplitScreenBeforeAfter() {
                         <div className="mb-2 lg:mb-3 flex justify-end">
                           <div className="bg-[#005c4b] rounded-lg rounded-tr-none p-2 inline-block max-w-[85%]">
                             <p className="text-white text-[9px] sm:text-[10px] lg:text-sm leading-snug">
-                              Perfect! I've booked you for 2pm tomorrow. The BMW X5 is €45,900. 2023 model, 15,000km.
+                              Perfect! I've booked you for 2pm tomorrow. The BMW X5 is available. 2023 model, 15,000km.
                               Financing options?
                             </p>
                             <p className="text-slate-300 text-[8px] lg:text-xs mt-0.5 text-right">19:02</p>
@@ -422,9 +418,8 @@ export function SplitScreenBeforeAfter() {
             <div ref={voiceSectionRef} className="mt-16 lg:mt-24 pt-16 lg:pt-24 border-t border-slate-200">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div
-                  className={`order-2 lg:order-1 transition-all duration-1000 ease-out ${
-                    voiceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`order-2 lg:order-1 transition-all duration-1000 ease-out ${voiceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div className="relative h-[550px] lg:h-[700px] max-w-[500px] lg:max-w-none mx-auto">
                     <div
@@ -630,7 +625,7 @@ export function SplitScreenBeforeAfter() {
                             <div className="bg-slate-900/50 rounded-lg p-2 border-l-2 border-orange-500">
                               <div className="text-orange-400 font-semibold mb-0.5">Cliste</div>
                               <div className="text-slate-300 leading-relaxed">
-                                "The Audi A4 is priced at €32,500. It's a 2023 model with 12,000km. Would you like to
+                                "The Audi A4 is available for immediate delivery. It's a 2023 model with 12,000km. Would you like to
                                 discuss financing options?"
                               </div>
                             </div>
@@ -661,7 +656,7 @@ export function SplitScreenBeforeAfter() {
                               <div className="text-slate-300">Ready to buy</div>
                             </div>
                             <div className="bg-slate-900/40 rounded-lg p-1.5 border border-orange-500/20">
-                              <div className="text-orange-300 font-semibold">€30-35k</div>
+                              <div className="text-orange-300 font-semibold">Calculated</div>
                               <div className="text-slate-300">Budget range</div>
                             </div>
                             <div className="bg-slate-900/40 rounded-lg p-1.5 border border-orange-500/20 col-span-2">
@@ -676,9 +671,8 @@ export function SplitScreenBeforeAfter() {
                 </div>
 
                 <div
-                  className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-200 ${
-                    voiceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-200 ${voiceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 mb-4">
                     <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -758,9 +752,8 @@ export function SplitScreenBeforeAfter() {
             <div ref={serviceSectionRef} className="mt-12 lg:mt-16 pt-12 lg:pt-16 border-t border-slate-200">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div
-                  className={`transition-all duration-1000 ease-out ${
-                    serviceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`transition-all duration-1000 ease-out ${serviceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 mb-4">
                     <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -869,9 +862,8 @@ export function SplitScreenBeforeAfter() {
                 </div>
 
                 <div
-                  className={`transition-all duration-1000 ease-out delay-200 ${
-                    serviceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`transition-all duration-1000 ease-out delay-200 ${serviceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div
                     className="relative max-w-[500px] mx-auto lg:max-w-none overflow-hidden"
@@ -968,9 +960,8 @@ export function SplitScreenBeforeAfter() {
                 {/* Tyre Kickers Section - swapped order so chat mockup is on LEFT, text on RIGHT */}
                 <div
                   ref={tyreKickersSectionRef}
-                  className={`order-2 lg:order-1 transition-all duration-1000 ease-out ${
-                    tyreKickersInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`order-2 lg:order-1 transition-all duration-1000 ease-out ${tyreKickersInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div className="relative h-[650px] overflow-hidden">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:-rotate-6 w-full max-w-[380px]">
@@ -1057,9 +1048,8 @@ export function SplitScreenBeforeAfter() {
 
                 {/* Text on RIGHT desktop, ABOVE on mobile */}
                 <div
-                  className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-200 ${
-                    tyreKickersInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-200 ${tyreKickersInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 mb-4">
                     <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

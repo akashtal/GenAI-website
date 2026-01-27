@@ -3,93 +3,83 @@
 import { useState, useEffect, useRef } from "react"
 import { MessageCircle, Clock, Zap } from "lucide-react"
 
+interface Message {
+  text: string
+  sender: string
+  delay: number
+}
+
 const conversations = [
   {
-    title: "Luxury Sedan Inquiry & Test Drive Booking",
+    title: "Mobile App Development Inquiry",
     messages: [
-      { text: "Hi! I'm interested in the new Premium Sedan. Do you have any in stock?", sender: "customer", delay: 0 },
+      { text: "Hi! I have an idea for a fitness app. Can you give me a quote?", sender: "customer", delay: 0 },
       {
-        text: "We have several 2024 Premium Sedans available. Are you looking for a specific trim level or color?",
+        text: "We'd love to help! To give you an accurate estimate, do you need iOS, Android, or both?",
         sender: "ai",
         delay: 1000,
       },
       {
-        text: "I'd prefer the Premium Plus trim in black or white. What's the price range?",
+        text: "Both please. And it needs user profiles and workout tracking.",
         sender: "customer",
         delay: 2500,
       },
       {
-        text: "Great choice! The Premium Plus starts at €42,500. We have both black and white available. Would you like to schedule a test drive to experience it yourself?",
+        text: "Excellent. For a cross-platform Flutter app with those features, we have custom packages available. This includes design, development, and launch. Would you like to see our portfolio?",
         sender: "ai",
         delay: 3500,
       },
-      { text: "Yes, that would be perfect! When are you available?", sender: "customer", delay: 5000 },
+      { text: "Yes, that sounds great!", sender: "customer", delay: 5000 },
       {
-        text: "I can book you for tomorrow at 2pm, Thursday at 11am, or Friday at 4pm. All test drives are completely free and include a full vehicle walkthrough.",
+        text: "I've sent our portfolio to your email. We can schedule a free 30-min consultation to discuss your idea in detail. How does tomorrow at 10 AM look?",
         sender: "ai",
         delay: 6000,
-      },
-      { text: "Thursday at 11am works great!", sender: "customer", delay: 7500 },
-      {
-        text: "Perfect! I've booked your free test drive for Thursday at 11:00 AM. You'll receive a confirmation text shortly. Just bring your driver's license and we'll have the sedan ready for you!",
-        sender: "ai",
-        delay: 8500,
       },
     ],
   },
   {
-    title: "Vehicle Features & Financing",
+    title: "Marketing Campaign Performance",
     messages: [
-      { text: "What's the fuel economy on the Luxury SUV?", sender: "customer", delay: 0 },
+      { text: "How is my Google Ads campaign performing this week?", sender: "customer", delay: 0 },
       {
-        text: "The 2024 Luxury SUV gets an EPA-estimated 23 city/28 highway MPG. It also comes with all-wheel drive standard!",
+        text: "It's going great! Your CTR has increased by 15% and we've generated 45 new qualified leads so far this week.",
         sender: "ai",
         delay: 1000,
       },
       {
-        text: "That's good! What about financing options?",
+        text: "That's amazing! What's the cost per lead?",
         sender: "customer",
         delay: 2500,
       },
       {
-        text: "We have excellent financing available! Current rates start at 2.9% APR for qualified buyers, and we also offer lease options starting at €379/month.",
+        text: "Your CPL is currently lower than last month. We're optimizing the ad copy to drive it down further.",
         sender: "ai",
         delay: 4000,
       },
-      { text: "Can I get pre-approved online?", sender: "customer", delay: 5500 },
-      {
-        text: "I can start your pre-approval right now. It takes just 2 minutes and won't affect your credit score. Would you like me to send you the secure link?",
-        sender: "ai",
-        delay: 6500,
-      },
+      { text: "Fantastic work. Keep it up!", sender: "customer", delay: 5500 },
     ],
   },
   {
-    title: "After-Hours Service Inquiry",
+    title: "Website Maintenance Support",
     messages: [
       {
-        text: "Hi, it's 11 PM. My car's check engine light just came on. What should I do?",
+        text: "I need to update the pricing on my landing page ASAP.",
         sender: "customer",
         delay: 0,
       },
       {
-        text: "I'm here to help! First, is the light solid or flashing? And is the car running normally?",
+        text: "I can help with that immediately. Please send over the new pricing details.",
         sender: "ai",
         delay: 1000,
       },
-      { text: "It's solid, and the car seems to be running fine", sender: "customer", delay: 2500 },
+      { text: "What are your current plan rates?", sender: "customer", delay: 2500 },
       {
-        text: "That's good news! A solid light usually isn't urgent. You can continue driving normally, but I'd recommend bringing it in within the next few days. I can schedule your service appointment right now if you'd like.",
+        text: "Got it. I'm updating the pricing table now...",
         sender: "ai",
         delay: 3500,
       },
       {
-        text: "Yes please! And do you offer loaner cars?",
-        sender: "customer",
-        delay: 5000,
-      },
-      {
-        text: "I've scheduled you for Tuesday at 9 AM and reserved a loaner vehicle. You'll get a confirmation email with all the details. Drive safely!",
+        text: "Update complete! The new prices are live on your site. I've also checked the checkout flow to ensure everything works perfectly.",
         sender: "ai",
         delay: 6000,
       },
@@ -101,7 +91,7 @@ export function AITeamSection() {
   const sectionRef = useRef<HTMLElement>(null) // Added section ref for intersection observer
   const [isVisible, setIsVisible] = useState(false)
   const [currentConversation, setCurrentConversation] = useState(0)
-  const [displayedMessages, setDisplayedMessages] = useState<any[]>([])
+  const [displayedMessages, setDisplayedMessages] = useState<Message[]>([])
   const [isTyping, setIsTyping] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const chatContainerRef = useRef<HTMLDivElement>(null)
@@ -193,31 +183,28 @@ export function AITeamSection() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <div
-              className={`inline-flex items-center gap-2 bg-slate-50 border border-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm font-medium mb-6 transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`inline-flex items-center gap-2 bg-slate-50 border border-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm font-medium mb-6 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               <MessageCircle className="w-4 h-4" />
-              AI Car Sales Assistant Demo
+              our recent works
             </div>
 
             <h2
-              className={`text-4xl md:text-5xl font-bold text-slate-900 mb-4 transition-all duration-1000 delay-200 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`text-4xl md:text-5xl font-bold text-slate-900 mb-4 transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
-              See AI Handle{" "}
+              Experience Seamless{" "}
               <span className="bg-gradient-to-r from-slate-600 to-slate-400 bg-clip-text text-transparent">
-                Real Car Sales
+                Communication
               </span>
             </h2>
 
             <p
-              className={`text-xl text-slate-600 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`text-xl text-slate-600 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
-              Watch how our AI handles car inquiries, books test drives, and provides 24/7 automotive support.
+              Get instant updates on your project, real-time analytics, and immediate support. We're always here for you.
             </p>
           </div>
 
@@ -225,42 +212,32 @@ export function AITeamSection() {
             {/* Left side - Text content */}
             <div className="w-full lg:w-1/2 flex flex-col justify-center lg:h-[600px] space-y-6 lg:space-y-8 order-2 lg:order-1">
               <div
-                className={`transition-all duration-1000 delay-600 ${
-                  isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-                }`}
+                className={`transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+                  }`}
               >
                 <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 lg:mb-6">
-                  This is what your car buyers see
+                  This is what you get updates in real time
                 </h3>
 
                 <div className="space-y-3 lg:space-y-4 text-base lg:text-lg text-slate-700 leading-relaxed">
                   <p>
-                    While you're closed, your AI assistant is answering car questions, booking test drives, and helping
-                    customers 24/7.
-                  </p>
-
-                  <p>
-                    Every conversation you're watching could be happening at midnight, on Sundays, or when your sales
-                    team is with other customers.
+                    Stay connected with your project's progress 24/7. No more waiting for weekly status meetings or wondering where your development stands.
                   </p>
 
                   <p className="text-lg lg:text-xl font-semibold text-slate-900">
-                    Your competitors are losing these car sales.
+                    We believe in complete transparency.
                   </p>
                 </div>
               </div>
 
               <div
-                className={`transition-all duration-1000 delay-800 ${
-                  isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-                }`}
+                className={`transition-all duration-1000 delay-800 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+                  }`}
               >
                 <div className="p-4 lg:p-6 bg-slate-50 rounded-xl border-l-4 border-slate-900">
                   <p className="text-slate-800 font-medium text-sm lg:text-base">
-                    "We went from missing 70% of after-hours car inquiries to capturing every single lead. Our test
-                    drive bookings increased 50% in the first month."
+                    "Finally, an agency that doesn't keep us in the dark. We know exactly what's happening with our project every single day. width 100% transparency."
                   </p>
-                  <p className="text-xs lg:text-sm text-slate-600 mt-2">— Mike Rodriguez, Car Dealership Owner</p>
                 </div>
               </div>
             </div>
@@ -269,9 +246,8 @@ export function AITeamSection() {
             <div className="w-full lg:w-1/2 flex justify-center order-1 lg:order-2">
               <div className="max-w-md w-full">
                 <div
-                  className={`relative transition-all duration-1000 delay-600 ${
-                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`relative transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div className="bg-slate-900 rounded-[2.5rem] p-2 shadow-2xl">
                     <div className="bg-black rounded-[2rem] p-1">
@@ -280,7 +256,7 @@ export function AITeamSection() {
                         <div className="bg-slate-50 px-6 py-3 flex justify-between items-center text-sm">
                           <div className="flex items-center gap-1">
                             <div className="w-2 h-2 bg-slate-900 rounded-full"></div>
-                            <span className="font-medium text-slate-700">Car Dealership AI</span>
+                            <span className="font-medium text-slate-700">Agency Support</span>
                           </div>
                           <div className="flex items-center gap-1 text-slate-500">
                             <Clock className="w-3 h-3" />
@@ -292,12 +268,12 @@ export function AITeamSection() {
                           <div className="flex items-center gap-3">
                             <img
                               src="/images/michael-ai-agent.jpg"
-                              alt="Michael - AI Agent"
+                              alt="Support Agent"
                               className="w-8 h-8 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
                             />
                             <div className="flex-1">
-                              <h3 className="font-semibold text-sm">Michael - AI Sales Agent</h3>
-                              <p className="text-xs text-slate-300">Chat with 087 234 5678</p>
+                              <h3 className="font-semibold text-sm">Project Manager</h3>
+                              <p className="text-xs text-slate-300">Always Online</p>
                             </div>
                             <div className="text-xs text-green-400 flex items-center gap-1">
                               <div className="w-2 h-2 bg-green-400 rounded-full"></div>
@@ -325,11 +301,10 @@ export function AITeamSection() {
                                 />
                               )}
                               <div
-                                className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed ${
-                                  message.sender === "customer"
-                                    ? "bg-slate-900 text-white rounded-br-md"
-                                    : "bg-white text-slate-800 shadow-sm border border-slate-200 rounded-bl-md"
-                                }`}
+                                className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed ${message.sender === "customer"
+                                  ? "bg-slate-900 text-white rounded-br-md"
+                                  : "bg-white text-slate-800 shadow-sm border border-slate-200 rounded-bl-md"
+                                  }`}
                               >
                                 {message.text.split("\n").map((line, i) => (
                                   <div key={i}>{line}</div>

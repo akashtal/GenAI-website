@@ -79,14 +79,12 @@ const AnimatedChatDemo = ({ isActive }: { isActive: boolean }) => {
         {messages.map((msg, i) => (
           <div
             key={i}
-            className={`flex ${msg.isBot ? "justify-start" : "justify-end"} transition-all duration-500 ${
-              msg.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-            }`}
+            className={`flex ${msg.isBot ? "justify-start" : "justify-end"} transition-all duration-500 ${msg.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+              }`}
           >
             <div
-              className={`max-w-[80%] px-3 py-1.5 rounded-full text-xs ${
-                msg.isBot ? "bg-slate-200 text-slate-700" : "bg-blue-500 text-white"
-              }`}
+              className={`max-w-[80%] px-3 py-1.5 rounded-full text-xs ${msg.isBot ? "bg-slate-200 text-slate-700" : "bg-blue-500 text-white"
+                }`}
             >
               {msg.text}
             </div>
@@ -99,9 +97,8 @@ const AnimatedChatDemo = ({ isActive }: { isActive: boolean }) => {
                 {[1, 2, 3].map((dot) => (
                   <div
                     key={dot}
-                    className={`w-1 h-1 bg-slate-500 rounded-full transition-opacity duration-300 ${
-                      typingDots >= dot ? "opacity-100" : "opacity-30"
-                    }`}
+                    className={`w-1 h-1 bg-slate-500 rounded-full transition-opacity duration-300 ${typingDots >= dot ? "opacity-100" : "opacity-30"
+                      }`}
                   />
                 ))}
               </div>
@@ -141,9 +138,8 @@ const AnimatedPhoneDemo = ({ isActive }: { isActive: boolean }) => {
       <div className="absolute top-2 right-2 text-xs text-slate-500 font-medium">Calls: {callCount + 1}</div>
       <div className="relative">
         <div
-          className={`w-16 h-16 rounded-full bg-green-500 flex items-center justify-center transition-all duration-500 ${
-            callState === "ringing" ? "animate-pulse scale-110" : ""
-          } ${callState === "answered" ? "bg-blue-500" : ""}`}
+          className={`w-16 h-16 rounded-full bg-green-500 flex items-center justify-center transition-all duration-500 ${callState === "ringing" ? "animate-pulse scale-110" : ""
+            } ${callState === "answered" ? "bg-blue-500" : ""}`}
         >
           <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
@@ -186,15 +182,14 @@ const AnimatedCalendarDemo = ({ isActive }: { isActive: boolean }) => {
         {Array.from({ length: 21 }, (_, i) => i + 1).map((day) => (
           <div
             key={day}
-            className={`w-4 h-4 flex items-center justify-center rounded transition-all duration-300 ${
-              day === selectedDate
-                ? booked
-                  ? "bg-green-500 text-white scale-110"
-                  : "bg-blue-500 text-white scale-110"
-                : day % 7 === 0 || day % 6 === 0
-                  ? "bg-slate-200 text-slate-400"
-                  : "bg-white text-slate-600 hover:bg-slate-100"
-            }`}
+            className={`w-4 h-4 flex items-center justify-center rounded transition-all duration-300 ${day === selectedDate
+              ? booked
+                ? "bg-green-500 text-white scale-110"
+                : "bg-blue-500 text-white scale-110"
+              : day % 7 === 0 || day % 6 === 0
+                ? "bg-slate-200 text-slate-400"
+                : "bg-white text-slate-600 hover:bg-slate-100"
+              }`}
           >
             {day}
           </div>
@@ -233,9 +228,8 @@ const AnimatedEmailDemo = ({ isActive }: { isActive: boolean }) => {
         {emails.map((email, i) => (
           <div
             key={i}
-            className={`flex items-center gap-2 p-2 rounded transition-all duration-500 ${
-              email.status === "replied" ? "bg-green-100" : "bg-white"
-            }`}
+            className={`flex items-center gap-2 p-2 rounded transition-all duration-500 ${email.status === "replied" ? "bg-green-100" : "bg-white"
+              }`}
           >
             <div className={`w-2 h-2 rounded-full ${email.status === "replied" ? "bg-green-500" : "bg-blue-500"}`} />
             <span className="text-xs text-slate-700 flex-1">{email.subject}</span>
@@ -297,9 +291,8 @@ const AnimatedLeadsDemo = ({ isActive }: { isActive: boolean }) => {
             <span className="text-xs text-slate-700 w-12">{lead.name}</span>
             <div className="flex-1 bg-slate-200 rounded-full h-2">
               <div
-                className={`h-2 rounded-full transition-all duration-500 ${
-                  lead.qualified ? "bg-green-500" : "bg-blue-500"
-                }`}
+                className={`h-2 rounded-full transition-all duration-500 ${lead.qualified ? "bg-green-500" : "bg-blue-500"
+                  }`}
                 style={{ width: `${lead.score}%` }}
               />
             </div>
@@ -339,14 +332,12 @@ const AnimatedIntegrationsDemo = ({ isActive }: { isActive: boolean }) => {
         {connections.map((conn, i) => (
           <div
             key={i}
-            className={`flex items-center gap-2 p-2 rounded transition-all duration-500 ${
-              conn.connected ? "bg-green-100" : "bg-white"
-            }`}
+            className={`flex items-center gap-2 p-2 rounded transition-all duration-500 ${conn.connected ? "bg-green-100" : "bg-white"
+              }`}
           >
             <div
-              className={`w-2 h-2 rounded-full transition-colors duration-500 ${
-                conn.connected ? "bg-green-500" : "bg-slate-300"
-              }`}
+              className={`w-2 h-2 rounded-full transition-colors duration-500 ${conn.connected ? "bg-green-500" : "bg-slate-300"
+                }`}
             />
             <span className="text-xs text-slate-700">{conn.name}</span>
           </div>
@@ -361,45 +352,45 @@ const AnimatedIntegrationsDemo = ({ isActive }: { isActive: boolean }) => {
 
 const features = [
   {
-    title: "24/7 AI Chat Support",
+    title: "Custom Software Development",
     description:
-      "Intelligent chatbots that handle customer inquiries, answer questions, and capture leads across your website and social channels.",
-    demo: AnimatedChatDemo,
+      "Scalable, enterprise-grade software solutions tailored to your unique business needs. We build systems that grow with you.",
+    demo: AnimatedIntegrationsDemo,
     size: "large",
   },
   {
-    title: "AI Phone Receptionist",
+    title: "Mobile App Development",
     description:
-      "Professional AI voice assistant that answers calls, takes messages, and books appointments when you're busy or closed.",
+      "Native iOS and Android apps with stunning UI/UX Design. Reach your customers on their favorite devices with high-performance mobile experiences.",
     demo: AnimatedPhoneDemo,
     size: "medium",
   },
   {
-    title: "Smart Appointment Booking",
+    title: "Digital Marketing & SEO",
     description:
-      "Automated scheduling system that checks availability, books appointments, and sends confirmations without human intervention.",
-    demo: AnimatedCalendarDemo,
-    size: "medium",
-  },
-  {
-    title: "Email Response Automation",
-    description:
-      "AI-powered email assistant that responds to inquiries, provides information, and forwards complex queries to your team.",
-    demo: AnimatedEmailDemo,
-    size: "large",
-  },
-  {
-    title: "Lead Qualification & Handoff",
-    description:
-      "Intelligent system that qualifies prospects, gathers key information, and seamlessly hands off hot leads to your sales team.",
+      "Data-driven marketing strategies that drive real traffic and leads. We optimize your online presence for maximum ROI.",
     demo: AnimatedLeadsDemo,
     size: "medium",
   },
   {
-    title: "Multi-Platform Integration",
+    title: "E-Commerce Solutions",
     description:
-      "Connect with your existing tools including CRM, calendar, WhatsApp, SMS, and more for a unified customer experience.",
-    demo: AnimatedIntegrationsDemo,
+      "Robust online stores that convert visitors into buyers. From Shopify to custom builds, we handle payments, inventory, and user experience.",
+    demo: AnimatedCalendarDemo,
+    size: "large",
+  },
+  {
+    title: "Content & Copywriting",
+    description:
+      "Compelling content that tells your brand story and engages your audience. We craft messages that sell.",
+    demo: AnimatedEmailDemo,
+    size: "medium",
+  },
+  {
+    title: "AI Integration",
+    description:
+      "Leverage the power of Artificial Intelligence to automate workflows and enhance customer support.",
+    demo: AnimatedChatDemo,
     size: "medium",
   },
 ]
@@ -464,32 +455,29 @@ export function FeaturesSection() {
 
         <div className="max-w-7xl mx-auto relative">
           <div
-            className={`text-center mb-12 sm:mb-20 transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`text-center mb-12 sm:mb-20 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
           >
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-sm font-medium mb-6">
               <svg className="w-4 h-4 mr-2 text-slate-600" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V7H1V9H3V15H1V17H3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V17H23V15H21V9H23ZM19 9V15H5V9H19ZM7.5 11.5C7.5 10.67 8.17 10 9 10S10.5 10.67 10.5 11.5 9.83 13 9 13 7.5 12.33 7.5 11.5ZM13.5 11.5C13.5 10.67 14.17 10 15 10S16.5 10.67 16.5 11.5 15.83 13 15 13 13.5 12.33 13.5 11.5ZM12 16C13.11 16 14.08 16.59 14.71 17.5H9.29C9.92 16.59 10.89 16 12 16Z" />
               </svg>
-              AI Working 24/7 - Never Miss a Lead
+              Full-Service Digital Growth
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 text-balance mb-4 sm:mb-6">
-              Your AI Team{" "}
+              Everything You Need to{" "}
               <span className="bg-gradient-to-r from-slate-600 to-slate-400 bg-clip-text text-transparent">
-                Never Sleeps
+                Scale Your Business
               </span>
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed">
-              Watch our AI handle real customer interactions around the clock, automatically qualifying leads and
-              booking appointments while you focus on growing your business.
+              From pixel-perfect apps to high-converting marketing campaigns. We provide the complete digital toolkit at a price that makes sense.
             </p>
           </div>
 
           <div
-            className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 transition-all duration-1000 delay-300 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-            }`}
+            className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              }`}
           >
             {features.map((feature, index) => (
               <div

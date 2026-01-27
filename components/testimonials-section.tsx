@@ -32,43 +32,43 @@ export function TestimonialsSection() {
 
   const testimonials = [
     {
-      text: "We went from missing 70% of after-hours inquiries to capturing every single lead. Customer bookings increased 50% in the first month.",
-      name: "Mike Rodriguez",
-      role: "Business Owner",
+      text: "The custom software they built for us streamlined our entire inventory process. We're saving 20 hours a week and scaling faster than ever.",
+      name: "Rahul Sharma",
+      role: "Logistics CEO",
     },
     {
-      text: "We spend so much less time thinking about lead response because of the instant engagement Cliste offers us.",
-      name: "Sarah Chen",
-      role: "Sales Manager",
+      text: "Our new mobile app is flawless. The user experience is incredible, and we've seen a 300% increase in mobile orders since launch. Worth every penny.",
+      name: "Priya Patel",
+      role: "Retail Director",
     },
     {
-      text: "With Cliste, our conversion rates increased by 85% and boosted our weekend revenue by 40%.",
-      name: "Michael Torres",
-      role: "General Manager",
+      text: "Finally, a marketing team that delivers real results. Our ROAS has doubled in just three months. They truly understand digital growth.",
+      name: "Amit Verma",
+      role: "CMO",
     },
     {
-      text: "The AI handles customer questions 24/7, so we never miss a potential sale. Our team can focus on closing deals instead of answering basic questions.",
-      name: "Jennifer Walsh",
+      text: "The website redesign completely transformed our brand image. We're getting qualified leads daily, and the team was a joy to work with.",
+      name: "Sneha Gupta",
       role: "Operations Director",
     },
     {
-      text: "Customer satisfaction scores improved dramatically since implementing Cliste. Clients love the instant responses and personalized recommendations.",
-      name: "David Kim",
-      role: "Customer Experience Manager",
+      text: "I was skeptical about the price being so affordable, but the quality is elite. They operate like a top-tier agency without the massive fees.",
+      name: "Vikram Malhotra",
+      role: "Startup Founder",
     },
     {
-      text: "Our retail store saw a 60% increase in qualified leads. The chatbot handles product inquiries perfectly while we focus on in-person customers.",
-      name: "Lisa Thompson",
-      role: "Store Manager",
+      text: "Their SEO strategy put us on the first page of Google for our main keywords. Traffic is up 60% and sales are following suit.",
+      name: "Anjali Rao",
+      role: "E-com Owner",
     },
     {
-      text: "Property inquiries are handled instantly now. We've closed 3x more deals since implementing Cliste's AI assistant.",
-      name: "James Wilson",
-      role: "Real Estate Broker",
+      text: "We needed a complex web app built in weeks, not months. They delivered on time, within budget, and the code quality is exceptional.",
+      name: "Arjun Mehta",
+      role: "Tech Lead",
     },
     {
-      text: "Hotel bookings increased 45% with 24/7 availability. Guests get immediate answers about amenities and availability.",
-      name: "Maria Garcia",
+      text: "The app they developed for our hotel chain has improved guest satisfaction scores by 45%. Seamless booking and check-in features.",
+      name: "Kavita Singh",
       role: "Hospitality Manager",
     },
   ]
@@ -98,10 +98,10 @@ export function TestimonialsSection() {
             <div className="w-8 h-px bg-white/30"></div>
           </div>
           <h2 className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-5xl md:text-6xl lg:text-7xl font-light text-white mb-8 tracking-tight text-balance">
-            The businesses we <span className="font-medium italic">empower</span>
+            Partners in your <span className="font-medium italic">success</span>
           </h2>
           <p className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-            Discover how leading businesses are transforming their customer engagement with AI-powered chat solutions
+            Join hundreds of businesses growing faster with our high-impact digital solutions.
           </p>
         </div>
 

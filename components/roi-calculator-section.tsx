@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Slider } from "@/components/ui/slider"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card } from "@/components/ui/card"
-import { TrendingUp, Users, DollarSign, Clock } from "lucide-react"
+import { TrendingUp, Users, IndianRupee, Clock } from "lucide-react"
 
 interface CalculatorInputs {
   monthlyVisitors: number
@@ -17,7 +17,7 @@ export function ROICalculatorSection() {
   const [inputs, setInputs] = useState<CalculatorInputs>({
     monthlyVisitors: 10000,
     currentConversionRate: 2,
-    averageOrderValue: 150,
+    averageOrderValue: 15000,
     businessType: "ecommerce",
   })
 
@@ -45,14 +45,14 @@ export function ROICalculatorSection() {
 
   const getBusinessDefaults = () => {
     const businessDefaults = {
-      ecommerce: { avgOrder: 85, maxOrder: 500, conversion: 35, response: 80, satisfaction: 45 },
-      retail: { avgOrder: 65, maxOrder: 300, conversion: 30, response: 75, satisfaction: 40 },
-      realestate: { avgOrder: 5000, maxOrder: 50000, conversion: 40, response: 85, satisfaction: 50 },
-      hospitality: { avgOrder: 180, maxOrder: 1000, conversion: 25, response: 70, satisfaction: 35 },
-      healthcare: { avgOrder: 250, maxOrder: 2000, conversion: 45, response: 90, satisfaction: 55 },
-      finance: { avgOrder: 1200, maxOrder: 10000, conversion: 35, response: 85, satisfaction: 50 },
-      automotive: { avgOrder: 25000, maxOrder: 100000, conversion: 30, response: 75, satisfaction: 40 },
-      default: { avgOrder: 150, maxOrder: 2000, conversion: 35, response: 80, satisfaction: 45 },
+      ecommerce: { avgOrder: 8000, maxOrder: 50000, conversion: 35, response: 80, satisfaction: 45 },
+      retail: { avgOrder: 6000, maxOrder: 30000, conversion: 30, response: 75, satisfaction: 40 },
+      realestate: { avgOrder: 500000, maxOrder: 5000000, conversion: 40, response: 85, satisfaction: 50 },
+      hospitality: { avgOrder: 18000, maxOrder: 100000, conversion: 25, response: 70, satisfaction: 35 },
+      healthcare: { avgOrder: 25000, maxOrder: 200000, conversion: 45, response: 90, satisfaction: 55 },
+      finance: { avgOrder: 120000, maxOrder: 1000000, conversion: 35, response: 85, satisfaction: 50 },
+      automotive: { avgOrder: 2500000, maxOrder: 10000000, conversion: 30, response: 75, satisfaction: 40 },
+      default: { avgOrder: 15000, maxOrder: 200000, conversion: 35, response: 80, satisfaction: 45 },
     }
 
     return businessDefaults[inputs.businessType as keyof typeof businessDefaults] || businessDefaults.default
@@ -93,18 +93,18 @@ export function ROICalculatorSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
             <TrendingUp className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-white/80">ROI Calculator</span>
+            <span className="text-sm font-medium text-white/80">Growth Calculator</span>
           </div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 text-balance">
-            See your potential{" "}
+            Calculate your{" "}
             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              revenue growth
+              revenue potential
             </span>
           </h2>
 
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto text-balance">
-            Calculate how much additional revenue your business could generate with AI-powered customer engagement
+            See how much additional revenue your business could generate with a high-performance digital presence.
           </p>
         </div>
 
@@ -183,7 +183,7 @@ export function ROICalculatorSection() {
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-3">
                     Average Order Value:{" "}
-                    <span className="text-white font-semibold">€{inputs.averageOrderValue.toLocaleString('en-US')}</span>
+                    <span className="text-white font-semibold">{inputs.averageOrderValue.toLocaleString('en-US')}</span>
                   </label>
                   <Slider
                     value={[inputs.averageOrderValue]}
@@ -194,8 +194,8 @@ export function ROICalculatorSection() {
                     className="w-full"
                   />
                   <div className="flex justify-between text-xs text-gray-400 mt-1">
-                    <span>€25</span>
-                    <span>€{businessConfig.maxOrder.toLocaleString('en-US')}</span>
+                    <span>2,500</span>
+                    <span>{businessConfig.maxOrder.toLocaleString('en-US')}</span>
                   </div>
                 </div>
 
@@ -226,8 +226,8 @@ export function ROICalculatorSection() {
                       <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
                       <div>
                         <p className="text-sm text-gray-300">
-                          <span className="font-medium text-white">Average improvement:</span> Businesses see{" "}
-                          {businessConfig.conversion}% increase in conversions within 30 days
+                          <span className="font-medium text-white">Average improvement:</span> Our clients see{" "}
+                          {businessConfig.conversion}% increase in conversions with a redesigned site
                         </p>
                       </div>
                     </div>
@@ -235,8 +235,8 @@ export function ROICalculatorSection() {
                       <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
                       <div>
                         <p className="text-sm text-gray-300">
-                          <span className="font-medium text-white">Response time:</span> AI chatbots respond{" "}
-                          {businessConfig.response}% faster than traditional methods
+                          <span className="font-medium text-white">Speed to lead:</span> Automated systems respond{" "}
+                          {businessConfig.response}% faster than manual outreach
                         </p>
                       </div>
                     </div>
@@ -244,8 +244,8 @@ export function ROICalculatorSection() {
                       <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
                       <div>
                         <p className="text-sm text-gray-300">
-                          <span className="font-medium text-white">Customer satisfaction:</span> Increases by{" "}
-                          {businessConfig.satisfaction}% with 24/7 AI support
+                          <span className="font-medium text-white">Customer retention:</span> Increases by{" "}
+                          {businessConfig.satisfaction}% with better UX and support
                         </p>
                       </div>
                     </div>
@@ -261,7 +261,7 @@ export function ROICalculatorSection() {
           >
             <Card className="p-6 md:p-8 bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/15%),theme(backgroundColor.white/5%))] border-white/20 backdrop-blur-sm shadow-2xl h-full flex flex-col">
               <h3 className="text-xl md:text-2xl font-semibold text-white mb-6 md:mb-8">
-                Your Potential with Cliste AI
+                Your Potential Growth
               </h3>
 
               <div className="space-y-6 flex-1">
@@ -273,7 +273,7 @@ export function ROICalculatorSection() {
                     <div className="text-xs text-gray-400">leads/month</div>
                   </div>
                   <div className="text-center p-3 md:p-4 rounded-lg bg-white/10 border border-white/20">
-                    <div className="text-xs md:text-sm text-gray-300 mb-1">With Cliste</div>
+                    <div className="text-xs md:text-sm text-gray-300 mb-1">With Our Help</div>
                     <div className="text-xl md:text-2xl font-bold text-white">{newLeads}</div>
                     <div className="text-xs text-gray-300">leads/month</div>
                   </div>
@@ -290,11 +290,11 @@ export function ROICalculatorSection() {
 
                   <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-white/5 border border-white/10">
                     <div className="flex items-center gap-3">
-                      <DollarSign className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
+                      <IndianRupee className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
                       <span className="text-sm md:text-base text-white">Additional Revenue</span>
                     </div>
                     <span className="text-lg md:text-xl font-bold text-white">
-                      €{additionalRevenue.toLocaleString('en-US')}
+                      {additionalRevenue.toLocaleString('en-US')}
                     </span>
                   </div>
 
@@ -320,7 +320,7 @@ export function ROICalculatorSection() {
                   <div className="text-center">
                     <div className="text-xs md:text-sm text-gray-300 mb-2">Projected Annual Revenue Increase</div>
                     <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
-                      €{(additionalRevenue * 12).toLocaleString('en-US')}
+                      {(additionalRevenue * 12).toLocaleString('en-US')}
                     </div>
                     <div className="text-xs md:text-sm text-gray-400">
                       Based on your current metrics and industry benchmarks
