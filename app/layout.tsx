@@ -7,7 +7,7 @@ import { NavigationTransition } from "@/components/navigation-transition"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Dancing_Script, Caveat } from "next/font/google"
 import { JsonLd } from "@/components/json-ld"
-import { GoogleAnalytics } from "@/components/google-analytics"
+import { GoogleTagManager } from "@/components/google-tag-manager"
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -95,7 +95,15 @@ export default function RootLayout({
         </Suspense>
         <SpeedInsights />
         <JsonLd />
-        <GoogleAnalytics />
+        <GoogleTagManager />
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5LWH544G"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
       </body>
     </html>
   )
