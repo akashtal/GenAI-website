@@ -22,6 +22,7 @@ const caveat = Caveat({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.genai-solutions.com"),
   title: {
     default: "Gen AI Digital Solutions | Enterprise Software & App Development",
     template: "%s | Gen AI Digital Solutions",
