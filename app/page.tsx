@@ -9,6 +9,7 @@ import { ROICalculatorSection } from "@/components/roi-calculator-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { FloatingShapes3D } from "@/components/floating-shapes-3d"
+import { ServicesSection } from "@/components/services-section"
 
 export default function HomePage() {
   return (
@@ -26,6 +27,7 @@ export default function HomePage() {
           <HeroSection />
           <ProblemSolutionSection />
           <FeaturesSection />
+          <ServicesSection />
           <AITeamSection />
           <TestimonialsSection />
           <ROICalculatorSection />
