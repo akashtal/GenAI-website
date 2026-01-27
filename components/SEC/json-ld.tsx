@@ -13,7 +13,7 @@ export function JsonLd() {
         },
         contactPoint: {
             "@type": "ContactPoint",
-            telephone: "+91-9876543210",
+            telephone: "+91-9365339460",
             contactType: "sales",
             availableLanguage: ["English", "Hindi"]
         },

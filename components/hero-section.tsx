@@ -91,16 +91,17 @@ export function HeroSection() {
         </motion.h1>
 
         {/* Subheading */}
+        {/* Subheading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="max-w-2xl mx-auto mb-10 sm:mb-12 px-4"
+          className="max-w-2xl mx-auto mb-10 sm:mb-12"
         >
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed font-light mb-6 text-balance">
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed font-light mb-6 text-balance px-2 sm:px-0">
             Stop overpaying traditional agencies. Get <span className="text-white font-medium">premium software</span>, <span className="text-white font-medium">marketing</span>, and <span className="text-white font-medium">app development</span> for a fraction of the cost.
           </p>
-          <p className="text-base text-slate-400 font-light max-w-lg mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-400 font-light max-w-lg mx-auto leading-relaxed px-2 sm:px-0">
             We build the scalable systems that power your business growth.
           </p>
         </motion.div>

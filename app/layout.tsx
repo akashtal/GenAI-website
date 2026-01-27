@@ -6,8 +6,8 @@ import { PageTransition } from "@/components/page-transition"
 import { NavigationTransition } from "@/components/navigation-transition"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Dancing_Script, Caveat } from "next/font/google"
-import { JsonLd } from "@/components/json-ld"
-import { GoogleTagManager } from "@/components/google-tag-manager"
+import { JsonLd } from "@/components/SEC/json-ld"
+import { GoogleTagManager } from "@/components/SEC/google-tag-manager"
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
