@@ -100,7 +100,6 @@ export function AITeamSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          console.log("[v0] AI Team Section is now visible")
           setIsVisible(true)
         }
       },
@@ -269,6 +268,8 @@ export function AITeamSection() {
                             <img
                               src="/images/michael-ai-agent.jpg"
                               alt="Support Agent"
+                              width={32}
+                              height={32}
                               className="w-8 h-8 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
                             />
                             <div className="flex-1">
@@ -297,6 +298,8 @@ export function AITeamSection() {
                                 <img
                                   src="/images/michael-ai-agent.jpg"
                                   alt="Michael"
+                                  width={24}
+                                  height={24}
                                   className="w-6 h-6 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
                                 />
                               )}

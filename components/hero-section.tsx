@@ -151,6 +151,8 @@ export function HeroSection() {
                       <img
                         src={tech.src}
                         alt={tech.alt}
+                        width={40}
+                        height={40}
                         className="h-8 sm:h-10 w-auto opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                       />
                     </div>
