@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 
 const AlertTriangle = () => (
@@ -195,13 +196,13 @@ export function ProblemSolutionSection() {
           <p className="text-sm sm:text-base md:text-lg text-white/70 mb-6 sm:mb-8 max-w-2xl mx-auto font-light leading-relaxed">
             Schedule a comprehensive technical audit and discover how streamlined infrastructure can accelerate your growth.
           </p>
-          <Button
-            size="lg"
-            className="bg-white text-black rounded-full px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-lg group cursor-pointer"
+          <Link
+            className="inline-flex items-center justify-center bg-white text-black rounded-full px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-lg group cursor-pointer"
+            href="/contact"
           >
             Request Technical Audit
             <ArrowRight />
-          </Button>
+          </Link>
         </div>
       </div>
     </section>
