@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Briefcase, GraduationCap, Code, Globe, User, Github, Linkedin, Mail, Phone, Calendar, ExternalLink } from "lucide-react"
+import { Briefcase, GraduationCap, Code, Globe, User, Github, Linkedin, Mail, CheckCircle2 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
@@ -33,50 +33,51 @@ export function TeamExperienceSection() {
         }
     }, [])
 
-    const skills = [
-        "Next.js", "MERN Stack", "PHP", "MySQL", "WordPress", "Front-End Design",
-        "AI Tools", "Cloud AI", "GitHub", "GitLab", "Tailwind CSS", "Node.js"
+    const coreCompetencies = [
+        "Next.js & React Ecosystem", "Node.js & Express", "MongoDB & PostgreSQL",
+        "Cloud Architecture (AWS/Vercel)", "AI/LLM Integration", "React Native",
+        "Tailwind CSS & Framer Motion", "Enterprise System Design"
     ]
 
-    const experiences = [
+    const agencyHighlights = [
         {
-            company: "Gotisheel Technologies LLP",
-            role: "Software Developer",
-            period: "Jan 2024 - Present",
-            description: "Developing and maintaining web applications using the MERN stack. Optimizing UI/UX with Tailwind CSS and Headless UI. Implementing authentication, database interactions, and API integrations."
+            title: "Custom Enterprise Software",
+            role: "Full-Stack Architecture",
+            period: "Current Focus",
+            description: "Architecting and deploying scalable web applications using the MERN stack and Next.js. Optimizing complex database interactions, implementing secure authentication, and building fluid UI/UX with Tailwind CSS and Headless UI."
         },
         {
-            company: "WebotApp - Digital Solutions",
-            role: "Internship",
-            period: "Jul 2023 - Jan 2024",
-            description: "Collaborated to design and develop web apps using React.js and Node.js. Customized WordPress themes and resolved frontend/backend issues."
+            title: "Digital Transformation & E-commerce",
+            role: "Solution Delivery",
+            period: "Specialized Expertise",
+            description: "Leading the development of highly customized platforms. Engineering custom integrations, payment gateway architecture, and resolving critical performance bottlenecks for high-traffic environments."
         }
     ]
 
-    const projects = [
+    const flagshipProjects = [
         {
-            title: "AI-Powered Video Analytics",
-            company: "Industrial Basics",
-            tech: ["Next.js", "Node.js", "MongoDB", "AI"],
-            description: "Real-time system detecting safety violations (helmet, jacket, boots) from live feeds. Built analytics dashboard, REST APIs, and alert systems."
+            title: "AI-Powered Video Analytics Engine",
+            company: "Industrial Sector",
+            tech: ["Next.js", "Node.js", "MongoDB", "AI Vision"],
+            description: "Engineered a real-time system detecting safety violations (helmet, jacket, boots) from live industrial feeds. Built the analytics dashboard, REST APIs, and automated alert systems."
         },
         {
-            title: "Official Business Website",
-            company: "Gotisheel Technology",
-            tech: ["HTML", "CSS", "JavaScript"],
-            description: "Fully responsive business website with modern UI sections. Ensured cross-browser compatibility and fast load times."
+            title: "Omnichannel E-commerce Platform",
+            company: "Retail Technology",
+            tech: ["React", "Express", "Payment Gateways"],
+            description: "Developed a dynamic, high-conversion e-commerce architecture with advanced cart management, seamless checkout flows, and complex third-party API integrations."
         },
         {
-            title: "School Management Dashboard",
-            company: "Internship Project",
-            tech: ["PHP", "MySQL", "Chart.js"],
-            description: "Admin dashboard for school operations. Features role-based access, attendance tracking, and data visualization."
+            title: "Enterprise Management Dashboard",
+            company: "Corporate Solutions",
+            tech: ["Next.js", "SQL", "Data Visualization"],
+            description: "Architected a comprehensive admin dashboard for organizational operations. Features precise role-based access control (RBAC) and real-time data visualization."
         },
         {
-            title: "WordPress E-commerce",
-            company: "Internship Project",
-            tech: ["WordPress", "WooCommerce", "PHP"],
-            description: "Dynamic e-commerce site with product management, custom themes, and payment gateway integration."
+            title: "Lead Generation & CRM Portal",
+            company: "B2B Services",
+            tech: ["Next.js", "Tailwind", "Nodemailer"],
+            description: "Built high-performance landing pages coupled with a secure backend CRM to capture, validate, and route client leads directly into email and database pipelines."
         }
     ]
 
@@ -90,15 +91,14 @@ export function TeamExperienceSection() {
                 >
                     <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-6">
                         <span className="w-2 h-2 bg-indigo-400 rounded-full mr-2 animate-pulse"></span>
-                        Meet The Team
+                        Our Expertise
                     </div>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-                        Leading with <span className="text-indigo-400">Experience</span>
+                        Engineering <span className="text-indigo-400">Excellence</span>
                     </h2>
                 </div>
-
                 <div className="grid lg:grid-cols-12 gap-8">
-                    {/* Sidebar - Profile Profile */}
+                    {/* Sidebar - Leadership Profile */}
                     <div className={`lg:col-span-4 transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
                         }`}>
                         <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 sticky top-24">
@@ -107,7 +107,7 @@ export function TeamExperienceSection() {
                                     DT
                                 </div>
                                 <h3 className="text-2xl font-bold text-white mb-1">Dibyajyoti Talukdar</h3>
-                                <p className="text-indigo-400 font-medium mb-4">Software Developer</p>
+                                <p className="text-indigo-400 font-medium mb-4">Founder & Lead Engineer</p>
                                 <div className="flex gap-2 mb-6">
                                     <Button size="icon" variant="ghost" className="text-white/60 hover:text-white hover:bg-white/10" asChild>
                                         <a href="https://github.com/akashtal" target="_blank" rel="noreferrer"><Github className="w-5 h-5" /></a>
@@ -123,31 +123,16 @@ export function TeamExperienceSection() {
 
                             <div className="space-y-6">
                                 <div>
-                                    <h4 className="text-white font-semibold mb-3 flex items-center gap-2">
-                                        <Code className="w-4 h-4 text-indigo-400" /> Skills
+                                    <h4 className="text-white font-semibold mb-4 flex items-center gap-2">
+                                        <CheckCircle2 className="w-4 h-4 text-indigo-400" /> Agency Capabilities
                                     </h4>
-                                    <div className="flex flex-wrap gap-2">
-                                        {skills.map((skill, i) => (
-                                            <Badge key={i} variant="secondary" className="bg-white/10 hover:bg-white/20 text-white/90 border-0">
+                                    <div className="flex flex-col gap-3">
+                                        {coreCompetencies.map((skill, i) => (
+                                            <div key={i} className="flex items-center text-slate-300 text-sm">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-3"></div>
                                                 {skill}
-                                            </Badge>
+                                            </div>
                                         ))}
-                                    </div>
-                                </div>
-
-                                <div className="border-t border-white/10 pt-6">
-                                    <h4 className="text-white font-semibold mb-3 flex items-center gap-2">
-                                        <GraduationCap className="w-4 h-4 text-indigo-400" /> Education
-                                    </h4>
-                                    <div className="space-y-3">
-                                        <div>
-                                            <p className="text-white text-sm font-medium">Bachelor of Design in Arts</p>
-                                            <p className="text-white/50 text-xs">Thong Nokbe College • 2024</p>
-                                        </div>
-                                        <div>
-                                            <p className="text-white text-sm font-medium">Higher Secondary (Arts)</p>
-                                            <p className="text-white/50 text-xs">Dokmoka HS School • 2019</p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -160,12 +145,10 @@ export function TeamExperienceSection() {
                         <div className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}>
                             <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                                <User className="w-6 h-6 text-indigo-400" /> About Me
+                                <User className="w-6 h-6 text-indigo-400" /> Executive Summary
                             </h3>
                             <p className="text-slate-300 leading-relaxed text-lg">
-                                I am a dedicated software developer with expertise in full-stack web development, including PHP, Next.js, Node.js, EJS, and WordPress.
-                                With 1.7 years of experience, including 6 months in an industry internship, I have contributed to dynamic web solutions by optimizing performance
-                                and ensuring seamless user experiences. Passionate about continuous learning, I stay updated with industry trends to deliver high-quality, innovative solutions.
+                                GenAI Digital Solutions is led by a commitment to elite software engineering. We specialize in full-stack architecture, building robust data pipelines, and designing high-performance interfaces using modern frameworks like Next.js and React. Our approach is purely results-driven—we don't just write code; we architect systems that optimize operations and deliver exceptional user experiences for our clients.
                             </p>
                         </div>
 
@@ -173,10 +156,10 @@ export function TeamExperienceSection() {
                         <div className={`transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}>
                             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                                <Briefcase className="w-6 h-6 text-indigo-400" /> Experience
+                                <Briefcase className="w-6 h-6 text-indigo-400" /> Core Operations
                             </h3>
                             <div className="space-y-4">
-                                {experiences.map((exp, i) => (
+                                {agencyHighlights.map((exp, i) => (
                                     <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
                                         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
                                             <h4 className="text-xl font-bold text-white">{exp.role}</h4>
@@ -184,7 +167,7 @@ export function TeamExperienceSection() {
                                                 {exp.period}
                                             </Badge>
                                         </div>
-                                        <p className="text-lg text-indigo-200 mb-3">{exp.company}</p>
+                                        <p className="text-lg text-indigo-200 mb-3">{exp.title}</p>
                                         <p className="text-slate-300">{exp.description}</p>
                                     </div>
                                 ))}
@@ -195,21 +178,21 @@ export function TeamExperienceSection() {
                         <div className={`transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}>
                             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                                <Globe className="w-6 h-6 text-indigo-400" /> Key Projects
+                                <Globe className="w-6 h-6 text-indigo-400" /> Featured Implementations
                             </h3>
                             <div className="grid sm:grid-cols-2 gap-4">
-                                {projects.map((project, i) => (
+                                {flagshipProjects.map((project, i) => (
                                     <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-indigo-500/30 transition-all group">
                                         <div className="mb-4">
                                             <h4 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">{project.title}</h4>
-                                            <p className="text-sm text-slate-400">{project.company}</p>
+                                            <p className="text-sm text-slate-400 mt-1">{project.company}</p>
                                         </div>
-                                        <p className="text-slate-300 text-sm mb-4 line-clamp-3">
+                                        <p className="text-slate-300 text-sm mb-4">
                                             {project.description}
                                         </p>
-                                        <div className="flex flex-wrap gap-2">
+                                        <div className="flex flex-wrap gap-2 mt-auto">
                                             {project.tech.map((t, index) => (
-                                                <span key={index} className="text-xs text-indigo-200 bg-indigo-500/10 px-2 py-1 rounded">
+                                                <span key={index} className="text-xs text-indigo-200 bg-indigo-500/10 px-2 py-1 rounded border border-indigo-500/20">
                                                     {t}
                                                 </span>
                                             ))}
@@ -224,3 +207,4 @@ export function TeamExperienceSection() {
         </section>
     )
 }
+

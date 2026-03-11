@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import connectDB from '@/lib/db';
-import DemoRequest from '@/models/DemoRequest';
 import { sendEmail, getDemoRequestEmail, getDemoConfirmationEmail } from '@/lib/email';
 
 const demoSchema = z.object({
@@ -26,34 +24,6 @@ export async function POST(request: NextRequest) {
 
         const data = validationResult.data;
 
-        // Connect to database
-        await connectDB();
-
-        // Check for recent duplicate request (within last 24 hours)
-        const existingRequest = await DemoRequest.findOne({
-            email: data.email,
-            createdAt: { $gte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
-        });
-
-        if (existingRequest) {
-            return NextResponse.json(
-                {
-                    success: true,
-                    message: 'You\'ve already requested a demo. We\'ll be in touch soon!',
-                },
-                { status: 200 }
-            );
-        }
-
-        // Save demo request to database
-        const demoRequest = await DemoRequest.create({
-            email: data.email,
-            name: data.name || '',
-            company: data.company || '',
-            source: data.source,
-            status: 'pending',
-        });
-
         // Send notification email to admin
         const adminEmail = process.env.ADMIN_EMAIL;
         if (adminEmail) {
@@ -76,7 +46,7 @@ export async function POST(request: NextRequest) {
             {
                 success: true,
                 message: 'Demo request received! We\'ll contact you within 24-48 hours.',
-                id: demoRequest._id,
+                id: Date.now().toString(), // Mock ID since there's no DB
             },
             { status: 201 }
         );

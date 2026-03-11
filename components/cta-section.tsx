@@ -76,10 +76,10 @@ export function CTASection() {
       <div className="relative max-w-4xl mx-auto">
         <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-center p-8 md:p-10 rounded-3xl border border-white/20 bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/15%),theme(backgroundColor.white/5%))]">
           <h3 className="text-2xl md:text-3xl lg:text-4xl font-light text-white mb-6 text-balance leading-tight">
-            Ready to <span className="font-medium italic bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent">scale your business</span> to the next level?
+            Ready to <span className="font-medium italic bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent">accelerate your growth</span> with elite digital solutions?
           </h3>
           <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Get a free consultation and see how our premium digital solutions can drive real growth for you.
+            Partner with our experts to secure a strategic roadmap for your next digital initiative.
           </p>
 
           {isSubmitted ? (
@@ -93,7 +93,7 @@ export function CTASection() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                placeholder="Enter your enterprise email"
                 className="w-full sm:w-auto min-w-[280px] px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-white/40 transition-colors"
                 disabled={isSubmitting}
               />
@@ -105,11 +105,11 @@ export function CTASection() {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" />
-                    Submitting...
+                    Connecting...
                   </>
                 ) : (
                   <>
-                    Get Your Free Quote
+                    Request Strategy Session
                     <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform duration-200" />
                   </>
                 )}

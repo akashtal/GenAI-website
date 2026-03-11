@@ -16,36 +16,16 @@ const services = [
         icon: Smartphone,
         title: "Mobile App Development",
         description: "Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android devices.",
-        features: ["iOS Development", "Android Development", "React Native Apps", "Flutter Development", "App Store Optimization", "Mobile UI/UX"],
+        features: ["iOS Development", "Android Development", "React Native Apps", "App Store Optimization", "Mobile UI/UX"],
     },
     {
         id: "marketing",
         icon: TrendingUp,
         title: "Digital Marketing",
         description: "Data-driven marketing strategies that increase your online visibility, drive traffic, and convert visitors into customers.",
-        features: ["SEO Optimization", "Social Media Marketing", "PPC Campaigns", "Content Marketing", "Email Marketing", "Analytics & Reporting"],
+        features: ["SEO Optimization", "Social Media Marketing", "Content Marketing", "Analytics & Reporting"],
     },
-    {
-        id: "design",
-        icon: Palette,
-        title: "UI/UX Design",
-        description: "User-centered design that creates intuitive, engaging, and visually stunning digital experiences.",
-        features: ["User Research", "Wireframing", "Prototyping", "Visual Design", "Design Systems", "Usability Testing"],
-    },
-    {
-        id: "cloud",
-        icon: Cloud,
-        title: "Cloud Services",
-        description: "Scalable cloud infrastructure and migration services to modernize your business operations.",
-        features: ["AWS Solutions", "Azure Services", "Cloud Migration", "DevOps", "Serverless Architecture", "Container Orchestration"],
-    },
-    {
-        id: "security",
-        icon: Shield,
-        title: "Cybersecurity",
-        description: "Comprehensive security solutions to protect your digital assets and ensure compliance with industry standards.",
-        features: ["Security Audits", "Penetration Testing", "Compliance Management", "Data Protection", "Incident Response", "Security Training"],
-    },
+
 ]
 
 export function ServicesSection() {
@@ -63,9 +43,9 @@ export function ServicesSection() {
                         <span className="w-2 h-2 bg-white/60 rounded-full mr-2 animate-pulse"></span>
                         Our Expertise
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Services We Offer</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Strategic Capabilities</h2>
                     <p className="text-white/70 max-w-2xl mx-auto text-lg">
-                        Empowering your digital transformation with cutting-edge technology and strategic innovation.
+                        Empowering your digital ecosystem with enterprise-grade technology and strategic innovation.
                     </p>
                 </motion.div>
 

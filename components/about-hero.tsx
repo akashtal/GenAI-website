@@ -40,11 +40,11 @@ export function AboutHero() {
                     className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-balance mb-8 tracking-tight"
                 >
                     <span className="inline-block bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent pb-2">
-                        Building the Future
+                        Transforming Ideas
                     </span>
                     <br />
                     <span className="inline-flex items-center justify-center flex-wrap gap-2 mt-2">
-                        <span className="text-white/90 font-light italic">of Digital Excellence</span>
+                        <span className="text-white/90 font-light italic">Into Digital Reality</span>
                     </span>
                 </motion.h1>
 
@@ -56,10 +56,10 @@ export function AboutHero() {
                     className="max-w-2xl mx-auto mb-10 sm:mb-12 px-4"
                 >
                     <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed font-light mb-6 text-balance">
-                        We are a team of <span className="text-white font-medium">visionaries</span>, <span className="text-white font-medium">engineers</span>, and <span className="text-white font-medium">creators</span> dedicated to transforming businesses through technology.
+                        We are a premier digital agency of <span className="text-white font-medium">engineers</span>, <span className="text-white font-medium">designers</span>, and <span className="text-white font-medium">strategists</span> dedicated to scaling your business.
                     </p>
                     <p className="text-base text-slate-400 font-light max-w-lg mx-auto leading-relaxed">
-                        Founded with a mission to make elite digital solutions accessible to ambitious companies worldwide.
+                        Delivering high-performance software, mobile apps, and AI solutions that drive measurable ROI.
                     </p>
                 </motion.div>
 

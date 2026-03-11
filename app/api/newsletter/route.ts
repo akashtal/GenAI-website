@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import connectDB from '@/lib/db';
-import Newsletter from '@/models/Newsletter';
+import { sendEmail } from '@/lib/email';
 
 const newsletterSchema = z.object({
     email: z.string().email('Invalid email address'),
@@ -22,44 +21,22 @@ export async function POST(request: NextRequest) {
 
         const { email } = validationResult.data;
 
-        // Connect to database
-        await connectDB();
-
-        // Check if already subscribed
-        const existingSubscriber = await Newsletter.findOne({ email });
-
-        if (existingSubscriber) {
-            if (existingSubscriber.isActive) {
-                return NextResponse.json(
-                    {
-                        success: true,
-                        message: 'You\'re already subscribed to our newsletter!',
-                    },
-                    { status: 200 }
-                );
-            } else {
-                // Reactivate subscription
-                existingSubscriber.isActive = true;
-                existingSubscriber.subscribedAt = new Date();
-                existingSubscriber.unsubscribedAt = undefined;
-                await existingSubscriber.save();
-
-                return NextResponse.json(
-                    {
-                        success: true,
-                        message: 'Welcome back! Your subscription has been reactivated.',
-                    },
-                    { status: 200 }
-                );
-            }
+        // Send notification email to admin since we don't save to DB
+        const adminEmail = process.env.ADMIN_EMAIL;
+        if (adminEmail) {
+            await sendEmail({
+                to: adminEmail,
+                subject: `New Newsletter Subscription: ${email}`,
+                html: `
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                        <h2 style="color: #1a1a2e;">New Newsletter Subscriber!</h2>
+                        <p>A new user has subscribed to your newsletter.</p>
+                        <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+                    </div>
+                `,
+                replyTo: email,
+            });
         }
-
-        // Create new subscriber
-        await Newsletter.create({
-            email,
-            isActive: true,
-            subscribedAt: new Date(),
-        });
 
         return NextResponse.json(
             {

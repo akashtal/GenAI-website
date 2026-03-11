@@ -73,14 +73,14 @@ export function ProblemSolutionSection() {
             }`}
         >
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-red-400 rounded-full mr-2 animate-pulse"></span>
-            The Problem Every Business Faces
+            <span className="w-2 h-2 bg-indigo-400 rounded-full mr-2 animate-pulse"></span>
+            The Digital Transformation Challenge
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-balance mb-4 sm:mb-6">
-            <span className="text-red-400">60-70%</span> of Your Leads Are Slipping Away
+            Are Fragmented Systems <span className="text-indigo-400">Holding You Back?</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto font-light leading-relaxed">
-            While you're busy serving customers, your online inquiries are going unanswered. Here's how we fix it.
+            While you focus on core business operations, outdated tech stacks and siloed marketing efforts leak revenue. Here’s how we engineer growth.
           </p>
         </div>
 
@@ -91,38 +91,38 @@ export function ProblemSolutionSection() {
         >
           {/* Problem Card */}
           <div className="group">
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 h-full hover:bg-white/10 transition-all duration-500 hover:border-red-400/30">
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 h-full hover:bg-white/10 transition-all duration-500 hover:border-indigo-400/30">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-red-500/20">
+                <div className="p-2 rounded-lg bg-indigo-500/20">
                   <AlertTriangle />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-red-400">High Agency Fees</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-indigo-400">The Growth Bottleneck</h3>
               </div>
 
               {/* Key Stat */}
-              <div className="bg-red-500/10 backdrop-blur-sm border border-red-500/20 rounded-xl p-4 sm:p-6 mb-6">
-                <div className="text-3xl sm:text-4xl font-bold text-red-400 mb-2">300%</div>
+              <div className="bg-indigo-500/10 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-4 sm:p-6 mb-6">
+                <div className="text-3xl sm:text-4xl font-bold text-indigo-400 mb-2">40%</div>
                 <p className="text-white/80 text-sm sm:text-base">
-                  Markups on average when hiring traditional agencies
+                  Average productivity lost to poorly integrated digital tools
                 </p>
               </div>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-white/70 text-sm sm:text-base">
-                    Agencies charge for "overhead" and "management fees"
+                    Disjointed vendor management drains internal resources
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-white/70 text-sm sm:text-base">
-                    Freelancers can be unreliable and lack broad expertise
+                    Legacy software slows down operations and creates friction
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-white/70 text-sm sm:text-base">In-house teams are expensive to recruit and retain</p>
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-white/70 text-sm sm:text-base">Siloed marketing channels fail to generate compound returns</p>
                 </div>
               </div>
             </div>
@@ -130,19 +130,19 @@ export function ProblemSolutionSection() {
 
           {/* Solution Card */}
           <div className="group">
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 h-full hover:bg-white/10 transition-all duration-500 hover:border-green-400/30">
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 h-full hover:bg-white/10 transition-all duration-500 hover:border-emerald-400/30">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-green-500/20">
+                <div className="p-2 rounded-lg bg-emerald-500/20">
                   <CheckCircle />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-green-400">Elite Value</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-emerald-400">Seamless Ecosystems</h3>
               </div>
 
               {/* Key Stat */}
-              <div className="bg-green-500/10 backdrop-blur-sm border border-green-500/20 rounded-xl p-4 sm:p-6 mb-6">
-                <div className="text-3xl sm:text-4xl font-bold text-green-400 mb-2">70%</div>
+              <div className="bg-emerald-500/10 backdrop-blur-sm border border-emerald-500/20 rounded-xl p-4 sm:p-6 mb-6">
+                <div className="text-3xl sm:text-4xl font-bold text-emerald-400 mb-2">3x</div>
                 <p className="text-white/80 text-sm sm:text-base">
-                  Average savings compared to big agencies, with better results
+                  Faster execution velocity with a unified digital partner
                 </p>
               </div>
 
@@ -150,15 +150,15 @@ export function ProblemSolutionSection() {
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <CheckCircle />
-                  <p className="text-white/70 text-sm sm:text-base">Senior-level talent on every project</p>
+                  <p className="text-white/70 text-sm sm:text-base">Enterprise-grade architecture tailored for scale</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle />
-                  <p className="text-white/70 text-sm sm:text-base">Streamlined processes, no bloated management</p>
+                  <p className="text-white/70 text-sm sm:text-base">Data-driven marketing aligned with development goals</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle />
-                  <p className="text-white/70 text-sm sm:text-base">Direct communication with your development team</p>
+                  <p className="text-white/70 text-sm sm:text-base">Direct strategic partnership with senior experts</p>
                 </div>
               </div>
             </div>
@@ -171,16 +171,16 @@ export function ProblemSolutionSection() {
             }`}
         >
           <div className="text-center bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300">
-            <div className="text-2xl sm:text-3xl font-bold text-white mb-2">High Value</div>
-            <p className="text-white/70 text-xs sm:text-sm">Average value per lost lead</p>
+            <div className="text-2xl sm:text-3xl font-bold text-white mb-2">99.9%</div>
+            <p className="text-white/70 text-xs sm:text-sm">Uptime for our enterprise systems</p>
           </div>
           <div className="text-center bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300">
-            <div className="text-2xl sm:text-3xl font-bold text-white mb-2">78%</div>
-            <p className="text-white/70 text-xs sm:text-sm">Choose first responder</p>
+            <div className="text-2xl sm:text-3xl font-bold text-white mb-2">Omnichannel</div>
+            <p className="text-white/70 text-xs sm:text-sm">Unified marketing integration</p>
           </div>
           <div className="text-center bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300">
-            <div className="text-2xl sm:text-3xl font-bold text-white mb-2">24/7</div>
-            <p className="text-white/70 text-xs sm:text-sm">Our AI never sleeps</p>
+            <div className="text-2xl sm:text-3xl font-bold text-white mb-2">Strategic</div>
+            <p className="text-white/70 text-xs sm:text-sm">Growth-focused partnerships</p>
           </div>
         </div>
 
@@ -190,16 +190,16 @@ export function ProblemSolutionSection() {
             }`}
         >
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4 text-balance">
-            Stop Losing Customers Today
+            Maximize Your Digital Potential
           </h3>
           <p className="text-sm sm:text-base md:text-lg text-white/70 mb-6 sm:mb-8 max-w-2xl mx-auto font-light leading-relaxed">
-            Get a free response time audit and see exactly how many leads you're missing right now.
+            Schedule a comprehensive technical audit and discover how streamlined infrastructure can accelerate your growth.
           </p>
           <Button
             size="lg"
             className="bg-white text-black rounded-full px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-lg group cursor-pointer"
           >
-            Get Free Response Audit
+            Request Technical Audit
             <ArrowRight />
           </Button>
         </div>

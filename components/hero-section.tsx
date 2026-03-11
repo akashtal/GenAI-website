@@ -71,7 +71,7 @@ export function HeroSection() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
           </span>
-          Best Value Digital Agency
+          Premium Digital Innovation Partner
         </motion.div>
 
         {/* Main Heading */}
@@ -82,11 +82,11 @@ export function HeroSection() {
           className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-balance mb-8 tracking-tight"
         >
           <span className="inline-block bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent pb-2">
-            Elite Digital Solutions
+            Transforming Vision
           </span>
           <br />
           <span className="inline-flex items-center justify-center flex-wrap gap-2 mt-2">
-            <span className="text-white/90 font-light italic">at Unbeatable Rates</span>
+            <span className="text-white/90 font-light italic">into Digital Excellence</span>
           </span>
         </motion.h1>
 
@@ -99,10 +99,10 @@ export function HeroSection() {
           className="max-w-2xl mx-auto mb-10 sm:mb-12"
         >
           <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed font-light mb-6 text-balance px-2 sm:px-0">
-            Stop overpaying traditional agencies. Get <span className="text-white font-medium">premium software</span>, <span className="text-white font-medium">marketing</span>, and <span className="text-white font-medium">app development</span> for a fraction of the cost.
+            Partner with industry leaders to engineer <span className="text-white font-medium">scalable software</span>, <span className="text-white font-medium">strategic marketing</span>, and <span className="text-white font-medium">award-winning apps</span> that drive real growth.
           </p>
           <p className="text-sm sm:text-base text-slate-400 font-light max-w-lg mx-auto leading-relaxed px-2 sm:px-0">
-            We build the scalable systems that power your business growth.
+            We architect the digital ecosystems that power tomorrow's enterprises.
           </p>
         </motion.div>
 

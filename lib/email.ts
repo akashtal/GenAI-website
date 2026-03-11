@@ -1,14 +1,14 @@
 import nodemailer from 'nodemailer';
 
-// Gmail SMTP configuration for Vercel deployment
-// Uses App Password with SSL on port 465 for reliable delivery
+// Brevo SMTP configuration
+// Uses SMTP Key and standard port 587
 const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: parseInt(process.env.SMTP_PORT || '465'),
+    host: process.env.SMTP_HOST || 'smtp-relay.brevo.com',
+    port: parseInt(process.env.SMTP_PORT || '587'),
     secure: process.env.SMTP_SECURE === 'true', // true for 465, false for 587
     auth: {
         user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS, // App Password (16 characters, no spaces)
+        pass: process.env.SMTP_PASS, // Brevo SMTP Key
     },
     // Connection timeout settings for serverless environment
     connectionTimeout: 10000, // 10 seconds
@@ -26,7 +26,7 @@ interface EmailOptions {
 export async function sendEmail({ to, subject, html, replyTo }: EmailOptions) {
     try {
         const info = await transporter.sendMail({
-            from: `"GenAI Digital Solutions" <${process.env.SMTP_USER}>`,
+            from: `"GenAI Digital Solution" <${process.env.ADMIN_EMAIL}>`,
             to,
             subject,
             html,
@@ -45,6 +45,7 @@ export async function sendEmail({ to, subject, html, replyTo }: EmailOptions) {
 export function getContactNotificationEmail(data: {
     name: string;
     email: string;
+    phone?: string;
     company?: string;
     service?: string;
     budget?: string;
@@ -67,6 +68,7 @@ export function getContactNotificationEmail(data: {
           <h2 style="color: #1a1a2e; margin-top: 0;">Contact Details</h2>
           <p><strong>Name:</strong> ${data.name}</p>
           <p><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></p>
+          ${data.phone ? `<p><strong>Phone:</strong> ${data.phone}</p>` : ''}
           ${data.company ? `<p><strong>Company:</strong> ${data.company}</p>` : ''}
           ${data.service ? `<p><strong>Service Interested:</strong> ${data.service}</p>` : ''}
           ${data.budget ? `<p><strong>Budget Range:</strong> ${data.budget}</p>` : ''}

@@ -24,13 +24,13 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    details: "+353 1 234 5678",
+    details: "+91 9365339460",
     description: "Mon-Fri from 9am to 6pm",
   },
   {
     icon: MapPin,
     title: "Visit Us",
-    details: "Dublin, Ireland",
+    details: "Assam, India",
     description: "Book a meeting at our office",
   },
   {
@@ -68,6 +68,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     service: "",
     budget: "",
@@ -98,6 +99,7 @@ export default function ContactPage() {
         setFormData({
           name: "",
           email: "",
+          phone: "",
           company: "",
           service: "",
           budget: "",
@@ -252,6 +254,19 @@ export default function ContactPage() {
 
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="space-y-2">
+                          <Label htmlFor="phone" className="text-white/80">Phone Number</Label>
+                          <Input
+                            id="phone"
+                            name="phone"
+                            type="tel"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder="+1 (555) 000-0000"
+                            className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
+                            disabled={isSubmitting}
+                          />
+                        </div>
+                        <div className="space-y-2">
                           <Label htmlFor="company" className="text-white/80">Company</Label>
                           <Input
                             id="company"
@@ -263,8 +278,10 @@ export default function ContactPage() {
                             disabled={isSubmitting}
                           />
                         </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="service" className="text-white/80">Service Interested In</Label>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="service" className="text-white/80">Service Interested In</Label>
                           <select
                             id="service"
                             name="service"
@@ -277,12 +294,9 @@ export default function ContactPage() {
                             <option value="software" className="bg-gray-900">Software Development</option>
                             <option value="mobile" className="bg-gray-900">Mobile App Development</option>
                             <option value="marketing" className="bg-gray-900">Digital Marketing</option>
-                            <option value="design" className="bg-gray-900">UI/UX Design</option>
-                            <option value="cloud" className="bg-gray-900">Cloud Services</option>
                             <option value="other" className="bg-gray-900">Other</option>
                           </select>
                         </div>
-                      </div>
 
                       <div className="space-y-2">
                         <Label htmlFor="budget" className="text-white/80">Estimated Budget</Label>
@@ -295,11 +309,11 @@ export default function ContactPage() {
                           disabled={isSubmitting}
                         >
                           <option value="" className="bg-gray-900">Select budget range</option>
-                          <option value="5k-10k" className="bg-gray-900">$5,000 - $10,000</option>
-                          <option value="10k-25k" className="bg-gray-900">$10,000 - $25,000</option>
-                          <option value="25k-50k" className="bg-gray-900">$25,000 - $50,000</option>
-                          <option value="50k-100k" className="bg-gray-900">$50,000 - $100,000</option>
-                          <option value="100k+" className="bg-gray-900">$100,000+</option>
+                          <option value="5k-10k" className="bg-gray-900">5,000 - 10,000</option>
+                          <option value="10k-25k" className="bg-gray-900">10,000 - 25,000</option>
+                          <option value="25k-50k" className="bg-gray-900">25,000 - 50,000</option>
+                          <option value="50k-100k" className="bg-gray-900">50,000 - 100,000</option>
+                          <option value="100k+" className="bg-gray-900">100,000+</option>
                         </select>
                       </div>
 

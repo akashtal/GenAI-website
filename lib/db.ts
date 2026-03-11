@@ -8,11 +8,7 @@ declare global {
   };
 }
 
-const MONGODB_URI = process.env.MONGODB_URI!;
-
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable');
-}
+const MONGODB_URI = process.env.MONGODB_URI;
 
 let cached = global.mongoose;
 
@@ -21,6 +17,10 @@ if (!cached) {
 }
 
 export async function connectDB() {
+  if (!MONGODB_URI) {
+    throw new Error('Please define the MONGODB_URI environment variable');
+  }
+
   if (cached.conn) {
     return cached.conn;
   }

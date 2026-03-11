@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import connectDB from '@/lib/db';
-import Contact from '@/models/Contact';
 import { sendEmail, getContactNotificationEmail, getContactConfirmationEmail } from '@/lib/email';
 
 const contactSchema = z.object({
     name: z.string().min(1, 'Name is required').max(100),
     email: z.string().email('Invalid email address'),
+    phone: z.string().max(20).optional(),
     company: z.string().max(100).optional(),
     service: z.enum(['', 'software', 'mobile', 'marketing', 'design', 'cloud', 'other']).optional(),
     budget: z.enum(['', '5k-10k', '10k-25k', '25k-50k', '50k-100k', '100k+']).optional(),
@@ -27,20 +26,6 @@ export async function POST(request: NextRequest) {
         }
 
         const data = validationResult.data;
-
-        // Connect to database
-        await connectDB();
-
-        // Save contact to database
-        const contact = await Contact.create({
-            name: data.name,
-            email: data.email,
-            company: data.company || '',
-            service: data.service || '',
-            budget: data.budget || '',
-            message: data.message,
-            status: 'new',
-        });
 
         // Send notification email to admin
         const adminEmail = process.env.ADMIN_EMAIL;
@@ -64,7 +49,6 @@ export async function POST(request: NextRequest) {
             {
                 success: true,
                 message: 'Thank you! Your message has been sent successfully.',
-                id: contact._id,
             },
             { status: 201 }
         );

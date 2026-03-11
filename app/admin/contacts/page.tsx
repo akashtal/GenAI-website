@@ -76,7 +76,6 @@ export default function ContactsPage() {
         mobile: "Mobile App Development",
         marketing: "Digital Marketing",
         design: "UI/UX Design",
-        cloud: "Cloud Services",
         other: "Other",
     }
 
@@ -159,10 +158,10 @@ export default function ContactsPage() {
                                         <td className="px-6 py-4">
                                             <span
                                                 className={`inline-block px-2 py-1 rounded text-xs ${contact.status === "new"
-                                                        ? "bg-blue-500/20 text-blue-400"
-                                                        : contact.status === "read"
-                                                            ? "bg-gray-500/20 text-gray-400"
-                                                            : "bg-green-500/20 text-green-400"
+                                                    ? "bg-blue-500/20 text-blue-400"
+                                                    : contact.status === "read"
+                                                        ? "bg-gray-500/20 text-gray-400"
+                                                        : "bg-green-500/20 text-green-400"
                                                     }`}
                                             >
                                                 {contact.status}
@@ -210,8 +209,8 @@ export default function ContactsPage() {
                                         key={page}
                                         onClick={() => fetchContacts(page)}
                                         className={`px-3 py-1 rounded text-sm ${page === pagination.page
-                                                ? "bg-white text-black"
-                                                : "bg-gray-800 text-gray-400 hover:text-white"
+                                            ? "bg-white text-black"
+                                            : "bg-gray-800 text-gray-400 hover:text-white"
                                             }`}
                                     >
                                         {page}

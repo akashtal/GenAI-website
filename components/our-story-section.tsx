@@ -92,14 +92,14 @@ export function OurStorySection() {
                 >
                     <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-6">
                         <span className="w-2 h-2 bg-indigo-400 rounded-full mr-2 animate-pulse"></span>
-                        Our Philosophy
+                        Why Partner With Us
                     </div>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-balance mb-6">
-                        Driven by <span className="text-indigo-400">Purpose</span>, <br />
-                        Powered by <span className="text-indigo-400">Passion</span>
+                        Driven by <span className="text-indigo-400">Results</span>, <br />
+                        Powered by <span className="text-indigo-400">Innovation</span>
                     </h2>
                     <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto font-light leading-relaxed">
-                        We started with a simple idea: that high-quality digital solutions shouldn't be reserved for Fortune 500 companies. We're democratizing access to elite engineering.
+                        We don't just write code; we solve complex business problems. Our engineering standard ensures that every product we ship is scalable, secure, and built for growth.
                     </p>
                 </div>
 

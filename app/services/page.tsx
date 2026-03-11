@@ -21,43 +21,22 @@ const services = [
     icon: Smartphone,
     title: "Mobile App Development",
     description: "Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android devices.",
-    features: ["iOS Development", "Android Development", "React Native Apps", "Flutter Development", "App Store Optimization", "Mobile UI/UX"],
+    features: ["iOS Development", "Android Development", "React Native Apps", "Custom software Development", "App Store Optimization", "Mobile UI/UX"],
   },
   {
     id: "marketing",
     icon: TrendingUp,
     title: "Digital Marketing",
     description: "Data-driven marketing strategies that increase your online visibility, drive traffic, and convert visitors into customers.",
-    features: ["SEO Optimization", "Social Media Marketing", "PPC Campaigns", "Content Marketing", "Email Marketing", "Analytics & Reporting"],
-  },
-  {
-    id: "design",
-    icon: Palette,
-    title: "UI/UX Design",
-    description: "User-centered design that creates intuitive, engaging, and visually stunning digital experiences.",
-    features: ["User Research", "Wireframing", "Prototyping", "Visual Design", "Design Systems", "Usability Testing"],
-  },
-  {
-    id: "cloud",
-    icon: Cloud,
-    title: "Cloud Services",
-    description: "Scalable cloud infrastructure and migration services to modernize your business operations.",
-    features: ["AWS Solutions", "Azure Services", "Cloud Migration", "DevOps", "Serverless Architecture", "Container Orchestration"],
-  },
-  {
-    id: "security",
-    icon: Shield,
-    title: "Cybersecurity",
-    description: "Comprehensive security solutions to protect your digital assets and ensure compliance with industry standards.",
-    features: ["Security Audits", "Penetration Testing", "Compliance Management", "Data Protection", "Incident Response", "Security Training"],
+    features: ["SEO Optimization", "Social Media Marketing", "Content Marketing", "Pefermace marketing", "Analytics & Reporting"],
   },
 ]
 
 const stats = [
-  { value: "150+", label: "Projects Delivered" },
-  { value: "50+", label: "Happy Clients" },
-  { value: "15+", label: "Team Members" },
-  { value: "5+", label: "Years Experience" },
+  { value: "17+", label: "Projects Delivered" },
+  { value: "15+", label: "Happy Clients" },
+  { value: "5+", label: "Team Members" },
+  { value: "4+", label: "Years Experience" },
 ]
 
 export default function ServicesPage() {
@@ -69,7 +48,7 @@ export default function ServicesPage() {
         </div>
         <div className="relative z-10">
           <GlassmorphismNav />
-          
+
           {/* Hero Section */}
           <section className="min-h-[60vh] flex items-center justify-center px-4 py-20 relative">
             <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -82,7 +61,7 @@ export default function ServicesPage() {
                 <span className="w-2 h-2 bg-white/60 rounded-full mr-2 animate-pulse"></span>
                 Our Services
               </motion.div>
-              
+
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -93,7 +72,7 @@ export default function ServicesPage() {
                 <br />
                 <span className="text-foreground">That Drive Results</span>
               </motion.h1>
-              
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -178,7 +157,7 @@ export default function ServicesPage() {
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Process</h2>
                 <p className="text-white/70 max-w-2xl mx-auto">A streamlined approach to delivering exceptional results</p>
               </motion.div>
-              
+
               <div className="grid md:grid-cols-4 gap-8">
                 {[
                   { step: "01", title: "Discovery", description: "We understand your goals, challenges, and requirements." },
