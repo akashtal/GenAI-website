@@ -7,6 +7,7 @@ import { FloatingShapes3D } from "@/components/floating-shapes-3d"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { ROICalculatorSection } from "@/components/roi-calculator-section"
 import {
   CheckCircle2,
   ArrowRight,
@@ -369,6 +370,9 @@ export function ServicePageTemplate({
                 </div>
               </div>
             </section>
+
+            {/* ── ROI Calculator ── */}
+            <ROICalculatorSection />
 
             {/* ── FAQ ── */}
             <section className="py-20 px-4">
