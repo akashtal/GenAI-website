@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
 
 export const metadata: Metadata = {
-  title: "AI Solutions Company in Guwahati, Assam, India | Gen AI Digital Solutions",
+  title: "AI Solutions Company in Guwahati, Assam, India",
   description:
     "Premier AI solutions company in Guwahati, Assam. We deliver custom AI chatbots, LLM integrations, machine learning models, and intelligent automation for businesses in India, UK & USA. Only 2 AI companies in Guwahati — be first.",
   keywords: [

@@ -1,8 +1,10 @@
 "use client"
 
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
-import Aurora from "@/components/Aurora"
 import { Footer } from "@/components/footer"
+import dynamic from "next/dynamic"
+
+const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
 import { motion } from "framer-motion"
 import { ExternalLink, Code, Smartphone, TrendingUp, Palette, Database, Layout, ShoppingCart, BarChart, Monitor } from "lucide-react"
 import { Button } from "@/components/ui/button"

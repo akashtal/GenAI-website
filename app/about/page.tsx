@@ -5,10 +5,12 @@ import { AboutHero } from "@/components/about-hero"
 import { motion } from "framer-motion"
 import { OurStorySection } from "@/components/our-story-section"
 import { TeamExperienceSection } from "@/components/team-experience-section"
-import Aurora from "@/components/Aurora"
 import { Footer } from "@/components/footer"
-import { FloatingShapes3D } from "@/components/floating-shapes-3d"
 import { CTASection } from "@/components/cta-section"
+import dynamic from "next/dynamic"
+
+const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
+const FloatingShapes3D = dynamic(() => import("@/components/floating-shapes-3d").then((mod) => mod.FloatingShapes3D), { ssr: false })
 
 export default function AboutPage() {
     const stats = [

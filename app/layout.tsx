@@ -2,12 +2,11 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Suspense } from "react"
 import "./globals.css"
-import { PageTransition } from "@/components/page-transition"
-import { NavigationTransition } from "@/components/navigation-transition"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Dancing_Script, Caveat } from "next/font/google"
 import { JsonLd } from "@/components/SEC/json-ld"
 import { GoogleTagManager } from "@/components/SEC/google-tag-manager"
+import { GoogleAnalytics } from "@/components/SEC/google-analytics"
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -117,12 +116,12 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`font-sans antialiased ${dancingScript.variable} ${caveat.variable}`}>
         <Suspense fallback={null}>
-          <NavigationTransition />
-          <PageTransition>{children}</PageTransition>
+          {children}
         </Suspense>
         <SpeedInsights />
         <JsonLd />
         <GoogleTagManager />
+        <GoogleAnalytics />
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-5LWH544G"

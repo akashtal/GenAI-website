@@ -2,12 +2,21 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
-import Aurora from "@/components/Aurora"
-import { FloatingShapes3D } from "@/components/floating-shapes-3d"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ROICalculatorSection } from "@/components/roi-calculator-section"
+import dynamic from "next/dynamic"
+
+// Lazy load heavy WebGL background components and ROI Calculator
+const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
+const FloatingShapes3D = dynamic(() => import("@/components/floating-shapes-3d").then((mod) => mod.FloatingShapes3D), { ssr: false })
+const ROICalculatorSection = dynamic(
+  () => import("@/components/roi-calculator-section").then((mod) => mod.ROICalculatorSection),
+  { 
+    ssr: false, 
+    loading: () => <div className="h-[500px] w-full bg-white/5 animate-pulse rounded-3xl" /> 
+  }
+)
 import {
   CheckCircle2,
   ArrowRight,

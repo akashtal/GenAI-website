@@ -5,7 +5,9 @@ import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { Lock, Mail, Loader2, AlertCircle } from "lucide-react"
-import Aurora from "@/components/Aurora"
+import dynamic from "next/dynamic"
+
+const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
 
 export default function LoginPage() {
     const router = useRouter()

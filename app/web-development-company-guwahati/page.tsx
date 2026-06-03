@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
 
 export const metadata: Metadata = {
-  title: "Web Development Company in Guwahati, Assam | Gen AI Digital Solutions",
+  title: "Web Development Company in Guwahati, Assam",
   description:
     "Top-rated web development company in Guwahati, Assam. We craft high-performance React & Next.js websites, e-commerce platforms, and conversion-optimised landing pages for businesses across India, UK & USA.",
   keywords: [

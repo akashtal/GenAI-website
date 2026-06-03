@@ -1,7 +1,7 @@
 "use client"
 
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import "./Aurora.css"
 
@@ -111,16 +111,34 @@ void main() {
 }
 `
 
-export default function Aurora(props) {
+interface AuroraProps {
+  colorStops?: string[]
+  amplitude?: number
+  blend?: number
+  time?: number
+  speed?: number
+}
+
+export default function Aurora(props: AuroraProps) {
   const { colorStops = ["#5227FF", "#7cff67", "#5227FF"], amplitude = 1.0, blend = 0.5 } = props
-  const propsRef = useRef(props)
+  const propsRef = useRef<AuroraProps>(props)
   propsRef.current = props
 
-  const ctnDom = useRef(null)
+  const ctnDom = useRef<HTMLDivElement>(null)
+
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px)")
+    const listener = () => setIsDesktop(media.matches)
+    listener()
+    media.addEventListener("change", listener)
+    return () => media.removeEventListener("change", listener)
+  }, [])
 
   useEffect(() => {
     const ctn = ctnDom.current
-    if (!ctn) return
+    if (!ctn || !isDesktop) return
 
     const renderer = new Renderer({
       alpha: true,
@@ -133,7 +151,7 @@ export default function Aurora(props) {
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
     gl.canvas.style.backgroundColor = "transparent"
 
-    let program
+    let program: Program
 
     function resize() {
       const width = window.innerWidth
@@ -173,7 +191,7 @@ export default function Aurora(props) {
     resize()
 
     let animateId = 0
-    const update = (t) => {
+    const update = (t: number) => {
       animateId = requestAnimationFrame(update)
       const { time = t * 0.01, speed = 1.0 } = propsRef.current
       program.uniforms.uTime.value = time * speed * 0.1
@@ -197,7 +215,13 @@ export default function Aurora(props) {
       gl.getExtension("WEBGL_lose_context")?.loseContext()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amplitude])
+  }, [amplitude, isDesktop])
 
-  return <div ref={ctnDom} className="aurora-container" />
+  return (
+    <div
+      ref={ctnDom}
+      className="aurora-container"
+      style={!isDesktop ? { background: "linear-gradient(to bottom, #101e30, #030712)" } : undefined}
+    />
+  )
 }

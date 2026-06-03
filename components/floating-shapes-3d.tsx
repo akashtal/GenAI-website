@@ -2,7 +2,7 @@
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Float, MeshDistortMaterial, MeshWobbleMaterial } from "@react-three/drei"
-import { useRef, useState, useMemo } from "react"
+import { useRef, useState, useMemo, useEffect } from "react"
 import type * as THREE from "three"
 
 interface FloatingShapeProps {
@@ -36,9 +36,9 @@ function FloatingShape({ position, color, scale = 1, shape, speed = 1, distort =
   const geometry = useMemo(() => {
     switch (shape) {
       case "sphere":
-        return <sphereGeometry args={[1, 64, 64]} />
+        return <sphereGeometry args={[1, 24, 24]} />
       case "torus":
-        return <torusGeometry args={[1, 0.4, 32, 64]} />
+        return <torusGeometry args={[1, 0.4, 16, 32]} />
       case "octahedron":
         return <octahedronGeometry args={[1, 0]} />
       case "icosahedron":
@@ -46,7 +46,7 @@ function FloatingShape({ position, color, scale = 1, shape, speed = 1, distort =
       case "dodecahedron":
         return <dodecahedronGeometry args={[1, 0]} />
       default:
-        return <sphereGeometry args={[1, 64, 64]} />
+        return <sphereGeometry args={[1, 24, 24]} />
     }
   }, [shape])
 
@@ -103,7 +103,7 @@ function WobbleShape({ position, color, scale = 1 }: { position: [number, number
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
       >
-        <torusKnotGeometry args={[0.8, 0.3, 128, 32]} />
+        <torusKnotGeometry args={[0.8, 0.3, 48, 12]} />
         <MeshWobbleMaterial
           color={hovered ? "#ffffff" : color}
           factor={hovered ? 1 : 0.4}
@@ -225,6 +225,18 @@ function Scene() {
 }
 
 export function FloatingShapes3D() {
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px)")
+    const listener = () => setIsDesktop(media.matches)
+    listener()
+    media.addEventListener("change", listener)
+    return () => media.removeEventListener("change", listener)
+  }, [])
+
+  if (!isDesktop) return null
+
   return (
     <div className="absolute inset-0 pointer-events-auto">
       <Canvas

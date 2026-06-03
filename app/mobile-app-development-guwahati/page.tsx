@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
 
 export const metadata: Metadata = {
-  title: "Mobile App Development Company in Guwahati, Assam | Gen AI Digital Solutions",
+  title: "Mobile App Development Company in Guwahati, Assam",
   description:
     "Top mobile app development company in Guwahati, Assam. Custom iOS & Android apps using React Native and Flutter. Serving businesses across India, UK & USA with cost-effective, high-quality mobile solutions.",
   keywords: [

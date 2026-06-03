@@ -4,8 +4,10 @@ import React from "react"
 
 import { useState } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
-import Aurora from "@/components/Aurora"
 import { Footer } from "@/components/footer"
+import dynamic from "next/dynamic"
+
+const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Clock, Send, MessageSquare, ChevronDown, Loader2, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"

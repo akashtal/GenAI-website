@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
 
 export const metadata: Metadata = {
-  title: "CRM & ERP Software Development in Guwahati, Assam | Gen AI Digital Solutions",
+  title: "CRM & ERP Software Development in Guwahati, Assam",
   description:
     "Custom CRM and ERP software development company in Guwahati, Assam. We build bespoke CRM systems, ERP platforms, and business management tools for companies in India, UK & USA.",
   keywords: [
