@@ -4,7 +4,13 @@ import { useState, useEffect } from "react"
 import { Slider } from "@/components/ui/slider"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card } from "@/components/ui/card"
-import { TrendingUp, Users, IndianRupee, Clock } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button"
+import { TrendingUp, Users, IndianRupee, Clock, Send, Loader2, CheckCircle } from "lucide-react"
+import { toast } from "sonner"
+import { motion } from "framer-motion"
 
 interface CalculatorInputs {
   monthlyVisitors: number
@@ -83,6 +89,77 @@ export function ROICalculatorSection() {
   const additionalLeads = newLeads - currentLeads
   const additionalRevenue = newRevenue - currentRevenue
   const revenueIncrease = ((newRevenue - currentRevenue) / currentRevenue) * 100
+
+  // ── Contact Form State ──
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    service: "",
+    budget: "",
+    message: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isMessageDirty, setIsMessageDirty] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    if (e.target.name === "message") {
+      setIsMessageDirty(true)
+    }
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...formData, source: "roi-calculator" }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        toast.success(data?.message || 'Message sent successfully!')
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          budget: "",
+          message: "",
+        })
+        setIsMessageDirty(false)
+        // Reset success state after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000)
+      } else {
+        toast.error(data?.error || 'Failed to send message. Please try again.')
+      }
+    } catch {
+      toast.error('Network error. Please check your connection and try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  useEffect(() => {
+    if (isMessageDirty) return
+
+    const annualRev = additionalRevenue * 12
+    setFormData((prev) => ({
+      ...prev,
+      message: `Hi, I used your ROI calculator for my ${inputs.businessType} business. My monthly website traffic is ${inputs.monthlyVisitors.toLocaleString('en-US')} visitors with a ${inputs.currentConversionRate}% conversion rate. My estimated annual revenue increase is ₹${annualRev.toLocaleString('en-IN')}. I would like to discuss a customized plan for my project.`,
+    }))
+  }, [inputs.businessType, inputs.monthlyVisitors, inputs.currentConversionRate, additionalRevenue, isMessageDirty])
 
   return (
     <section id="roi-calculator" className="py-16 md:py-20 px-4 relative">
@@ -255,79 +332,181 @@ export function ROICalculatorSection() {
             </Card>
           </div>
 
-          {/* Results */}
+          {/* Results & Contact Form */}
           <div
             className={`transition-all duration-700 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             <Card className="p-6 md:p-8 bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/15%),theme(backgroundColor.white/5%))] border-white/20 backdrop-blur-sm shadow-2xl h-full flex flex-col">
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-6 md:mb-8">
-                Your Potential Growth
-              </h3>
-
-              <div className="space-y-6 flex-1">
-                {/* Current vs New Metrics */}
-                <div className="grid grid-cols-2 gap-3 md:gap-4">
-                  <div className="text-center p-3 md:p-4 rounded-lg bg-gray-700/30">
-                    <div className="text-xs md:text-sm text-gray-400 mb-1">Current</div>
-                    <div className="text-xl md:text-2xl font-bold text-white">{currentLeads}</div>
-                    <div className="text-xs text-gray-400">leads/month</div>
-                  </div>
-                  <div className="text-center p-3 md:p-4 rounded-lg bg-white/10 border border-white/20">
-                    <div className="text-xs md:text-sm text-gray-300 mb-1">With Our Help</div>
-                    <div className="text-xl md:text-2xl font-bold text-white">{newLeads}</div>
-                    <div className="text-xs text-gray-300">leads/month</div>
-                  </div>
-                </div>
-
-                <div className="space-y-3 md:space-y-4">
-                  <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-white/5 border border-white/10">
-                    <div className="flex items-center gap-3">
-                      <Users className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
-                      <span className="text-sm md:text-base text-white">Additional Leads</span>
+              
+              {/* Compact Results Header */}
+              <div className="mb-6 pb-6 border-b border-white/10">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                  Your Potential Growth
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-3 rounded-lg bg-white/5 border border-white/10">
+                    <div className="text-xs text-gray-400 mb-1">Additional Revenue (Annual)</div>
+                    <div className="text-lg md:text-xl font-bold text-white">
+                      ₹{(additionalRevenue * 12).toLocaleString('en-IN')}
                     </div>
-                    <span className="text-lg md:text-xl font-bold text-white">+{additionalLeads}</span>
                   </div>
-
-                  <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-white/5 border border-white/10">
-                    <div className="flex items-center gap-3">
-                      <IndianRupee className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
-                      <span className="text-sm md:text-base text-white">Additional Revenue</span>
-                    </div>
-                    <span className="text-lg md:text-xl font-bold text-white">
-                      {additionalRevenue.toLocaleString('en-US')}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-white/5 border border-white/10">
-                    <div className="flex items-center gap-3">
-                      <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
-                      <span className="text-sm md:text-base text-white">Revenue Increase</span>
-                    </div>
-                    <span className="text-lg md:text-xl font-bold text-white">+{revenueIncrease.toFixed(1)}%</span>
-                  </div>
-
-                  <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-white/5 border border-white/10">
-                    <div className="flex items-center gap-3">
-                      <Clock className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
-                      <span className="text-sm md:text-base text-white">Response Time</span>
-                    </div>
-                    <span className="text-lg md:text-xl font-bold text-white">{improvements.response}% faster</span>
-                  </div>
-                </div>
-
-                {/* Annual Projection */}
-                <div className="mt-6 md:mt-8 p-4 md:p-6 rounded-lg bg-white/5 border border-white/10">
-                  <div className="text-center">
-                    <div className="text-xs md:text-sm text-gray-300 mb-2">Projected Annual Revenue Increase</div>
-                    <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
-                      {(additionalRevenue * 12).toLocaleString('en-US')}
-                    </div>
-                    <div className="text-xs md:text-sm text-gray-400">
-                      Based on your current metrics and industry benchmarks
+                  <div className="p-3 rounded-lg bg-white/5 border border-white/10">
+                    <div className="text-xs text-gray-400 mb-1">Revenue Increase</div>
+                    <div className="text-lg md:text-xl font-bold text-green-400">
+                      +{revenueIncrease.toFixed(1)}%
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* Form Title */}
+              <h4 className="text-lg font-medium text-white mb-4">Claim Your Free Growth Plan</h4>
+
+              {isSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center justify-center py-12 text-center flex-1"
+                >
+                  <CheckCircle className="w-16 h-16 text-green-400 mb-4 animate-bounce" />
+                  <h3 className="text-xl font-semibold text-white mb-2">Message Sent!</h3>
+                  <p className="text-white/70">Thank you for reaching out. We&apos;ll get back to you within 24 hours.</p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="name" className="text-white/80 text-xs">Full Name *</Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="John Doe"
+                          className="h-9 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 text-sm"
+                          required
+                          disabled={isSubmitting}
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="email" className="text-white/80 text-xs">Email Address *</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="john@example.com"
+                          className="h-9 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 text-sm"
+                          required
+                          disabled={isSubmitting}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="phone" className="text-white/80 text-xs">Phone Number</Label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          placeholder="+91 99999 99999"
+                          className="h-9 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 text-sm"
+                          disabled={isSubmitting}
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="company" className="text-white/80 text-xs">Company Name</Label>
+                        <Input
+                          id="company"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleChange}
+                          placeholder="Your Company"
+                          className="h-9 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 text-sm"
+                          disabled={isSubmitting}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="service" className="text-white/80 text-xs">Service Interested In</Label>
+                        <select
+                          id="service"
+                          name="service"
+                          value={formData.service}
+                          onChange={handleChange}
+                          className="w-full h-9 px-3 rounded-md bg-white/5 border border-white/10 text-white focus:border-white/30 focus:outline-none disabled:opacity-50 text-sm"
+                          disabled={isSubmitting}
+                        >
+                          <option value="" className="bg-gray-900">Select a service</option>
+                          <option value="software" className="bg-gray-900">Software Development</option>
+                          <option value="mobile" className="bg-gray-900">Mobile App Development</option>
+                          <option value="marketing" className="bg-gray-900">Digital Marketing</option>
+                          <option value="other" className="bg-gray-900">Other</option>
+                        </select>
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <Label htmlFor="budget" className="text-white/80 text-xs">Estimated Budget</Label>
+                        <select
+                          id="budget"
+                          name="budget"
+                          value={formData.budget}
+                          onChange={handleChange}
+                          className="w-full h-9 px-3 rounded-md bg-white/5 border border-white/10 text-white focus:border-white/30 focus:outline-none disabled:opacity-50 text-sm"
+                          disabled={isSubmitting}
+                        >
+                          <option value="" className="bg-gray-900">Select budget range</option>
+                          <option value="5k-10k" className="bg-gray-900">5,000 - 10,000</option>
+                          <option value="10k-25k" className="bg-gray-900">10,000 - 25,000</option>
+                          <option value="25k-50k" className="bg-gray-900">25,000 - 50,000</option>
+                          <option value="50k-100k" className="bg-gray-900">50,000 - 100,000</option>
+                          <option value="100k+" className="bg-gray-900">100,000+</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <Label htmlFor="message" className="text-white/80 text-xs">Project Details *</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Tell us about your project, goals, and timeline..."
+                        rows={3}
+                        className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 resize-none text-sm"
+                        required
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-white text-black rounded-full py-2.5 font-medium hover:bg-gray-50 hover:scale-[1.01] transition-all disabled:opacity-50 disabled:hover:scale-100 flex items-center justify-center gap-2 mt-4"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Get My Free Growth Plan
+                        <Send className="w-4 h-4" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              )}
             </Card>
           </div>
         </div>

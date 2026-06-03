@@ -11,6 +11,7 @@ interface FooterLink {
   title: string
   href: string
   icon?: React.ComponentType<{ className?: string }>
+  rel?: string
 }
 
 interface FooterSection {
@@ -20,8 +21,19 @@ interface FooterSection {
 
 const footerLinks: FooterSection[] = [
   {
+    label: "Our Services",
+    links: [
+      { title: "Web Development — Guwahati", href: "/web-development-company-guwahati" },
+      { title: "Software Development — Assam", href: "/software-development-assam" },
+      { title: "AI Solutions — Guwahati", href: "/ai-solutions-guwahati" },
+      { title: "Mobile App Development", href: "/mobile-app-development-guwahati" },
+      { title: "CRM & ERP Development", href: "/crm-erp-development-assam" },
+    ],
+  },
+  {
     label: "Services",
     links: [
+      { title: "All Services", href: "/services" },
       { title: "Software Development", href: "/services#software" },
       { title: "Mobile App Development", href: "/services#mobile" },
       { title: "Digital Marketing", href: "/services#marketing" },
@@ -49,10 +61,9 @@ const footerLinks: FooterSection[] = [
   {
     label: "Social Links",
     links: [
-      { title: "Facebook", href: "#", icon: FacebookIcon },
-      { title: "Instagram", href: "#", icon: InstagramIcon },
-      { title: "Youtube", href: "#", icon: YoutubeIcon },
-      { title: "LinkedIn", href: "#", icon: LinkedinIcon },
+      { title: "Facebook", href: "https://www.facebook.com/profile.php?id=61587441681086", icon: FacebookIcon, rel: "me noopener noreferrer" },
+      { title: "Instagram", href: "https://www.instagram.com/genai.digital.290/", icon: InstagramIcon, rel: "me noopener noreferrer" },
+      { title: "LinkedIn", href: "https://www.linkedin.com/company/genaidigitalsolustion/", icon: LinkedinIcon, rel: "me noopener noreferrer" },
     ],
   },
 ]
@@ -152,7 +163,7 @@ export function Footer() {
           </div>
         </AnimatedContainer>
 
-        <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
+        <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5 xl:col-span-2 xl:mt-0">
           {footerLinks.map((section, index) => (
             <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
               <div className="mb-10 md:mb-0">
@@ -162,6 +173,8 @@ export function Footer() {
                     <li key={link.title}>
                       <a
                         href={link.href}
+                        rel={link.rel ?? (link.href.startsWith("http") ? "noopener noreferrer" : undefined)}
+                        target={link.href.startsWith("http") ? "_blank" : undefined}
                         className="hover:text-foreground inline-flex items-center transition-all duration-300"
                       >
                         {link.icon && <link.icon className="me-1 size-4" />}

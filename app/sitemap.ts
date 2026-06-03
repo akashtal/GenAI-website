@@ -1,10 +1,21 @@
 import { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://www.genai-solutions.com"
+    const baseUrl = "https://genaidigitalsolution.com"
 
-    // Add all static routes here
-    const routes = ["", "/about", "/services", "/projects", "/contact"]
+    // Static routes — all pages including local+global service landing pages
+    const routes = [
+        "",
+        "/about",
+        "/services",
+        "/projects",
+        "/contact",
+        "/web-development-company-guwahati",
+        "/software-development-assam",
+        "/ai-solutions-guwahati",
+        "/mobile-app-development-guwahati",
+        "/crm-erp-development-assam",
+    ]
 
     return routes.map((route) => ({
         url: `${baseUrl}${route}`,

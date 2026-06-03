@@ -1,14 +1,23 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Menu, X, ArrowRight } from "lucide-react"
+import { Menu, X, ArrowRight, ChevronDown } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+
+const serviceDropdownLinks = [
+  { name: "All Services", href: "/services" },
+  { name: "Web Development — Guwahati", href: "/web-development-company-guwahati" },
+  { name: "Software Development — Assam", href: "/software-development-assam" },
+  { name: "AI Solutions — Guwahati", href: "/ai-solutions-guwahati" },
+  { name: "Mobile App Development", href: "/mobile-app-development-guwahati" },
+  { name: "CRM & ERP Development", href: "/crm-erp-development-assam" },
+]
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
+  { name: "Services", href: "/services", hasDropdown: true },
   { name: "Projects", href: "/projects" },
   { name: "Contact", href: "/contact" },
 ]
@@ -124,7 +133,33 @@ export function GlassmorphismNav() {
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-8">
                 {navigation.map((item) =>
-                  item.href.startsWith("/") ? (
+                  item.hasDropdown ? (
+                    <div key={item.name} className="relative group">
+                      <Link
+                        href={item.href}
+                        className="flex items-center gap-1 text-white/80 hover:text-white transition-all duration-200 font-medium cursor-pointer"
+                      >
+                        {item.name}
+                        <ChevronDown className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" />
+                      </Link>
+                      {/* Dropdown */}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                        <div className="bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl py-2 min-w-[260px] shadow-2xl">
+                          {serviceDropdownLinks.map((link, idx) => (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              className={`block px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors ${
+                                idx === 0 ? "font-semibold text-white border-b border-white/10 mb-1" : ""
+                              }`}
+                            >
+                              {link.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ) : item.href.startsWith("/") ? (
                     <Link
                       key={item.name}
                       href={item.href}
@@ -201,7 +236,31 @@ export function GlassmorphismNav() {
             <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-2xl">
               <div className="flex flex-col space-y-1">
                 {navigation.map((item, index) =>
-                  item.href.startsWith("/") ? (
+                  item.hasDropdown ? (
+                    <div key={item.name}>
+                      <Link
+                        href={item.href}
+                        className={`text-white/90 hover:text-white hover:bg-white/10 rounded-lg px-3 py-3 text-left transition-all duration-300 font-semibold cursor-pointer flex items-center justify-between ${isOpen ? "animate-mobile-menu-item" : ""}`}
+                        style={{ animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms" }}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.name}
+                        <ChevronDown className="w-4 h-4 text-white/40" />
+                      </Link>
+                      <div className="ml-3 mt-1 space-y-1 border-l border-white/10 pl-3">
+                        {serviceDropdownLinks.slice(1).map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            className="block text-white/60 hover:text-white text-sm py-2 px-2 rounded-md hover:bg-white/5 transition-colors"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {link.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : item.href.startsWith("/") ? (
                     <Link
                       key={item.name}
                       href={item.href}

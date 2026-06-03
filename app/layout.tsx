@@ -22,40 +22,66 @@ const caveat = Caveat({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.genai-solutions.com"),
+  metadataBase: new URL("https://genaidigitalsolution.com"),
   title: {
-    default: "Gen AI Digital Solutions | Enterprise Software & App Development",
+    default: "Gen AI Digital Solutions | Software, AI & App Development Company",
     template: "%s | Gen AI Digital Solutions",
   },
   description:
-    "Leading digital transformation agency specializing in custom software, mobile app development (iOS/Android), AI implementation, and ROI-driven marketing solutions.",
+    "Gen AI Digital Solutions — a global software & AI company based in Guwahati, Assam. We build custom software, mobile apps (iOS/Android), AI solutions, CRM/ERP systems, and digital marketing for clients in India, UK & USA.",
   keywords: [
-    "Software Development",
-    "Mobile App Development",
-    "AI Solutions",
-    "Freelance Software Developer",
-    "Freelance App Developer",
-    "Freelance Web Developer",
-    "Freelance",
-    "Digital Marketing",
-    "Web Development",
-    "Enterprise Software",
-    "Next.js Developers",
-    "React Native Experts",
+    // Global / service-level
+    "Software Development Company",
+    "Mobile App Development Company",
+    "AI Solutions Company",
+    "Custom Software Development",
+    "Enterprise Software Development",
+    "Web Development Company",
+    "React Native App Development",
+    "Next.js Development Agency",
+    "Digital Marketing Agency",
+    "CRM Software Development",
+    "ERP Software Development",
+    "AI Chatbot Development",
+    "Machine Learning Solutions",
+    // India-wide
+    "Software Company India",
+    "AI Company India",
+    "Web Development Company India",
+    "Mobile App Development India",
+    "Affordable Software Development India",
+    // Assam / Guwahati (local primary)
+    "Web Development Company Guwahati",
+    "Software Company Assam",
+    "Mobile App Development Guwahati",
+    "AI Solutions Guwahati",
+    "Custom Software Development Assam",
+    "ERP Software Guwahati",
+    "CRM Development Assam",
+    "Digital Marketing Guwahati",
+    // UK
+    "Software Development Company UK",
+    "AI Solutions UK",
+    "Offshore Development UK",
+    // US
+    "Software Development Company USA",
+    "AI Solutions USA",
+    "Offshore Software Development USA",
   ],
   authors: [{ name: "Gen AI Digital Solutions" }],
   creator: "Gen AI Digital Solutions",
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://www.genai-solutions.com",
-    title: "Gen AI Digital Solutions | Enterprise Software & App Development",
+    locale: "en_IN",
+    alternateLocale: ["en_US", "en_GB"],
+    url: "https://genaidigitalsolution.com",
+    title: "Gen AI Digital Solutions | Software, AI & App Development Company",
     description:
-      "Leading digital transformation agency specializing in custom software, mobile app development (iOS/Android), AI implementation, and ROI-driven marketing solutions.",
+      "Gen AI Digital Solutions — a global software & AI company based in Guwahati, Assam. We build custom software, mobile apps, AI solutions, and digital marketing for clients in India, UK & USA.",
     siteName: "Gen AI Digital Solutions",
     images: [
       {
-        url: "/images/og-image.jpg", // Ensure this image exists or is a placeholder
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Gen AI Digital Solutions - Transforming Business Through Technology",
@@ -64,9 +90,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gen AI Digital Solutions | Enterprise Software & App Development",
+    title: "Gen AI Digital Solutions | Software, AI & App Development",
     description:
-      "Leading digital transformation agency maximizing business growth through custom software and AI solutions.",
+      "Global software & AI company based in India. Custom software, mobile apps, AI chatbots, CRM/ERP, and digital marketing for India, UK & USA businesses.",
     images: ["/images/og-image.jpg"],
   },
   robots: {

@@ -18,13 +18,13 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    details: "hello@genai.digital",
+    details: "info@genaidigitalsolution.com",
     description: "We'll respond within 24 hours",
   },
   {
     icon: Phone,
     title: "Call Us",
-    details: "+91 9365339460",
+    details: "+91 9365339460\n+91 9181188734",
     description: "Mon-Fri from 9am to 6pm",
   },
   {
@@ -188,7 +188,7 @@ export default function ContactPage() {
                       <info.icon className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="text-white font-medium mb-1">{info.title}</h3>
-                    <p className="text-white/80 text-sm mb-1">{info.details}</p>
+                    <p className="text-white/80 text-sm mb-1 whitespace-pre-line">{info.details}</p>
                     <p className="text-white/50 text-xs">{info.description}</p>
                   </motion.div>
                 ))}
@@ -282,21 +282,21 @@ export default function ContactPage() {
 
                       <div className="space-y-2">
                         <Label htmlFor="service" className="text-white/80">Service Interested In</Label>
-                          <select
-                            id="service"
-                            name="service"
-                            value={formData.service}
-                            onChange={handleChange}
-                            className="w-full h-10 px-3 rounded-md bg-white/5 border border-white/10 text-white focus:border-white/30 focus:outline-none disabled:opacity-50"
-                            disabled={isSubmitting}
-                          >
-                            <option value="" className="bg-gray-900">Select a service</option>
-                            <option value="software" className="bg-gray-900">Software Development</option>
-                            <option value="mobile" className="bg-gray-900">Mobile App Development</option>
-                            <option value="marketing" className="bg-gray-900">Digital Marketing</option>
-                            <option value="other" className="bg-gray-900">Other</option>
-                          </select>
-                        </div>
+                        <select
+                          id="service"
+                          name="service"
+                          value={formData.service}
+                          onChange={handleChange}
+                          className="w-full h-10 px-3 rounded-md bg-white/5 border border-white/10 text-white focus:border-white/30 focus:outline-none disabled:opacity-50"
+                          disabled={isSubmitting}
+                        >
+                          <option value="" className="bg-gray-900">Select a service</option>
+                          <option value="software" className="bg-gray-900">Software Development</option>
+                          <option value="mobile" className="bg-gray-900">Mobile App Development</option>
+                          <option value="marketing" className="bg-gray-900">Digital Marketing</option>
+                          <option value="other" className="bg-gray-900">Other</option>
+                        </select>
+                      </div>
 
                       <div className="space-y-2">
                         <Label htmlFor="budget" className="text-white/80">Estimated Budget</Label>
