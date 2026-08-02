@@ -94,6 +94,11 @@ export const metadata: Metadata = {
       "Global software & AI company based in India. Custom software, mobile apps, AI chatbots, CRM/ERP, and digital marketing for India, UK & USA businesses.",
     images: ["/images/og-image.jpg"],
   },
+  icons: {
+    icon: "/images/gen-ai-logo.png",
+    shortcut: "/images/gen-ai-logo.png",
+    apple: "/images/gen-ai-logo.png",
+  },
   robots: {
     index: true,
     follow: true,
