@@ -14,23 +14,30 @@ const services = [
   {
     id: "software",
     icon: Code,
-    title: "Software Development",
+    title: "Custom Software Development",
     description: "Custom software solutions tailored to your business needs. From web applications to enterprise systems, we build scalable and robust solutions.",
     features: ["Custom Web Applications", "Enterprise Software", "API Development", "System Integration", "Cloud Solutions", "Database Design"],
   },
   {
     id: "mobile",
     icon: Smartphone,
-    title: "Mobile App Development",
+    title: "Enterprise Mobile App Development",
     description: "Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android devices.",
-    features: ["iOS Development", "Android Development", "React Native Apps", "Custom software Development", "App Store Optimization", "Mobile UI/UX"],
+    features: ["iOS Development", "Android Development", "React Native Apps", "Custom App Development", "App Store Optimization", "Mobile UI/UX"],
+  },
+  {
+    id: "ai",
+    icon: Cloud,
+    title: "AI Automation & Integration",
+    description: "Leverage artificial intelligence to automate workflows, build intelligent chatbots, and integrate machine learning into your business.",
+    features: ["AI Chatbots", "Workflow Automation", "Machine Learning Integration", "Process Optimization", "Smart Data Analytics"],
   },
   {
     id: "marketing",
     icon: TrendingUp,
-    title: "Digital Marketing",
-    description: "Data-driven marketing strategies that increase your online visibility, drive traffic, and convert visitors into customers.",
-    features: ["SEO Optimization", "Social Media Marketing", "Content Marketing", "Pefermace marketing", "Analytics & Reporting"],
+    title: "Digital Marketing & SEO",
+    description: "Data-driven marketing strategies that increase your online visibility, drive organic traffic, and convert visitors into customers.",
+    features: ["SEO Optimization", "Social Media Marketing", "Content Marketing", "Performance Marketing", "Analytics & Reporting"],
   },
 ]
 
@@ -70,9 +77,9 @@ export default function ServicesPage() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-balance mb-6"
               >
-                <span className="text-foreground">Digital Solutions</span>
+                <span className="text-foreground">Custom Software &</span>
                 <br />
-                <span className="text-foreground">That Drive Results</span>
+                <span className="text-foreground">AI Development Services</span>
               </motion.h1>
 
               <motion.p

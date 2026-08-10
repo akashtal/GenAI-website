@@ -21,11 +21,11 @@ interface FooterSection {
 
 const footerLinks: FooterSection[] = [
   {
-    label: "Our Services",
+    label: "Local Services",
     links: [
-      { title: "Web Development — Guwahati", href: "/web-development-company-guwahati" },
-      { title: "Software Development — Assam", href: "/software-development-assam" },
-      { title: "AI Solutions — Guwahati", href: "/ai-solutions-guwahati" },
+      { title: "Web Development Guwahati", href: "/web-development-company-guwahati" },
+      { title: "Software Development Assam", href: "/software-development-assam" },
+      { title: "AI Solutions Guwahati", href: "/ai-solutions-guwahati" },
       { title: "Mobile App Development", href: "/mobile-app-development-guwahati" },
       { title: "CRM & ERP Development", href: "/crm-erp-development-assam" },
     ],

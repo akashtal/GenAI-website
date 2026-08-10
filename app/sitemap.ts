@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         "/ai-solutions-guwahati",
         "/mobile-app-development-guwahati",
         "/crm-erp-development-assam",
+        "/services/ai-automation",
     ]
 
     return routes.map((route) => ({

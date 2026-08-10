@@ -1,0 +1,125 @@
+
+	
+5
+Performance
+
+EXPORT
+24 hours
+7 days
+28 days
+3 months
+Compare
+arrow_drop_down
+Search type: Web
+arrow_drop_down
+Search type: Web
+Page: https://genaidigitalsolution.com/
+Page: https://genaidigitalsolution.com/
+close
+add
+Add filter
+Add filter
+filter_list_spark
+Customize your Performance report using AI
+Reset filters
+Reset filters
+Last update: 5 hours ago
+
+Total clicks
+3
+8/1/26 - 8/7/26
+1
+7/25/26 - 7/31/26
+
+
+Total impressions
+110
+8/1/26 - 8/7/26
+35
+7/25/26 - 7/31/26
+
+
+Average CTR
+2.7%
+8/1/26 - 8/7/26
+2.9%
+7/25/26 - 7/31/26
+
+
+Average position
+44.4
+8/1/26 - 8/7/26
+56.4
+7/25/26 - 7/31/26
+
+Daily
+2
+4
+6
+Chart, containing counts of 8/1/26 - 8/7/26 Clicks, 7/25/26 - 7/31/26 Clicks, 8/1/26 - 8/7/26 Impressions, 7/25/26 - 7/31/26 Impressions, 8/1/26 - 8/7/26 CTR, 7/25/26 - 7/31/26 CTR, 8/1/26 - 8/7/26 Position, and 7/25/26 - 7/31/26 Position from Invalid Date to January 1, 1970
+info
+Get more details on your site’s performance in generative AI features on Google Search
+Open report
+chevron_forward
+QUERIES
+PAGES
+COUNTRIES
+DEVICES
+SEARCH APPEARANCE
+DAYS
+
+Top queries
+	
+Clicks
+8/1/26 - 8/7/26
+	
+Clicks
+7/25/26 - 7/31/26
+	
+Clicks
+Difference
+	
+Impressions
+8/1/26 - 8/7/26
+	
+Impressions
+7/25/26 - 7/31/26
+	
+Impressions
+Difference
+	
+CTR
+8/1/26 - 8/7/26
+	
+CTR
+7/25/26 - 7/31/26
+	
+CTR
+Difference
+	
+Position
+8/1/26 - 8/7/26
+	
+Position
+7/25/26 - 7/31/26
+	
+Position
+Difference
+
+gen ai solutions	0	0	0	37	14	23	0%	0%	0%	70.8	73.6	-2.7
+genai solution	0	0	0	18	8	10	0%	0%	0%	56.1	59	-2.9
+genai solutions	0	0	0	10	6	4	0%	0%	0%	62.1	60.8	1.3
+gen ai solution	0	0	0	6	1	5	0%	0%	0%	73.5	68	5.5
+genidigitall	0	0	0	2	0	2	0%	0%	0%	6	0	6
+software company	0	0	0	0	1	-1	0%	0%	0%	0	24	-24
+Rows per page:
+5
+10
+25
+50
+100
+250
+500
+1-6 of 6
+Previous page
+Next page

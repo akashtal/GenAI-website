@@ -29,6 +29,7 @@ export function JsonLd() {
                     latitude: 26.1445,
                     longitude: 91.7362,
                 },
+                priceRange: "₹₹",
                 areaServed: [
                     {
                         "@type": "Place",
@@ -51,12 +52,12 @@ export function JsonLd() {
                     "@type": "OfferCatalog",
                     name: "Digital Services",
                     itemListElement: [
-                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Development" } },
-                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile App Development" } },
-                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Solutions" } },
-                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Software Development" } },
-                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "CRM & ERP Development" } },
-                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Digital Marketing" } },
+                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Development", url: "https://genaidigitalsolution.com/web-development-company-guwahati" } },
+                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile App Development", url: "https://genaidigitalsolution.com/mobile-app-development-guwahati" } },
+                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Solutions", url: "https://genaidigitalsolution.com/ai-solutions-guwahati" } },
+                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Software Development", url: "https://genaidigitalsolution.com/software-development-assam" } },
+                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "CRM & ERP Development", url: "https://genaidigitalsolution.com/crm-erp-development-assam" } },
+                        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Digital Marketing", url: "https://genaidigitalsolution.com/services" } },
                     ],
                 },
                 contactPoint: [

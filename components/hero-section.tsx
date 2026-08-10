@@ -79,14 +79,13 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-balance mb-8 tracking-tight"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-balance mb-8 tracking-tight flex flex-col items-center"
         >
           <span className="inline-block bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent pb-2">
-            Transforming Vision
+            Custom Software
           </span>
-          <br />
           <span className="inline-flex items-center justify-center flex-wrap gap-2 mt-2">
-            <span className="text-white/90 font-light italic">into Digital Excellence</span>
+            <span className="text-white/90 font-light italic">& AI Solutions</span>
           </span>
         </motion.h1>
 
