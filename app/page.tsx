@@ -1,47 +1,51 @@
+import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { HeroSection } from "@/components/hero-section"
-import { ProblemSolutionSection } from "@/components/problem-solution-section"
+import { ServicesSection } from "@/components/services-section"
+import { FeaturedWorkSection } from "@/components/featured-work-section"
+import { ProcessSection } from "@/components/process-section"
 import { FeaturesSection } from "@/components/features-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { CTASection } from "@/components/cta-section"
+import { HomeFaqSection } from "@/components/home-faq-section"
 import { Footer } from "@/components/footer"
-import { ServicesSection } from "@/components/services-section"
-import dynamic from "next/dynamic"
 
-// Lazy load heavy WebGL/Three.js backgrounds and calculator
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+}
+
+// Lazy-load the WebGL background and the calculator so they never block first paint.
 const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
-const FloatingShapes3D = dynamic(() => import("@/components/floating-shapes-3d").then((mod) => mod.FloatingShapes3D), { ssr: false })
 const ROICalculatorSection = dynamic(
   () => import("@/components/roi-calculator-section").then((mod) => mod.ROICalculatorSection),
   {
     ssr: false,
-    loading: () => <div className="h-[500px] w-full bg-white/5 animate-pulse rounded-3xl" />
-  }
+    loading: () => <div className="mx-auto h-[500px] w-full max-w-6xl animate-pulse rounded-3xl bg-white/5" />,
+  },
 )
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-black overflow-hidden">
-      <main className="min-h-screen relative overflow-hidden">
-        <div className="fixed inset-0 w-full h-full">
-          <Aurora colorStops={["#475569", "#64748b", "#475569"]} amplitude={1.2} blend={0.6} speed={0.8} />
-        </div>
-        {/* 3D Floating Shapes Layer */}
-        <div className="fixed inset-0 w-full h-full z-[5]">
-          <FloatingShapes3D />
-        </div>
-        <div className="relative z-10">
-          <GlassmorphismNav />
-          <HeroSection />
-          <ProblemSolutionSection />
-          <FeaturesSection />
-          <ServicesSection />
-          <TestimonialsSection />
-          <ROICalculatorSection />
-          <CTASection />
-          <Footer />
-        </div>
+    <div className="min-h-screen overflow-hidden bg-black">
+      <div className="fixed inset-0 h-full w-full opacity-70" aria-hidden="true">
+        <Aurora colorStops={["#1e293b", "#0f766e", "#1e3a5f"]} amplitude={1.0} blend={0.5} speed={0.5} />
+      </div>
+      <GlassmorphismNav />
+      <main className="relative z-10">
+        <HeroSection />
+        <ServicesSection />
+        <FeaturedWorkSection />
+        <ProcessSection />
+        <FeaturesSection />
+        <TestimonialsSection />
+        <ROICalculatorSection />
+        <HomeFaqSection />
+        <CTASection />
       </main>
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   )
 }

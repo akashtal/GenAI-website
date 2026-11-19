@@ -7,11 +7,11 @@ import Link from "next/link"
 
 const serviceDropdownLinks = [
   { name: "All Services", href: "/services" },
-  { name: "Web Development — Guwahati", href: "/web-development-company-guwahati" },
-  { name: "Software Development — Assam", href: "/software-development-assam" },
-  { name: "AI Solutions — Guwahati", href: "/ai-solutions-guwahati" },
-  { name: "Mobile App Development", href: "/mobile-app-development-guwahati" },
-  { name: "CRM & ERP Development", href: "/crm-erp-development-assam" },
+  { name: "Website Development", href: "/services/web-development" },
+  { name: "Custom Software", href: "/services/custom-software-development" },
+  { name: "AI Solutions & Chatbots", href: "/services/ai-solutions" },
+  { name: "Mobile App Development", href: "/services/mobile-app-development" },
+  { name: "CRM & ERP Development", href: "/services/crm-erp-development" },
 ]
 
 const navigation = [
@@ -66,7 +66,6 @@ export function GlassmorphismNav() {
   }, []) // Removed lastScrollY dependency to prevent infinite re-renders
 
   const scrollToTop = () => {
-    console.log("[v0] Scrolling to top")
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
@@ -74,11 +73,8 @@ export function GlassmorphismNav() {
     if (href.startsWith("/")) {
       return
     }
-
-    console.log("[v0] Attempting to scroll to:", href)
     const element = document.querySelector(href)
     if (element) {
-      console.log("[v0] Found element:", element)
 
       const rect = element.getBoundingClientRect()
       const currentScrollY = window.pageYOffset || document.documentElement.scrollTop
@@ -86,17 +82,11 @@ export function GlassmorphismNav() {
       const navbarHeight = 100
       const targetPosition = Math.max(0, elementAbsoluteTop - navbarHeight)
 
-      console.log("[v0] Element rect.top:", rect.top)
-      console.log("[v0] Current scroll position:", currentScrollY)
-      console.log("[v0] Element absolute top:", elementAbsoluteTop)
-      console.log("[v0] Target scroll position:", targetPosition)
-
       window.scrollTo({
         top: targetPosition,
         behavior: "smooth",
       })
     } else {
-      console.log("[v0] Element not found for:", href)
     }
     setIsOpen(false)
   }
@@ -192,7 +182,7 @@ export function GlassmorphismNav() {
                     }
                   }}
                 >
-                  <span className="mr-2">Get Started</span>
+                  <span className="mr-2">Free Quote</span>
                   <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
@@ -307,7 +297,7 @@ export function GlassmorphismNav() {
                     }
                   }}
                 >
-                  <span className="mr-2">Get Started</span>
+                  <span className="mr-2">Free Quote</span>
                   <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>

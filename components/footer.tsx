@@ -1,11 +1,10 @@
 "use client"
 import type React from "react"
-import { useState } from "react"
 import type { ComponentProps, ReactNode } from "react"
 import { motion, useReducedMotion } from "framer-motion"
-import { FacebookIcon, InstagramIcon, LinkedinIcon, YoutubeIcon, Loader2, CheckCircle, Mail } from "lucide-react"
+import { FacebookIcon, InstagramIcon, LinkedinIcon, Mail, MapPin, Phone } from "lucide-react"
+import { SITE, whatsappLink } from "@/lib/site"
 import Image from "next/image"
-import { toast } from "sonner"
 
 interface FooterLink {
   title: string
@@ -21,45 +20,28 @@ interface FooterSection {
 
 const footerLinks: FooterSection[] = [
   {
-    label: "Local Services",
-    links: [
-      { title: "Web Development Guwahati", href: "/web-development-company-guwahati" },
-      { title: "Software Development Assam", href: "/software-development-assam" },
-      { title: "AI Solutions Guwahati", href: "/ai-solutions-guwahati" },
-      { title: "Mobile App Development", href: "/mobile-app-development-guwahati" },
-      { title: "CRM & ERP Development", href: "/crm-erp-development-assam" },
-    ],
-  },
-  {
     label: "Services",
     links: [
-      { title: "All Services", href: "/services" },
-      { title: "Software Development", href: "/services#software" },
-      { title: "Mobile App Development", href: "/services#mobile" },
-      { title: "Digital Marketing", href: "/services#marketing" },
-      { title: "UI/UX Design", href: "/services#design" },
+      { title: "Website Development", href: "/services/web-development" },
+      { title: "Mobile App Development", href: "/services/mobile-app-development" },
+      { title: "Custom Software", href: "/services/custom-software-development" },
+      { title: "CRM & ERP Development", href: "/services/crm-erp-development" },
+      { title: "AI Solutions & Chatbots", href: "/services/ai-solutions" },
+      { title: "Web Development in Guwahati", href: "/web-development-company-guwahati" },
     ],
   },
   {
     label: "Company",
     links: [
-      { title: "About Us", href: "/#about" },
-      { title: "Projects", href: "/projects" },
-      { title: "Contact", href: "/contact" },
-      { title: "Careers", href: "/careers" },
-    ],
-  },
-  {
-    label: "Resources",
-    links: [
-      { title: "Blog", href: "/blog" },
-      { title: "Case Studies", href: "/projects" },
+      { title: "About Us", href: "/about" },
+      { title: "Our Work", href: "/projects" },
+      { title: "All Services", href: "/services" },
       { title: "FAQs", href: "/contact#faq" },
-      { title: "Support", href: "/contact" },
+      { title: "Contact", href: "/contact" },
     ],
   },
   {
-    label: "Social Links",
+    label: "Follow Us",
     links: [
       { title: "Facebook", href: "https://www.facebook.com/profile.php?id=61587441681086", icon: FacebookIcon, rel: "me noopener noreferrer" },
       { title: "Instagram", href: "https://www.instagram.com/genai.digital.290/", icon: InstagramIcon, rel: "me noopener noreferrer" },
@@ -67,80 +49,6 @@ const footerLinks: FooterSection[] = [
     ],
   },
 ]
-
-function NewsletterForm() {
-  const [email, setEmail] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    if (!email) {
-      toast.error("Please enter your email address")
-      return
-    }
-
-    setIsSubmitting(true)
-
-    try {
-      const response = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setIsSubmitted(true)
-        toast.success(data.message || 'Subscribed successfully!')
-        setEmail("")
-        setTimeout(() => setIsSubmitted(false), 5000)
-      } else {
-        toast.error(data.error || 'Failed to subscribe. Please try again.')
-      }
-    } catch {
-      toast.error('Network error. Please try again.')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  if (isSubmitted) {
-    return (
-      <div className="flex items-center gap-2 text-green-400">
-        <CheckCircle className="w-4 h-4" />
-        <span className="text-sm">Subscribed!</span>
-      </div>
-    )
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
-      <div className="relative flex-1">
-        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
-          className="w-full pl-9 pr-3 py-2 text-sm rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors"
-          disabled={isSubmitting}
-        />
-      </div>
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="px-4 py-2 text-sm font-medium rounded-lg bg-white text-black hover:bg-gray-100 transition-colors disabled:opacity-50"
-      >
-        {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Subscribe'}
-      </button>
-    </form>
-  )
-}
 
 export function Footer() {
   return (
@@ -151,19 +59,21 @@ export function Footer() {
         <AnimatedContainer className="space-y-4">
           <Image src="/images/gen-ai-logo.png" alt="Gen AI Digital Solutions" width={64} height={64} className="size-16" />
 
-          {/* Newsletter Section */}
-          <div className="mt-6">
-            <h3 className="text-xs font-medium text-white mb-3">Subscribe to our Newsletter</h3>
-            <NewsletterForm />
-            <p className="text-muted-foreground text-xs mt-2">Get the latest updates and insights delivered to your inbox.</p>
-          </div>
+          {/* NAP – keep identical to Google Business Profile for local SEO */}
+          <address className="not-italic mt-6 space-y-2 text-sm text-white/70">
+            <p className="text-white font-medium">{SITE.name}</p>
+            <p className="flex items-start gap-2"><MapPin className="w-4 h-4 mt-0.5 shrink-0" /><span>HQ: {SITE.city}, {SITE.region}, {SITE.country}<br /><span className="text-white/50">Serving clients across India &amp; worldwide</span></span></p>
+            <p><a href={SITE.phoneHref} className="flex items-center gap-2 hover:text-white"><Phone className="w-4 h-4" />{SITE.phone}</a></p>
+            <p><a href={`mailto:${SITE.email}`} className="flex items-center gap-2 hover:text-white"><Mail className="w-4 h-4" />{SITE.email}</a></p>
+            <p><a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-2 rounded-full bg-[#25D366] px-4 py-2 text-white font-medium hover:bg-[#1ebe5b]">Chat on WhatsApp</a></p>
+          </address>
 
           <div className="text-muted-foreground mt-8 text-sm md:mt-0 md:block hidden">
             <p>© {new Date().getFullYear()} Gen AI Digital Solutions. All rights reserved.</p>
           </div>
         </AnimatedContainer>
 
-        <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5 xl:col-span-2 xl:mt-0">
+        <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-3 xl:col-span-2 xl:mt-0">
           {footerLinks.map((section, index) => (
             <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
               <div className="mb-10 md:mb-0">

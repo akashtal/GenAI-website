@@ -112,18 +112,18 @@ const projects = [
     icon: Monitor,
   },
   {
-    id: 11,
-    title: "HashView Buisness Review And Rewards App ",
-    category: "Mobile App ios and android",
+    id: 12,
+    title: "HashView – Business Review & Rewards App",
+    category: "Mobile App (iOS & Android)",
     description: "Turn Real Feedback into Repeat Revenue The automated customer engagement platform that trades instant rewards for verified, real-time reviews. Boost retention and grow your reputation—effortlessly.",
     image: "/6.jpeg",
     tags: ["React Native", "Node.js", "Socket.io", "MongoDB", "Prisma", "NextAuth", "Tailwind CSS", "Shadcn UI", "TypeScript", "Firebase", "Firestore", "Cloud Functions", "Cloud Storage"],
     icon: Monitor,
   },
   {
-    id: 12,
+    id: 13,
     title: "Ecommerce Mobile App",
-    category: "Ecommerce Mobile App ios and android",
+    category: "E-commerce Mobile App (iOS & Android)",
     description: "B2B ecommerce mobile app ios and android with admin dashboard and user dashboard with all the features of an e-commerce platform.",
     image: "/3.jpeg",
     tags: ["React Native", "Node.js", "Socket.io", "MongoDB", "Prisma", "NextAuth", "Tailwind CSS", "Shadcn UI", "TypeScript", "Firebase", "Firestore", "Cloud Functions", "Cloud Storage"],
@@ -188,6 +188,8 @@ export default function ProjectsPage() {
                         src={project.image}
                         alt={project.title}
                         fill
+                        sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                        loading={index < 3 ? "eager" : "lazy"}
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />

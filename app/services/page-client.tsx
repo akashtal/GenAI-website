@@ -9,35 +9,26 @@ import { motion } from "framer-motion"
 import { Code, Smartphone, TrendingUp, Palette, Database, Cloud, Shield, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { SERVICES } from "@/lib/services-data"
+import { ArrowRight } from "lucide-react"
 
+// Detail pages come from lib/services-data – each card links to its own SEO landing page.
 const services = [
-  {
-    id: "software",
-    icon: Code,
-    title: "Custom Software Development",
-    description: "Custom software solutions tailored to your business needs. From web applications to enterprise systems, we build scalable and robust solutions.",
-    features: ["Custom Web Applications", "Enterprise Software", "API Development", "System Integration", "Cloud Solutions", "Database Design"],
-  },
-  {
-    id: "mobile",
-    icon: Smartphone,
-    title: "Enterprise Mobile App Development",
-    description: "Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android devices.",
-    features: ["iOS Development", "Android Development", "React Native Apps", "Custom App Development", "App Store Optimization", "Mobile UI/UX"],
-  },
-  {
-    id: "ai",
-    icon: Cloud,
-    title: "AI Automation & Integration",
-    description: "Leverage artificial intelligence to automate workflows, build intelligent chatbots, and integrate machine learning into your business.",
-    features: ["AI Chatbots", "Workflow Automation", "Machine Learning Integration", "Process Optimization", "Smart Data Analytics"],
-  },
+  ...SERVICES.map((s) => ({
+    id: s.slug,
+    href: `/services/${s.slug}` as string | undefined,
+    icon: s.icon === "globe" ? Code : s.icon === "smartphone" ? Smartphone : s.icon === "zap" ? Cloud : Database,
+    title: s.name,
+    description: s.subheadline,
+    features: s.features.slice(0, 5).map((f) => f.title),
+  })),
   {
     id: "marketing",
+    href: undefined as string | undefined,
     icon: TrendingUp,
     title: "Digital Marketing & SEO",
-    description: "Data-driven marketing strategies that increase your online visibility, drive organic traffic, and convert visitors into customers.",
-    features: ["SEO Optimization", "Social Media Marketing", "Content Marketing", "Performance Marketing", "Analytics & Reporting"],
+    description: "Data-driven marketing that increases your online visibility, drives organic traffic and converts visitors into customers.",
+    features: ["SEO Optimization", "Google Business Profile", "Social Media Marketing", "Performance Marketing", "Analytics & Reporting"],
   },
 ]
 
@@ -88,7 +79,7 @@ export default function ServicesPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-base sm:text-xl md:text-2xl text-white text-balance max-w-3xl mx-auto mb-8 leading-relaxed font-light"
               >
-                From concept to deployment, we provide end-to-end digital services that transform your ideas into powerful solutions.
+                Websites, mobile apps, custom software, CRM/ERP and AI – designed, built and supported end-to-end for businesses across India and worldwide.
               </motion.p>
             </div>
           </section>
@@ -147,6 +138,11 @@ export default function ServicesPage() {
                         </li>
                       ))}
                     </ul>
+                    {service.href && (
+                      <Link href={service.href} className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-300 hover:text-emerald-200">
+                        Explore {service.title.toLowerCase()} <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
               </div>

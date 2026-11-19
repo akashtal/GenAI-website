@@ -90,7 +90,7 @@ export function TestimonialsSection() {
       </div>
 
       <div className="relative max-w-7xl mx-auto">
-        {/* Header Section - Keep as user loves it */}
+        {/* Header Section */}
         <div className="text-center mb-16 md:mb-32">
           <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out inline-flex items-center gap-2 text-white/60 text-sm font-medium tracking-wider uppercase mb-6">
             <div className="w-8 h-px bg-white/30"></div>
@@ -101,7 +101,7 @@ export function TestimonialsSection() {
             Partners in your <span className="font-medium italic">success</span>
           </h2>
           <p className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-            Join hundreds of businesses growing faster with our high-impact digital solutions.
+            What founders and business owners say after working with us.
           </p>
         </div>
 

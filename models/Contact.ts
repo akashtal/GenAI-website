@@ -2,7 +2,9 @@ import mongoose, { Schema, Document, Model } from 'mongoose';
 
 export interface IContact extends Document {
     name: string;
-    email: string;
+    email?: string;
+    phone?: string;
+    source?: string;
     company?: string;
     service?: string;
     budget?: string;
@@ -22,11 +24,12 @@ const ContactSchema = new Schema<IContact>(
         },
         email: {
             type: String,
-            required: [true, 'Email is required'],
             trim: true,
             lowercase: true,
             match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email'],
         },
+        phone: { type: String, trim: true, maxlength: 25 },
+        source: { type: String, trim: true, maxlength: 40 },
         company: {
             type: String,
             trim: true,
@@ -34,11 +37,13 @@ const ContactSchema = new Schema<IContact>(
         },
         service: {
             type: String,
-            enum: ['', 'software', 'mobile', 'marketing', 'design', 'cloud', 'other'],
+            trim: true,
+            maxlength: 60,
         },
         budget: {
             type: String,
-            enum: ['', '5k-10k', '10k-25k', '25k-50k', '50k-100k', '100k+'],
+            trim: true,
+            maxlength: 60,
         },
         message: {
             type: String,

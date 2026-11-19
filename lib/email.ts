@@ -26,13 +26,18 @@ interface EmailOptions {
 export async function sendEmail({ to, subject, html, replyTo }: EmailOptions) {
     try {
         const info = await transporter.sendMail({
-            from: `"GenAI Digital Solution" <${process.env.ADMIN_EMAIL}>`,
+            // SMTP_FROM should be an address on a domain verified with your SMTP provider (e.g. info@genaidigitalsolution.com).
+            // Sending "from" a gmail.com address through Brevo fails DMARC and lands in spam.
+            from: `"Gen AI Digital Solutions" <${process.env.SMTP_FROM || process.env.ADMIN_EMAIL}>`,
             to,
             subject,
             html,
             replyTo,
         });
 
+        if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+            console.error('SMTP credentials missing (SMTP_USER / SMTP_PASS) – email not sent');
+        }
         console.log('Email sent:', info.messageId);
         return { success: true, messageId: info.messageId };
     } catch (error) {
@@ -41,16 +46,29 @@ export async function sendEmail({ to, subject, html, replyTo }: EmailOptions) {
     }
 }
 
+// Escape user-supplied values before placing them in HTML emails (prevents HTML/link injection)
+export function esc(value: unknown): string {
+    return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
 // Email templates
-export function getContactNotificationEmail(data: {
+export function getContactNotificationEmail(raw: {
     name: string;
-    email: string;
+    email?: string;
     phone?: string;
     company?: string;
     service?: string;
     budget?: string;
     message: string;
+    source?: string;
 }) {
+    const data = Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, v ? esc(v) : v])) as typeof raw;
+    const waDigits = (raw.phone || '').replace(/\D/g, '');
     return `
     <!DOCTYPE html>
     <html>
@@ -67,8 +85,9 @@ export function getContactNotificationEmail(data: {
         <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
           <h2 style="color: #1a1a2e; margin-top: 0;">Contact Details</h2>
           <p><strong>Name:</strong> ${data.name}</p>
-          <p><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></p>
-          ${data.phone ? `<p><strong>Phone:</strong> ${data.phone}</p>` : ''}
+          ${data.email ? `<p><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></p>` : ''}
+          ${data.phone ? `<p><strong>Phone / WhatsApp:</strong> ${data.phone}${waDigits.length >= 10 ? ` &middot; <a href="https://wa.me/${waDigits}">Open WhatsApp</a>` : ''}</p>` : ''}
+          ${data.source ? `<p><strong>Form:</strong> ${data.source}</p>` : ''}
           ${data.company ? `<p><strong>Company:</strong> ${data.company}</p>` : ''}
           ${data.service ? `<p><strong>Service Interested:</strong> ${data.service}</p>` : ''}
           ${data.budget ? `<p><strong>Budget Range:</strong> ${data.budget}</p>` : ''}
@@ -86,7 +105,8 @@ export function getContactNotificationEmail(data: {
   `;
 }
 
-export function getContactConfirmationEmail(name: string) {
+export function getContactConfirmationEmail(rawName: string) {
+    const name = esc(rawName);
     return `
     <!DOCTYPE html>
     <html>
@@ -117,7 +137,9 @@ export function getContactConfirmationEmail(name: string) {
   `;
 }
 
-export function getDemoRequestEmail(email: string, source: string) {
+export function getDemoRequestEmail(rawEmail: string, rawSource: string) {
+    const email = esc(rawEmail);
+    const source = esc(rawSource);
     return `
     <!DOCTYPE html>
     <html>

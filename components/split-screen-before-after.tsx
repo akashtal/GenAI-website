@@ -110,6 +110,7 @@ export function SplitScreenBeforeAfter() {
                   src="/images/dealership-showroom.jpg"
                   alt="Modern car dealership showroom"
                   fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>

@@ -15,31 +15,49 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { toast } from "sonner"
+import { SITE, trackEvent, whatsappLink } from "@/lib/site"
+import { WhatsAppIcon } from "@/components/whatsapp-float"
 
 const contactInfo = [
   {
-    icon: Mail,
-    title: "Email Us",
-    details: "info@genaidigitalsolution.com",
-    description: "We'll respond within 24 hours",
+    icon: MessageSquare,
+    title: "WhatsApp",
+    details: SITE.phoneAlternate,
+    description: "Fastest reply – tap to chat",
+    href: whatsappLink() as string | undefined,
+    event: "contact_whatsapp",
   },
   {
     icon: Phone,
     title: "Call Us",
-    details: "+91 9365339460\n+91 9181188734",
-    description: "Mon-Fri from 9am to 6pm",
+    details: SITE.phone,
+    description: "Mon–Fri, 9am – 6pm IST",
+    href: SITE.phoneHref as string | undefined,
+    event: "contact_call",
+  },
+  {
+    icon: Phone,
+    title: "Call Us",
+    details: SITE.phoneAlternate,
+    description: "Alternate number",
+    href: SITE.phoneAlternateHref as string | undefined,
+    event: "contact_call",
+  },
+  {
+    icon: Mail,
+    title: "Email Us",
+    details: SITE.email,
+    description: "We reply within 24 hours",
+    href: `mailto:${SITE.email}` as string | undefined,
+    event: "contact_email",
   },
   {
     icon: MapPin,
-    title: "Visit Us",
-    details: "Assam, India",
-    description: "Book a meeting at our office",
-  },
-  {
-    icon: Clock,
-    title: "Working Hours",
-    details: "Mon - Fri: 9AM - 6PM",
-    description: "Weekend support available",
+    title: "Headquarters",
+    details: "Guwahati, Assam, India",
+    description: "Serving India, UK & USA",
+    href: undefined as string | undefined,
+    event: "",
   },
 ]
 
@@ -75,8 +93,8 @@ export default function ContactPage() {
     service: "",
     budget: "",
     message: "",
+    website: "",
   })
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -90,13 +108,14 @@ export default function ContactPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, source: "contact-page" }),
       })
 
       const data = await response.json()
 
       if (response.ok) {
         setIsSubmitted(true)
+        trackEvent("generate_lead", { form: "contact_page", service: formData.service, budget: formData.budget })
         toast.success(data.message || 'Message sent successfully!')
         setFormData({
           name: "",
@@ -106,9 +125,8 @@ export default function ContactPage() {
           service: "",
           budget: "",
           message: "",
+          website: "",
         })
-        // Reset success state after 5 seconds
-        setTimeout(() => setIsSubmitted(false), 5000)
       } else {
         toast.error(data.error || 'Failed to send message. Please try again.')
       }
@@ -162,7 +180,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-base sm:text-xl md:text-2xl text-white text-balance max-w-3xl mx-auto mb-8 leading-relaxed font-light"
               >
-                Have a project in mind? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
+                Tell us about your project and get a free, fixed quote within 24 hours – or message us on WhatsApp for a faster reply.
               </motion.p>
             </div>
           </section>
@@ -178,13 +196,17 @@ export default function ContactPage() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-4"
               >
                 {contactInfo.map((info, index) => (
-                  <motion.div
+                  <motion.a
+                    href={info.href}
+                    target={info.href?.startsWith("http") ? "_blank" : undefined}
+                    rel={info.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                    onClick={() => info.event && trackEvent(info.event, { location: "contact_cards" })}
                     key={info.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all"
+                    className="block bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 hover:border-white/25 transition-all break-words"
                   >
                     <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                       <info.icon className="w-6 h-6 text-white" />
@@ -192,7 +214,7 @@ export default function ContactPage() {
                     <h3 className="text-white font-medium mb-1">{info.title}</h3>
                     <p className="text-white/80 text-sm mb-1 whitespace-pre-line">{info.details}</p>
                     <p className="text-white/50 text-xs">{info.description}</p>
-                  </motion.div>
+                  </motion.a>
                 ))}
               </motion.div>
             </div>
@@ -210,7 +232,8 @@ export default function ContactPage() {
                   transition={{ duration: 0.6 }}
                   className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8"
                 >
-                  <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
+                  <h2 id="quote" className="scroll-mt-28 text-2xl font-bold text-white mb-2">Get a free quote</h2>
+                  <p className="text-white/60 text-sm mb-6">Takes 1 minute. We reply within 24 hours with a cost estimate and next steps.</p>
 
                   {isSubmitted ? (
                     <motion.div
@@ -232,7 +255,7 @@ export default function ContactPage() {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            placeholder="John Doe"
+                            placeholder="Your name"
                             className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
                             required
                             disabled={isSubmitting}
@@ -246,7 +269,7 @@ export default function ContactPage() {
                             type="email"
                             value={formData.email}
                             onChange={handleChange}
-                            placeholder="john@example.com"
+                            placeholder="you@business.com"
                             className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
                             required
                             disabled={isSubmitting}
@@ -256,14 +279,14 @@ export default function ContactPage() {
 
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="phone" className="text-white/80">Phone Number</Label>
+                          <Label htmlFor="phone" className="text-white/80">Phone / WhatsApp</Label>
                           <Input
                             id="phone"
                             name="phone"
                             type="tel"
                             value={formData.phone}
                             onChange={handleChange}
-                            placeholder="+1 (555) 000-0000"
+                            placeholder="+91 98xxx xxxxx"
                             className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
                             disabled={isSubmitting}
                           />
@@ -293,10 +316,13 @@ export default function ContactPage() {
                           disabled={isSubmitting}
                         >
                           <option value="" className="bg-gray-900">Select a service</option>
-                          <option value="software" className="bg-gray-900">Software Development</option>
-                          <option value="mobile" className="bg-gray-900">Mobile App Development</option>
-                          <option value="marketing" className="bg-gray-900">Digital Marketing</option>
-                          <option value="other" className="bg-gray-900">Other</option>
+                          <option value="Website" className="bg-gray-900">Website / E-commerce</option>
+                          <option value="Mobile app" className="bg-gray-900">Mobile App (Android / iOS)</option>
+                          <option value="Custom software" className="bg-gray-900">Custom Software</option>
+                          <option value="CRM / ERP" className="bg-gray-900">CRM / ERP System</option>
+                          <option value="AI chatbot / automation" className="bg-gray-900">AI Chatbot / Automation</option>
+                          <option value="Digital marketing / SEO" className="bg-gray-900">Digital Marketing / SEO</option>
+                          <option value="Other" className="bg-gray-900">Other / Not sure</option>
                         </select>
                       </div>
 
@@ -311,16 +337,17 @@ export default function ContactPage() {
                           disabled={isSubmitting}
                         >
                           <option value="" className="bg-gray-900">Select budget range</option>
-                          <option value="5k-10k" className="bg-gray-900">5,000 - 10,000</option>
-                          <option value="10k-25k" className="bg-gray-900">10,000 - 25,000</option>
-                          <option value="25k-50k" className="bg-gray-900">25,000 - 50,000</option>
-                          <option value="50k-100k" className="bg-gray-900">50,000 - 100,000</option>
-                          <option value="100k+" className="bg-gray-900">100,000+</option>
+                          <option value="Under ₹50,000" className="bg-gray-900">Under ₹50,000</option>
+                          <option value="₹50,000 – ₹1.5 lakh" className="bg-gray-900">₹50,000 – ₹1.5 lakh</option>
+                          <option value="₹1.5 – ₹5 lakh" className="bg-gray-900">₹1.5 – ₹5 lakh</option>
+                          <option value="₹5 lakh+" className="bg-gray-900">₹5 lakh+</option>
+                          <option value="International (USD/GBP)" className="bg-gray-900">International project (USD / GBP)</option>
+                          <option value="Not sure yet" className="bg-gray-900">Not sure yet – advise me</option>
                         </select>
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="message" className="text-white/80">Project Details *</Label>
+                        <Label htmlFor="message" className="text-white/80">What do you want to build? *</Label>
                         <Textarea
                           id="message"
                           name="message"
@@ -334,6 +361,7 @@ export default function ContactPage() {
                         />
                       </div>
 
+                      <input type="text" name="website" value={formData.website} onChange={handleChange} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
                       <Button
                         type="submit"
                         disabled={isSubmitting}
@@ -374,20 +402,15 @@ export default function ContactPage() {
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden"
                       >
-                        <button
-                          onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                          className="w-full px-6 py-4 flex items-center justify-between text-left"
-                        >
-                          <span className="text-white font-medium">{faq.question}</span>
-                          <ChevronDown
-                            className={`w-5 h-5 text-white/60 transition-transform ${openFaq === index ? 'rotate-180' : ''}`}
-                          />
-                        </button>
-                        {openFaq === index && (
+                        <details open={index === 0} className="group [&_summary::-webkit-details-marker]:hidden">
+                          <summary className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer list-none">
+                            <h3 className="text-white font-medium">{faq.question}</h3>
+                            <ChevronDown className="w-5 h-5 shrink-0 text-white/60 transition-transform group-open:rotate-180" />
+                          </summary>
                           <div className="px-6 pb-4">
                             <p className="text-white/70 text-sm leading-relaxed">{faq.answer}</p>
                           </div>
-                        )}
+                        </details>
                       </motion.div>
                     ))}
                   </div>
@@ -406,12 +429,27 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="text-white font-medium">Prefer a quick chat?</h3>
-                        <p className="text-white/60 text-sm">Schedule a 15-minute discovery call</p>
+                        <p className="text-white/60 text-sm">Message or call us – we usually reply within the hour.</p>
                       </div>
                     </div>
-                    <Button variant="outline" className="w-full rounded-full border-white/20 hover:bg-white/10 bg-transparent text-white">
-                      Book a Call
-                    </Button>
+                    <div className="grid grid-cols-2 gap-3">
+                      <a
+                        href={whatsappLink("Hi! I'd like to book a quick call about a project.")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => trackEvent("contact_whatsapp", { location: "contact_quick_chat" })}
+                        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] py-3 font-semibold text-white hover:bg-[#1ebe5b]"
+                      >
+                        <WhatsAppIcon className="w-5 h-5" /> WhatsApp
+                      </a>
+                      <a
+                        href={SITE.phoneHref}
+                        onClick={() => trackEvent("contact_call", { location: "contact_quick_chat" })}
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 py-3 font-medium text-white hover:bg-white/10"
+                      >
+                        <Phone className="w-4 h-4" /> Call now
+                      </a>
+                    </div>
                   </motion.div>
                 </motion.div>
               </div>
