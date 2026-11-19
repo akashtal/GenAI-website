@@ -213,7 +213,10 @@ export function GlassmorphismNav() {
           </div>
         </div>
 
-        <div className="md:hidden relative">
+        {/* When closed, this wrapper must not catch taps: the nav is fixed above the page, so an
+            invisible-but-present menu would sit over the content and swallow every tap on mobile. */}
+        {/* Absolutely positioned so the closed menu adds no height to the fixed <nav> box. */}
+        <div className={`md:hidden absolute left-0 right-0 top-full ${isOpen ? "" : "pointer-events-none"}`}>
           {/* Backdrop overlay */}
           <div
             className={`fixed inset-0 bg-black/20 backdrop-blur-sm transition-all duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -224,10 +227,10 @@ export function GlassmorphismNav() {
 
           {/* Menu container */}
           <div
-            className={`mt-2 w-[90vw] max-w-xs mx-auto transition-all duration-500 ease-out transform-gpu ${isOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-8 scale-95 pointer-events-none"
+            className={`mt-2 w-[90vw] max-w-xs mx-auto transition-all duration-500 ease-out transform-gpu ${isOpen ? "visible opacity-100 translate-y-0 scale-100" : "invisible opacity-0 -translate-y-8 scale-95 pointer-events-none"
               }`}
           >
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-2xl">
+            <div className="bg-black/90 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-2xl">
               <div className="flex flex-col space-y-1">
                 {navigation.map((item, index) =>
                   item.hasDropdown ? (

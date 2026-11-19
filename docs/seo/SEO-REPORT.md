@@ -171,3 +171,21 @@ Changed: metadata in `app/layout.tsx`, `lib/services-data.ts` and page files; `c
 9. **CrUX API key** in GSC Wizard, so real-user Core Web Vitals can be tracked once traffic exists.
 10. **Content:** write the calendar topics with real examples and client permission. Nothing was auto-published.
 11. If not already done: rotate the Brevo SMTP key and set `MONGODB_URI` (from the first audit), so leads are delivered and stored.
+
+---
+
+## Update – 20 Nov 2026 (after deploy)
+
+### Mobile taps not working: fixed (needs deploy)
+- **Cause [M]:** the closed mobile menu was faded out (`opacity-0`) but still in the layout inside the fixed `<nav>`. The nav box became ~640 px tall and invisibly covered the page. 38 of 40 links on `/services` failed a tap-target check in phone emulation. The bottom Call/WhatsApp/Quote bar worked because it sits above the nav. Desktop was unaffected (`md:hidden`).
+- **Fix:** the mobile menu is absolutely positioned, the closed menu is `invisible` and `pointer-events-none`, and the open menu background is opaque. Nav height on mobile is now 66 px [M]. 0 genuinely blocked links across 9 page types; a real tap test of a service link and of opening the menu and tapping Pricing both navigated [M].
+
+### Domain: www vs non-www conflict (manual fix in Vercel)
+- [M] `https://genaidigitalsolution.com/*` now returns a **307 (temporary)** redirect to `https://www.genaidigitalsolution.com/*`. All canonicals, the sitemap, schema, IndexNow, the GSC property and Bing use the non-www domain.
+- **Fix:** Vercel → Project → Settings → Domains → make `genaidigitalsolution.com` the primary domain (www → root, 308). The four new pages go to IndexNow after that.
+
+### Google Analytics 4 [M]
+- Property "Akash RosTec Gaming" (`properties/235419766`, `G-HJ4TMMBJ9N`) is linked and receiving `genaidigitalsolution.com` data. GTM container `GTM-5LWH544G` is the one on the site.
+- **No double counting:** 30 page views over 25 sessions (Oct 20 – Nov 16).
+- Last 90 days by source: direct 33 · Facebook 11 · Google organic 10 · Instagram 8 · Vercel 4. **Social sends as many visits as Google**, and those are mobile visits, so the mobile tap bug mostly hurt them.
+- 0 key events. After the new tracking has run for a few days: GA4 → Admin → Events → mark `generate_lead` (and optionally `contact_whatsapp` and `contact_call`) as key events.
