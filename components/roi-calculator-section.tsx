@@ -201,7 +201,7 @@ export function ROICalculatorSection() {
                     value={inputs.businessType}
                     onValueChange={(value) => setInputs((prev) => ({ ...prev, businessType: value }))}
                   >
-                    <SelectTrigger className="bg-gray-700/50 border-gray-600 text-white">
+                    <SelectTrigger aria-label="Business type" className="bg-gray-700/50 border-gray-600 text-white">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-700">
@@ -223,6 +223,7 @@ export function ROICalculatorSection() {
                     <span className="text-white font-semibold">{inputs.monthlyVisitors.toLocaleString('en-US')}</span>
                   </label>
                   <Slider
+                    aria-label="Monthly website visitors"
                     value={[inputs.monthlyVisitors]}
                     onValueChange={([value]) => setInputs((prev) => ({ ...prev, monthlyVisitors: value }))}
                     max={100000}
@@ -243,6 +244,7 @@ export function ROICalculatorSection() {
                     <span className="text-white font-semibold">{inputs.currentConversionRate}%</span>
                   </label>
                   <Slider
+                    aria-label="Current conversion rate (%)"
                     value={[inputs.currentConversionRate]}
                     onValueChange={([value]) => setInputs((prev) => ({ ...prev, currentConversionRate: value }))}
                     max={10}
@@ -263,6 +265,7 @@ export function ROICalculatorSection() {
                     <span className="text-white font-semibold">{inputs.averageOrderValue.toLocaleString('en-US')}</span>
                   </label>
                   <Slider
+                    aria-label="Average order value"
                     value={[inputs.averageOrderValue]}
                     onValueChange={([value]) => setInputs((prev) => ({ ...prev, averageOrderValue: value }))}
                     max={businessConfig.maxOrder}

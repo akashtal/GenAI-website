@@ -12,6 +12,8 @@ const serviceDropdownLinks = [
   { name: "AI Solutions & Chatbots", href: "/services/ai-solutions" },
   { name: "Mobile App Development", href: "/services/mobile-app-development" },
   { name: "CRM & ERP Development", href: "/services/crm-erp-development" },
+  { name: "Northeast India", href: "/northeast-india" },
+  { name: "Pricing", href: "/pricing" },
 ]
 
 const navigation = [

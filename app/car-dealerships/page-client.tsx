@@ -4,7 +4,7 @@ import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import dynamic from "next/dynamic"
 
-const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
+const Aurora = dynamic(() => import("@/components/aurora-bg"), { ssr: false })
 import { DealershipHeroHeader } from "@/components/dealership-hero-header"
 import { SplitScreenBeforeAfter } from "@/components/split-screen-before-after"
 import { TyreKickersSection } from "@/components/tyre-kickers-section"

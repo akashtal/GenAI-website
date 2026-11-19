@@ -3,7 +3,7 @@ export function JsonLd() {
         "@context": "https://schema.org",
         "@graph": [
             {
-                "@type": ["Organization", "LocalBusiness"],
+                "@type": ["Organization", "ProfessionalService"],
                 "@id": "https://genaidigitalsolution.com/#organization",
                 name: "Gen AI Digital Solutions",
                 url: "https://genaidigitalsolution.com",
@@ -13,8 +13,9 @@ export function JsonLd() {
                     width: 200,
                     height: 200,
                 },
-                description: "Gen AI Digital Solutions is an Indian software, mobile app and AI development company headquartered in Guwahati, Assam, serving clients across India and worldwide. We specialize in custom software development, mobile app development, AI solutions, CRM/ERP systems, web development, and digital marketing \u2014 serving clients in India, the UK, and the USA.",
+                description: "Gen AI Digital Solutions is a software, mobile app and AI development company headquartered in Guwahati, Assam, India. It builds websites, Android & iOS apps, custom software, CRM/ERP systems and AI chatbots for businesses across Northeast India, the rest of India and internationally.",
                 telephone: "+91-9365339460",
+                alternateName: ["GenAI Digital Solution", "Gen AI Digital"],
                 email: "info@genaidigitalsolution.com",
                 address: {
                     "@type": "PostalAddress",
@@ -40,6 +41,14 @@ export function JsonLd() {
                 numberOfEmployees: { "@type": "QuantitativeValue", minValue: 5 },
                 foundingLocation: { "@type": "Place", name: "Guwahati, Assam, India" },
                 areaServed: [
+                    { "@type": "State", name: "Assam" },
+                    { "@type": "State", name: "Meghalaya" },
+                    { "@type": "State", name: "Tripura" },
+                    { "@type": "State", name: "Manipur" },
+                    { "@type": "State", name: "Mizoram" },
+                    { "@type": "State", name: "Nagaland" },
+                    { "@type": "State", name: "Arunachal Pradesh" },
+                    { "@type": "State", name: "Sikkim" },
                     {
                         "@type": "Country",
                         name: "India",

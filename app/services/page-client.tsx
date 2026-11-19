@@ -4,7 +4,7 @@ import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import dynamic from "next/dynamic"
 
-const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
+const Aurora = dynamic(() => import("@/components/aurora-bg"), { ssr: false })
 import { motion } from "framer-motion"
 import { Code, Smartphone, TrendingUp, Palette, Database, Cloud, Shield, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"

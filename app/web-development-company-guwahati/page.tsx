@@ -9,7 +9,6 @@ const path = "/web-development-company-guwahati"
 export const metadata: Metadata = {
   title: page.metaTitle,
   description: page.metaDescription,
-  keywords: page.keywords,
   alternates: { canonical: path },
   openGraph: { type: "website", url: path, title: `${page.metaTitle} | ${SITE.name}`, description: page.metaDescription },
 }

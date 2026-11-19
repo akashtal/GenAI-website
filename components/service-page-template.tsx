@@ -25,7 +25,7 @@ import { WhatsAppIcon } from "@/components/whatsapp-float"
 import { SITE, trackEvent, whatsappLink } from "@/lib/site"
 import { SERVICES, SERVICE_MARKETS, type IconKey, type ServiceData } from "@/lib/services-data"
 
-const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
+const Aurora = dynamic(() => import("@/components/aurora-bg"), { ssr: false })
 
 const iconMap: Record<IconKey, LucideIcon> = {
   globe: Globe,
@@ -97,7 +97,7 @@ export function ServicePageTemplate({ service }: { service: ServiceData }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("contact_whatsapp", { location: "service_hero", service: service.slug })}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#1ebe5b]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#15803d] px-7 py-4 font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#166534]"
               >
                 <WhatsAppIcon className="h-5 w-5" />
                 Chat on WhatsApp
@@ -141,7 +141,7 @@ export function ServicePageTemplate({ service }: { service: ServiceData }) {
           <div className="mx-auto max-w-6xl">
             <div className="mb-12 text-center">
               <h2 id="features-heading" className="text-3xl font-bold text-white md:text-4xl">
-                What our {service.shortName.toLowerCase()} service includes
+                {service.featuresTitle ?? `What our ${service.shortName.toLowerCase()} service includes`}
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-white/55">End-to-end delivery – design, build, launch and support.</p>
             </div>
@@ -178,9 +178,9 @@ export function ServicePageTemplate({ service }: { service: ServiceData }) {
                 reliable offshore team, you get senior-level engineering, clear communication and pricing that makes sense.
               </p>
               {service.priceFrom && (
-                <p className="mt-6 inline-flex rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-200">
-                  {service.priceFrom.note} · fixed quote in 24h
-                </p>
+                <Link href="/pricing" className="mt-6 inline-flex rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-200 hover:bg-emerald-400/20">
+                  {service.priceFrom.note} · see full pricing →
+                </Link>
               )}
             </div>
             <ul className="space-y-3">
@@ -229,7 +229,7 @@ export function ServicePageTemplate({ service }: { service: ServiceData }) {
               <Link href="/contact#quote" className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-black hover:bg-slate-100">
                 Get a free quote <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
-              <a href={whatsappLink(waMessage)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 font-semibold text-white hover:bg-[#1ebe5b]">
+              <a href={whatsappLink(waMessage)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#15803d] px-7 py-4 font-semibold text-white hover:bg-[#166534]">
                 <WhatsAppIcon className="h-5 w-5" /> WhatsApp us
               </a>
             </div>

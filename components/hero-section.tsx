@@ -84,7 +84,7 @@ export function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent("contact_whatsapp", { location: "hero" })}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-base font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#1ebe5b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#15803d] px-7 py-4 text-base font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#166534] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             <WhatsAppIcon className="h-5 w-5" />
             Chat on WhatsApp
@@ -113,7 +113,7 @@ export function HeroSection() {
 
         {/* Tech stack */}
         <div className="mt-14 w-full min-w-0 overflow-hidden">
-          <p className="mb-5 text-xs uppercase tracking-[0.2em] text-slate-500">Built with the same stack as top product teams</p>
+          <p className="mb-5 text-xs uppercase tracking-[0.2em] text-slate-400">Built with the same stack as top product teams</p>
           <div className="relative">
             <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-black to-transparent" />
             <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-black to-transparent" />

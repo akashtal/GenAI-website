@@ -28,6 +28,7 @@ const footerLinks: FooterSection[] = [
       { title: "CRM & ERP Development", href: "/services/crm-erp-development" },
       { title: "AI Solutions & Chatbots", href: "/services/ai-solutions" },
       { title: "Web Development in Guwahati", href: "/web-development-company-guwahati" },
+      { title: "Northeast India", href: "/northeast-india" },
     ],
   },
   {
@@ -36,8 +37,11 @@ const footerLinks: FooterSection[] = [
       { title: "About Us", href: "/about" },
       { title: "Our Work", href: "/projects" },
       { title: "All Services", href: "/services" },
+      { title: "Pricing", href: "/pricing" },
       { title: "FAQs", href: "/contact#faq" },
       { title: "Contact", href: "/contact" },
+      { title: "Privacy Policy", href: "/privacy-policy" },
+      { title: "Terms of Use", href: "/terms" },
     ],
   },
   {
@@ -65,7 +69,7 @@ export function Footer() {
             <p className="flex items-start gap-2"><MapPin className="w-4 h-4 mt-0.5 shrink-0" /><span>HQ: {SITE.city}, {SITE.region}, {SITE.country}<br /><span className="text-white/50">Serving clients across India &amp; worldwide</span></span></p>
             <p><a href={SITE.phoneHref} className="flex items-center gap-2 hover:text-white"><Phone className="w-4 h-4" />{SITE.phone}</a></p>
             <p><a href={`mailto:${SITE.email}`} className="flex items-center gap-2 hover:text-white"><Mail className="w-4 h-4" />{SITE.email}</a></p>
-            <p><a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-2 rounded-full bg-[#25D366] px-4 py-2 text-white font-medium hover:bg-[#1ebe5b]">Chat on WhatsApp</a></p>
+            <p><a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-2 rounded-full bg-[#15803d] px-4 py-2 text-white font-medium hover:bg-[#166534]">Chat on WhatsApp</a></p>
           </address>
 
           <div className="text-muted-foreground mt-8 text-sm md:mt-0 md:block hidden">

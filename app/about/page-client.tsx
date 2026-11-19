@@ -9,7 +9,7 @@ import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/cta-section"
 import dynamic from "next/dynamic"
 
-const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
+const Aurora = dynamic(() => import("@/components/aurora-bg"), { ssr: false })
 const FloatingShapes3D = dynamic(() => import("@/components/floating-shapes-3d").then((mod) => mod.FloatingShapes3D), { ssr: false })
 
 export default function AboutPage() {

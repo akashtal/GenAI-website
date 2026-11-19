@@ -3,41 +3,20 @@ import type { Metadata } from "next"
 import { Suspense } from "react"
 import "./globals.css"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Dancing_Script, Caveat } from "next/font/google"
 import { JsonLd } from "@/components/SEC/json-ld"
 import { GoogleTagManager } from "@/components/SEC/google-tag-manager"
 import { GoogleAnalytics } from "@/components/SEC/google-analytics"
 import { Toaster } from "sonner"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 
-const dancingScript = Dancing_Script({
-  subsets: ["latin"],
-  variable: "--font-dancing-script",
-  display: "swap",
-})
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  variable: "--font-caveat",
-  display: "swap",
-})
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://genaidigitalsolution.com"),
   title: {
-    default: "Software, App & AI Development Company in India | Gen AI Digital Solutions",
+    default: "Web & App Development Company in India | Gen AI Digital Solutions",
     template: "%s | Gen AI Digital Solutions",
   },
   description:
-    "Indian software company building websites, Android & iOS apps, custom software, CRM/ERP and AI chatbots for businesses across India, the UK, USA and worldwide. Free consultation and a fixed quote within 24 hours.",
-  keywords: [
-    "software development company India",
-    "mobile app development company India",
-    "web development company India",
-    "AI development company India",
-    "custom CRM ERP development",
-    "offshore software development India",
-  ],
+    "Guwahati software company building websites, apps, CRM/ERP and AI chatbots for businesses in Assam, Northeast India and worldwide. Free quote in 24h.",
   authors: [{ name: "Gen AI Digital Solutions" }],
   creator: "Gen AI Digital Solutions",
   openGraph: {
@@ -81,7 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-IN" className="dark">
-      <body className={`font-sans antialiased ${dancingScript.variable} ${caveat.variable}`}>
+      <body className="font-sans antialiased">
         <Suspense fallback={null}>
           {children}
         </Suspense>

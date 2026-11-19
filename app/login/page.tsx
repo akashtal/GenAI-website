@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import { Lock, Mail, Loader2, AlertCircle } from "lucide-react"
 import dynamic from "next/dynamic"
 
-const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
+const Aurora = dynamic(() => import("@/components/aurora-bg"), { ssr: false })
 
 export default function LoginPage() {
     const router = useRouter()

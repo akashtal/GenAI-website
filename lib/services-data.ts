@@ -27,6 +27,8 @@ export interface ServiceData {
   ctaTitle: string
   ctaDescription: string
   priceFrom?: { amount: number; currency: "INR"; note: string }
+  /** Optional override for the features section heading */
+  featuresTitle?: string
 }
 
 const MARKETS = ["Pan-India", "United Kingdom", "United States", "UAE & Middle East", "Europe", "Australia"]
@@ -39,9 +41,9 @@ export const SERVICES: ServiceData[] = [
     name: "Website Development",
     shortName: "Web Development",
     icon: "globe",
-    metaTitle: "Web Development Company in India – Websites & E-commerce",
+    metaTitle: "Web Development Company in India",
     metaDescription:
-      "Custom websites, e-commerce stores and web apps built with Next.js, React & WordPress for businesses across India, the UK, USA and worldwide. Fixed quotes from ₹15,000. Free consultation.",
+    "Business websites, e-commerce stores and web apps (Next.js, React, WordPress) for clients in India, Northeast India and abroad. From ₹15,000. Free quote.",
     keywords: [
       "web development company India",
       "website development company",
@@ -126,9 +128,9 @@ export const SERVICES: ServiceData[] = [
     name: "Mobile App Development",
     shortName: "Mobile Apps",
     icon: "smartphone",
-    metaTitle: "Mobile App Development Company in India – Android & iOS",
+    metaTitle: "App Development Company in India",
     metaDescription:
-      "Android & iOS apps built with React Native and Flutter for startups and businesses across India, the UK, USA and worldwide. Apps from ₹50,000, launched in 4–8 weeks. Free consultation.",
+    "Android & iOS apps built with React Native and Flutter for startups and businesses in India and worldwide. Apps from ₹50,000. Free consultation.",
     keywords: [
       "mobile app development company India",
       "android app development company",
@@ -213,9 +215,9 @@ export const SERVICES: ServiceData[] = [
     name: "Custom Software Development",
     shortName: "Custom Software",
     icon: "code",
-    metaTitle: "Custom Software Development Company in India – SaaS & Automation",
+    metaTitle: "Custom Software Development in India",
     metaDescription:
-      "Custom software, SaaS platforms, dashboards and workflow automation built for businesses across India, the UK, USA and worldwide. You own the code. Fixed quotes, free consultation.",
+    "Custom software, SaaS platforms, dashboards and workflow automation for businesses in India and worldwide. You own the code. Free consultation.",
     keywords: [
       "custom software development company India",
       "software development company",
@@ -300,9 +302,9 @@ export const SERVICES: ServiceData[] = [
     name: "CRM & ERP Development",
     shortName: "CRM & ERP",
     icon: "database",
-    metaTitle: "Custom CRM & ERP Software Development Company in India",
+    metaTitle: "Custom CRM & ERP Development in India",
     metaDescription:
-      "Custom CRM and ERP software built around your workflows – inventory, sales, GST billing, HR & payroll, WhatsApp integration. No monthly licence fees. For businesses in India and worldwide.",
+    "Custom CRM and ERP software: inventory, GST billing, HR & payroll, WhatsApp integration. No monthly licence fees. For businesses in India and abroad.",
     keywords: [
       "custom CRM development India",
       "ERP software development company India",
@@ -386,9 +388,9 @@ export const SERVICES: ServiceData[] = [
     name: "AI Solutions & Chatbots",
     shortName: "AI Solutions",
     icon: "zap",
-    metaTitle: "AI Development Company in India – Chatbots, LLMs & Automation",
+    metaTitle: "AI Chatbot & AI Development in India",
     metaDescription:
-      "Custom AI chatbots (WhatsApp & web), GPT/Claude/Gemini integrations, machine learning, computer vision and AI automation for businesses across India, the UK, USA and worldwide.",
+    "WhatsApp and website AI chatbots, GPT/Claude/Gemini integrations, ML and automation for businesses in India and worldwide. Free AI strategy call.",
     keywords: [
       "AI development company India",
       "AI chatbot development company",
@@ -472,6 +474,86 @@ export function getService(slug: string) {
   return SERVICES.find((s) => s.slug === slug)
 }
 
+// One REGIONAL page for all 8 Northeast states (deliberately not 8 thin city/state doorway pages).
+// Delivery is remote from the Guwahati HQ; no offices, clients or addresses are claimed in other states.
+export const NORTHEAST_PAGE: ServiceData = {
+  slug: "northeast-india",
+  legacyPaths: [],
+  name: "Web & App Development in Northeast India",
+  featuresTitle: "What we build across the eight Northeast states",
+  shortName: "Northeast India",
+  icon: "globe",
+  metaTitle: "Web & App Development in Northeast India",
+  metaDescription:
+    "Websites, apps and software for businesses in Assam, Meghalaya, Tripura, Manipur, Mizoram, Nagaland, Arunachal Pradesh and Sikkim, from a Guwahati team.",
+  keywords: [],
+  badge: "Serving all 8 Northeast states · HQ Guwahati",
+  headline: "A Northeast team building",
+  headlineAccent: "websites, apps & software for the region",
+  subheadline:
+    "From Shillong homestays to Agartala retailers and Gangtok tour operators – we build websites, booking systems, apps and business software for Northeast India, working remotely from our Guwahati headquarters.",
+  summary:
+    "Gen AI Digital Solutions is a Guwahati-based software company that builds websites, e-commerce stores, mobile apps, CRM/ERP systems and AI chatbots for businesses across all eight Northeast Indian states: Assam, Meghalaya, Tripura, Manipur, Mizoram, Nagaland, Arunachal Pradesh and Sikkim. Projects outside Guwahati are delivered remotely over WhatsApp and video calls, with business websites starting from ₹15,000.",
+  description:
+    "Businesses in the Northeast often sell to customers who are far away – tourists planning a trip, buyers elsewhere in India looking for local tea, handloom or crafts, or students and parents comparing institutions online. That makes a fast, mobile-friendly website, a booking or ordering flow, and visibility on Google and WhatsApp especially important. Because we are based in the region, we understand patchy mobile connectivity, seasonal tourism and the value of WhatsApp-first communication, and we build with those realities in mind.",
+  features: [
+    { title: "Assam", description: "Tea and agri-businesses, hotels, clinics, coaching institutes, retailers and startups in Guwahati, Dibrugarh, Jorhat, Silchar, Tezpur and beyond. Meet us in person in Guwahati." },
+    { title: "Meghalaya", description: "Homestay, hotel and tour-operator websites with direct booking for Shillong, Sohra and the wider tourism circuit, plus sites for schools and local brands." },
+    { title: "Sikkim", description: "Booking-ready websites for hotels, travel agents and trek operators in Gangtok and beyond, and online stores for organic produce and local products." },
+    { title: "Arunachal Pradesh", description: "Tourism and adventure-travel websites, permit and itinerary information pages, and sites for institutions and local enterprises." },
+    { title: "Tripura", description: "Websites and online stores for retailers, handloom and bamboo-craft sellers, and service businesses in Agartala and across the state." },
+    { title: "Manipur", description: "E-commerce for handloom and handicraft makers selling across India, and websites for sports academies, schools and local businesses in Imphal." },
+    { title: "Nagaland", description: "Event, tourism and hospitality websites for Kohima and Dimapur, and online stores for local food and craft brands." },
+    { title: "Mizoram", description: "Websites, apps and business software for Aizawl businesses, institutions and startups, built mobile-first for local connectivity." },
+    { title: "Across the region", description: "CRM, billing and inventory software, WhatsApp chatbots, and Google Business Profile & local SEO for businesses anywhere in the Northeast." },
+  ],
+  benefits: [
+    "Headquartered in Guwahati – a Northeast team, not a distant agency",
+    "Built mobile-first for patchy networks and low-data phones",
+    "WhatsApp-first communication and enquiry buttons",
+    "Booking, ordering and payment flows (UPI, Razorpay)",
+    "Local SEO and Google Business Profile setup",
+    "Business websites from ₹15,000 with a fixed quote",
+    "Remote delivery across all 8 states with weekly demos",
+    "Hindi, Assamese and English support",
+  ],
+  faqs: [
+    {
+      question: "Do you work with businesses outside Assam in the Northeast?",
+      answer:
+        "Yes. We work with businesses in all eight Northeast states – Assam, Meghalaya, Tripura, Manipur, Mizoram, Nagaland, Arunachal Pradesh and Sikkim. Our team is in Guwahati; projects elsewhere run remotely over WhatsApp, phone and video calls with weekly demo links.",
+    },
+    {
+      question: "Do you have offices in Shillong, Agartala, Imphal or other cities?",
+      answer:
+        "No. Our only office is our headquarters in Guwahati, Assam. Clients in other Northeast states work with us remotely, and are welcome to meet us in Guwahati.",
+    },
+    {
+      question: "How much does a website cost for a business in the Northeast?",
+      answer:
+        "The same as anywhere else we work: a business website typically costs ₹15,000–₹50,000, and booking websites or e-commerce stores start from ₹50,000. See our pricing page for full details. You get a fixed quote before work starts.",
+    },
+    {
+      question: "Can you build a booking website for my homestay or hotel?",
+      answer:
+        "Yes. We build hotel and homestay websites with room galleries, availability enquiries or direct booking, UPI/card payments, Google Maps and WhatsApp buttons, so you rely less on commission-based booking platforms.",
+    },
+    {
+      question: "Can you help me sell my products online across India?",
+      answer:
+        "Yes. We build online stores with UPI, card and cash-on-delivery payments, GST invoices and courier integrations, which suits tea, handloom, handicraft, organic food and other Northeast products sold nationwide.",
+    },
+    {
+      question: "Will my website work well on slow mobile networks?",
+      answer:
+        "Yes. We build mobile-first, compress images, and keep pages light so they load quickly even on weaker 4G connections common in hilly and rural areas.",
+    },
+  ],
+  ctaTitle: "Building something for your Northeast business?",
+  ctaDescription: "Tell us what you need – we reply within 24 hours, wherever you are in the Northeast.",
+  priceFrom: { amount: 15000, currency: "INR", note: "Business websites from ₹15,000" },
+}
+
 // One dedicated LOCAL landing page (not part of SERVICES, so it isn't duplicated in nav/related lists).
 // Search Console shows "web development company in guwahati" / "... in assam" are the site's only
 // near-page-1 non-brand queries, so this page keeps its original URL and targets them with unique local content.
@@ -481,9 +563,9 @@ export const GUWAHATI_PAGE: ServiceData = {
   name: "Web & App Development in Guwahati",
   shortName: "Guwahati",
   icon: "globe",
-  metaTitle: "Web Development Company in Guwahati, Assam – Websites & Apps",
+  metaTitle: "Web Development Company in Guwahati",
   metaDescription:
-    "Guwahati-based web and app development company. Business websites from ₹15,000, e-commerce stores, Android & iOS apps and custom software for businesses in Guwahati, Assam and Northeast India. Meet us in person.",
+    "Web & app development company in Guwahati. Websites from ₹15,000, e-commerce, Android & iOS apps for businesses in Assam & Northeast India.",
   keywords: [
     "web development company in guwahati",
     "website development company in guwahati",

@@ -14,10 +14,14 @@ const routes: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/services/crm-erp-development", priority: 0.9, changeFrequency: "monthly" },
   { path: "/services/ai-solutions", priority: 0.9, changeFrequency: "monthly" },
   { path: "/web-development-company-guwahati", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/northeast-india", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/pricing", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services", priority: 0.8, changeFrequency: "monthly" },
   { path: "/projects", priority: 0.8, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
   { path: "/about", priority: 0.6, changeFrequency: "yearly" },
+  { path: "/privacy-policy", priority: 0.2, changeFrequency: "yearly" },
+  { path: "/terms", priority: 0.2, changeFrequency: "yearly" },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

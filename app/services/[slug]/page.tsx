@@ -17,7 +17,6 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: service.metaTitle,
     description: service.metaDescription,
-    keywords: service.keywords,
     alternates: { canonical: path },
     openGraph: {
       type: "website",

@@ -30,7 +30,7 @@ export function WhatsAppFloat() {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackEvent("contact_whatsapp", { location: "floating_button", page: pathname })}
-        className="hidden md:flex fixed bottom-6 right-6 z-[60] items-center gap-2 rounded-full bg-[#25D366] pl-4 pr-5 py-3 text-white font-semibold shadow-[0_10px_30px_-5px_rgba(37,211,102,0.5)] hover:bg-[#1ebe5b] hover:-translate-y-0.5 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        className="hidden md:flex fixed bottom-6 right-6 z-[60] items-center gap-2 rounded-full bg-[#15803d] pl-4 pr-5 py-3 text-white font-semibold shadow-[0_10px_30px_-5px_rgba(21,128,61,0.5)] hover:bg-[#166534] hover:-translate-y-0.5 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         aria-label="Chat with us on WhatsApp"
       >
         <WhatsAppIcon className="w-6 h-6" />
@@ -53,7 +53,7 @@ export function WhatsAppFloat() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent("contact_whatsapp", { location: "mobile_bar", page: pathname })}
-            className="flex items-center justify-center gap-1.5 rounded-xl bg-[#25D366] py-3 text-sm font-semibold text-white"
+            className="flex items-center justify-center gap-1.5 rounded-xl bg-[#15803d] py-3 text-sm font-semibold text-white"
           >
             <WhatsAppIcon className="w-4 h-4" />
             WhatsApp

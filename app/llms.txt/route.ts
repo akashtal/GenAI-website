@@ -22,15 +22,19 @@ export function GET() {
 - Company: ${SITE.name}
 - Type: Software, mobile app and AI development company
 - Headquarters: ${SITE.city}, ${SITE.region}, ${SITE.country}
-- Serves: Clients across India and internationally (UK, USA, UAE, Europe, Australia), fully remote delivery
+- Serves: All eight Northeast Indian states, the rest of India, and international clients (UK, USA, UAE, Europe, Australia); remote delivery outside Guwahati
+- Offices: One – headquarters in Guwahati, Assam (no offices in other cities)
 - Experience: 4+ years, 17+ projects delivered, 15+ clients
 - Tech: Next.js, React, React Native, Flutter, Node.js, TypeScript, MongoDB, PostgreSQL, AWS, OpenAI GPT, Anthropic Claude, Google Gemini
 - Engagement: Free consultation, fixed-price quote, weekly demos, post-launch support
-- Contact: ${SITE.email} · ${SITE.phone} (call or WhatsApp) · ${SITE.url}/contact
+- Contact: ${SITE.email} · ${SITE.phone} (call) · ${SITE.phoneAlternate} (call or WhatsApp) · ${SITE.url}/contact
 
 ## Services
 ${services}
 - [Digital Marketing & SEO](${SITE.url}/services): SEO, Google Business Profile, social media and performance marketing.
+- [Web development in Guwahati](${SITE.url}/web-development-company-guwahati): local web and app development for Guwahati and Assam businesses.
+- [Northeast India](${SITE.url}/northeast-india): websites, apps and software for businesses in all eight Northeast states (Assam, Meghalaya, Tripura, Manipur, Mizoram, Nagaland, Arunachal Pradesh, Sikkim), delivered remotely from Guwahati.
+- [Pricing](${SITE.url}/pricing): typical prices and timelines – business websites from ₹15,000, mobile apps from ₹50,000.
 
 ## Selected work
 - HashView – Android & iOS reviews-and-rewards app used by restaurants and hotels in the UK (React Native, Firebase, Node.js)

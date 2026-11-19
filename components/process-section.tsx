@@ -43,7 +43,7 @@ export function ProcessSection() {
           {steps.map((s) => (
             <li key={s.n} className="relative rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-md">
               <div className="flex items-center justify-between">
-                <span className="text-3xl font-bold text-white/20">{s.n}</span>
+                <span className="text-3xl font-bold text-white/50" aria-hidden="true">{s.n}</span>
                 <span className="rounded-full bg-emerald-400/10 px-2.5 py-1 text-xs font-medium text-emerald-300">{s.when}</span>
               </div>
               <h3 className="mt-5 text-lg font-semibold text-white">{s.title}</h3>

@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import ServicesPage from "./page-client"
 
 export const metadata: Metadata = {
-  title: "Services – Web, Mobile App, Software & AI Development",
+  title: "Web, App, Software & AI Services",
   description:
-    "Website development, Android & iOS apps, custom software, CRM/ERP systems, AI chatbots and digital marketing for businesses across India and worldwide. Fixed quotes, weekly demos, ongoing support.",
+    "Websites, Android & iOS apps, custom software, CRM/ERP, AI chatbots and SEO for businesses in Northeast India and worldwide. Fixed quotes and weekly demos.",
   alternates: { canonical: "/services" },
   openGraph: { url: "/services", title: "Services – Gen AI Digital Solutions" },
 }

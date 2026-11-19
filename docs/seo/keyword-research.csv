@@ -1,0 +1,46 @@
+keyword,cluster,keyword_type,intent,region,target_url,priority,evidence,notes
+web development company in guwahati,Guwahati web dev,primary,commercial,Assam - Guwahati,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 92 impr, avg pos 30.8",Best non-brand opportunity; was page 3-4 before pages dropped from index
+website development company in guwahati,Guwahati web dev,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 33 impr, pos 37.3",Same page; do not create a second page
+web developer in guwahati,Guwahati web dev,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 42 impr, pos 46.5",
+website developer in guwahati,Guwahati web dev,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 58 impr, pos 48.8",
+web development in guwahati,Guwahati web dev,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 44 impr, pos 34.4",
+web development agency in guwahati,Guwahati web dev,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 14 impr, pos 37.0",
+web developers in guwahati,Guwahati web dev,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 14 impr, pos 45.9",
+web designing company in guwahati,Guwahati web dev,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 12 impr, pos 51.8",
+website development guwahati,Guwahati web dev,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 12 impr, pos 42.9",
+website development in guwahati,Guwahati web dev,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 16 impr, pos 49.0",
+web development company in assam,Assam web dev,primary,commercial,Assam,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 10 impr, pos 28.4",Best average position of any non-brand query
+web design company in guwahati,Guwahati web dev,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P1,"MEASURED GSC 90d: 6 impr, pos 62.8",
+website development agency in guwahati,Guwahati web dev,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P2,"MEASURED GSC 90d: 6 impr, pos 44.3",
+ecommerce developer in guwahati,Guwahati ecommerce,long-tail,transactional,Assam - Guwahati,/web-development-company-guwahati,P2,"MEASURED GSC 90d: 3 impr, pos 44.7",Page has an Online Stores section
+online store development in guwahati,Guwahati ecommerce,long-tail,transactional,Assam - Guwahati,/web-development-company-guwahati,P2,"MEASURED GSC 90d: 1 impr, pos 49",
+digital solutions guwahati,Brand + local,local,navigational,Assam - Guwahati,/,P2,"MEASURED GSC 90d: 1 impr, pos 6",
+app development company in guwahati,Guwahati apps,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P2,NOT MEASURED (no GSC impressions yet),Covered by the apps section of the Guwahati page
+mobile app development company in assam,Assam apps,secondary,commercial,Assam,/services/mobile-app-development,P2,NOT MEASURED,Competitors: Riverrun Digital; ABiG Studio; Prismabit (directory listings)
+software company in guwahati,Guwahati software,secondary,commercial,Assam - Guwahati,/web-development-company-guwahati,P2,NOT MEASURED,BuiltIn and GoodFirms list pages rank here - get listed
+website design company in shillong,Northeast region,local,commercial,Meghalaya,/northeast-india,P2,NOT MEASURED (Bing: no data),SERP is mostly IndiaMART listings + one Delhi agency's thin city page
+web development company in meghalaya,Northeast region,local,commercial,Meghalaya,/northeast-india,P3,NOT MEASURED,
+website developer in agartala,Northeast region,local,commercial,Tripura,/northeast-india,P3,NOT MEASURED,
+web design company in imphal,Northeast region,local,commercial,Manipur,/northeast-india,P3,NOT MEASURED,
+website development in aizawl,Northeast region,local,commercial,Mizoram,/northeast-india,P3,NOT MEASURED,
+website development in kohima / dimapur,Northeast region,local,commercial,Nagaland,/northeast-india,P3,NOT MEASURED,
+website development in gangtok,Northeast region,local,commercial,Sikkim,/northeast-india,P3,NOT MEASURED,
+website development in itanagar,Northeast region,local,commercial,Arunachal Pradesh,/northeast-india,P3,NOT MEASURED,
+web development company in northeast india,Northeast region,primary,commercial,Northeast India,/northeast-india,P2,NOT MEASURED,
+homestay website development,Northeast tourism,problem-based,commercial,Meghalaya / Sikkim / Arunachal,/northeast-india,P2,NOT MEASURED,Strong fit with region's tourism; content opportunity
+hotel booking website development,Hospitality,service,commercial,India,/web-development-company-guwahati,P3,NOT MEASURED,
+how much does a website cost in india,Pricing,question,informational/commercial,India,/pricing,P1,NOT MEASURED (Bing: no data),High AI-answer potential; pricing page answers directly
+website development cost in india,Pricing,long-tail,commercial,India,/pricing,P1,NOT MEASURED,
+mobile app development cost in india,Pricing,question,commercial,India,/pricing,P1,NOT MEASURED,
+web development company in india,India web dev,primary,commercial,India,/services/web-development,P3,"MEASURED Bing (website development company, IN): 1-3 impr/week",Very competitive nationally; long-term target
+app development company in india,India apps,primary,commercial,India,/services/mobile-app-development,P3,"MEASURED Bing (app development company, IN): 0-6 impr/week",Very competitive
+react native app development company,India apps,service,commercial,India,/services/mobile-app-development,P3,NOT MEASURED,
+custom crm development india,CRM/ERP,service,commercial,India,/services/crm-erp-development,P2,NOT MEASURED,
+crm software for small business,CRM/ERP,secondary,commercial,India,/services/crm-erp-development,P3,"MEASURED Bing (IN): 4-10 broad impr/week",Mostly SaaS-buyer intent; build-vs-buy content angle
+gst billing software development,CRM/ERP,long-tail,commercial,India,/services/crm-erp-development,P3,NOT MEASURED,
+inventory management software development,CRM/ERP,long-tail,commercial,India,/services/crm-erp-development,P3,NOT MEASURED,
+whatsapp chatbot for business,AI,service,commercial,India,/services/ai-solutions,P2,"MEASURED Bing (whatsapp chatbot, IN): 1-2 impr/week",
+ai chatbot development company india,AI,primary,commercial,India,/services/ai-solutions,P3,NOT MEASURED,
+custom software development company india,Software,primary,commercial,India,/services/custom-software-development,P3,NOT MEASURED,
+gen ai solutions,Brand collision,brand,navigational,Global,/,P4,"MEASURED GSC 90d: 166 impr, pos 75.4",Generic category term; not winnable - do not optimise for it
+genai solution / genai solutions,Brand collision,brand,navigational,Global,/,P4,"MEASURED GSC 90d: 60 + 80 impr, pos 67-73",Same - brand name collides with a generic category

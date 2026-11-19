@@ -72,7 +72,7 @@ export function CTASection() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent("contact_whatsapp", { location: "cta_section" })}
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#25D366] px-6 py-3 font-semibold text-white hover:bg-[#1ebe5b]"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#15803d] px-6 py-3 font-semibold text-white hover:bg-[#166534]"
             >
               <WhatsAppIcon className="h-5 w-5" /> WhatsApp us
             </a>
@@ -93,7 +93,7 @@ export function CTASection() {
               <CheckCircle className="mb-4 h-14 w-14 text-emerald-400" />
               <h3 className="text-2xl font-semibold text-white">Got it – thank you!</h3>
               <p className="mt-2 text-white/70">We&apos;ll reach out within 24 hours. Want a faster reply?</p>
-              <a href={whatsappLink(`Hi, I just sent a quote request on your website. My name is ${form.name}.`)} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 font-semibold text-white">
+              <a href={whatsappLink(`Hi, I just sent a quote request on your website. My name is ${form.name}.`)} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#15803d] px-6 py-3 font-semibold text-white">
                 <WhatsAppIcon className="h-5 w-5" /> Continue on WhatsApp
               </a>
             </div>
@@ -137,7 +137,7 @@ export function CTASection() {
                   <>Get my free quote <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" /></>
                 )}
               </button>
-              <p className="text-center text-xs text-white/45">We never share your details. No spam, ever.</p>
+              <p className="text-center text-xs text-white/60">We never share your details. No spam, ever. <a href="/privacy-policy" className="underline underline-offset-2 hover:text-white">Privacy policy</a></p>
             </form>
           )}
         </div>

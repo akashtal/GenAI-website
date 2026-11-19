@@ -7,7 +7,7 @@ import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import dynamic from "next/dynamic"
 
-const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
+const Aurora = dynamic(() => import("@/components/aurora-bg"), { ssr: false })
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Clock, Send, MessageSquare, ChevronDown, Loader2, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -438,7 +438,7 @@ export default function ContactPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => trackEvent("contact_whatsapp", { location: "contact_quick_chat" })}
-                        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] py-3 font-semibold text-white hover:bg-[#1ebe5b]"
+                        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#15803d] py-3 font-semibold text-white hover:bg-[#166534]"
                       >
                         <WhatsAppIcon className="w-5 h-5" /> WhatsApp
                       </a>

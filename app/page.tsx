@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 }
 
 // Lazy-load the WebGL background and the calculator so they never block first paint.
-const Aurora = dynamic(() => import("@/components/Aurora"), { ssr: false })
+const Aurora = dynamic(() => import("@/components/aurora-bg"), { ssr: false })
 const ROICalculatorSection = dynamic(
   () => import("@/components/roi-calculator-section").then((mod) => mod.ROICalculatorSection),
   {
